@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CoreCloud (Pty) Ltd – Modern IT, Secured</title>
+  <link rel="stylesheet" href="assets/css/common.css" />
+</head>
+<body>
+  <!-- Banner -->
+  <div class="banner-container">
+    <img src="assets/images/bannerimage_1.png" alt="CoreCloud Sandton Skyline Banner" class="banner-img" />
+    <header>
+      <img src="assets/images/Logo.png" alt="CoreCloud Logo" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="divisions.html">Divisions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="banner-text">
+      <h1>Modern IT, Secured.</h1>
+      <p>We empower African businesses with cloud-first infrastructure, intelligent cybersecurity, and elite technical talent.</p>
+      <a href="contact.html" class="btn-primary">Request a Consultation</a>
+    </div>
+  </div>
+
+  <!-- Body Blocks -->
+  <section class="body-block">
+    <h2>About CoreCloud</h2>
+    <p>CoreCloud (Pty) Ltd is a South African technology group engineered to deliver scalable, secure, and intelligent IT solutions. We partner with enterprises, governments, and real estate developers to modernize digital infrastructure and protect what matters most.</p>
+    <p>Through strategic alliances and deep technical expertise, we accelerate transformation with measurable business outcomes.</p>
+  </section>
+
+  <section class="body-block">
+    <h2>Our Mission</h2>
+    <p>To be Africa’s most trusted digital transformation partner — delivering world-class cloud infrastructure, advanced cybersecurity, and top-tier talent that drives sustainable growth in a connected economy.</p>
+  </section>
+
+  <!-- Division Cards -->
+  <section class="body-block services-block">
+    <h2>Explore Our Divisions</h2>
+    <div class="service-grid">
+      <a href="access-zero.html" class="card">
+        <h3>Access Zero</h3>
+        <p>Cybersecurity and digital infrastructure for always-on protection.</p>
+      </a>
+      <a href="coretech.html" class="card">
+        <h3>CoreTech</h3>
+        <p>Hybrid IT, infrastructure, and managed services at scale.</p>
+      </a>
+      <a href="corecapacity.html" class="card">
+        <h3>CoreCapacity</h3>
+        <p>Elite tech talent placement — permanent, contract, and project teams.</p>
+      </a>
+      <a href="coreai.html" class="card">
+        <h3>CoreAI</h3>
+        <p>AI solutions, automation, and data intelligence that deliver real value.</p>
+      </a>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("site-footer").outerHTML = html;
+      });
+  </script>
+</body>
+</html>
