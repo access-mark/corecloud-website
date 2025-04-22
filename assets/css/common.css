@@ -1,19 +1,23 @@
 /* === Root Colors & Font === */
 :root {
-  --color-primary: #004B87;         /* Oxford Blue */
-  --color-accent: #FDC02F;          /* Gold Amber */
-  --color-hover: #002d56;           /* Darker CTA hover */
+  --color-primary: #004B87;
+  --color-accent: #FDC02F;
+  --color-hover: #002d56;
   --color-muted: #666;
   --color-white: #fff;
   --color-bg: #f4f6f9;
   --font-main: 'Inter', sans-serif;
 }
 
-/* === Reset === */
+/* === Base Reset === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -21,6 +25,7 @@ body {
   line-height: 1.6;
   background-color: var(--color-bg);
   color: #1a1a1a;
+  overflow-x: hidden;
 }
 
 /* === Logo === */
@@ -54,12 +59,13 @@ header nav a {
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
-  transition: color 0.3s;
+  transition: all 0.3s ease;
 }
 
 header nav a:hover,
 header nav a.active {
   border-bottom: 2px solid var(--color-accent);
+  color: var(--color-accent);
 }
 
 /* === Banner === */
@@ -110,14 +116,15 @@ header nav a.active {
   font-weight: 600;
   text-decoration: none;
   display: inline-block;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
   background: var(--color-hover);
+  transform: scale(1.04);
 }
 
-/* === Section Content === */
+/* === Sections === */
 .body-block {
   max-width: 1200px;
   margin: 3rem auto;
@@ -138,7 +145,7 @@ header nav a.active {
   color: var(--color-muted);
 }
 
-/* === Service Cards Grid === */
+/* === Service Cards === */
 .services-block {
   margin-top: 3rem;
 }
@@ -147,6 +154,7 @@ header nav a.active {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  padding: 1rem 0;
 }
 
 .card {
@@ -160,11 +168,12 @@ header nav a.active {
   display: flex;
   flex-direction: column;
   text-align: center;
+  will-change: transform;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.15);
 }
 
 .card h3 {
@@ -196,4 +205,28 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+}
+
+/* === Responsive Fixes === */
+@media (max-width: 768px) {
+  header nav ul {
+    gap: 1.25rem;
+  }
+
+  .body-block h2 {
+    font-size: 1.5rem;
+  }
+
+  .banner-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .btn-primary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
 }
