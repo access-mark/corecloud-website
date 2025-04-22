@@ -1,13 +1,15 @@
-/* Root color variables */
+/* === Root Colors & Font === */
 :root {
-  --color-primary: #003f7d;
-  --color-accent: #0057a3;
-  --color-muted: #555;
+  --color-primary: #004B87;         /* Oxford Blue */
+  --color-accent: #FDC02F;          /* Gold Amber */
+  --color-hover: #002d56;           /* Darker CTA hover */
+  --color-muted: #666;
   --color-white: #fff;
+  --color-bg: #f4f6f9;
   --font-main: 'Inter', sans-serif;
 }
 
-/* Reset + Base */
+/* === Reset === */
 * {
   margin: 0;
   padding: 0;
@@ -17,17 +19,17 @@
 body {
   font-family: var(--font-main);
   line-height: 1.6;
-  background-color: #f5f7fa;
-  color: #111;
+  background-color: var(--color-bg);
+  color: #1a1a1a;
 }
 
-/* Logo */
+/* === Logo === */
 .logo {
   height: clamp(40px, 5vw, 60px);
   width: auto;
 }
 
-/* Header Nav */
+/* === Header === */
 header {
   display: flex;
   justify-content: space-between;
@@ -48,17 +50,19 @@ header nav ul {
 }
 
 header nav a {
-  color: white;
+  color: var(--color-white);
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
+  transition: color 0.3s;
 }
 
+header nav a:hover,
 header nav a.active {
-  border-bottom: 2px solid var(--color-white);
+  border-bottom: 2px solid var(--color-accent);
 }
 
-/* Banner */
+/* === Banner === */
 .banner-container {
   position: relative;
   width: 100%;
@@ -97,8 +101,9 @@ header nav a.active {
   text-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
+/* === Button Styling === */
 .btn-primary {
-  background: var(--color-accent);
+  background: var(--color-primary);
   color: var(--color-white);
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
@@ -109,10 +114,10 @@ header nav a.active {
 }
 
 .btn-primary:hover {
-  background: var(--color-primary);
+  background: var(--color-hover);
 }
 
-/* Sections */
+/* === Section Content === */
 .body-block {
   max-width: 1200px;
   margin: 3rem auto;
@@ -133,7 +138,7 @@ header nav a.active {
   color: var(--color-muted);
 }
 
-/* Service Cards Grid */
+/* === Service Cards Grid === */
 .services-block {
   margin-top: 3rem;
 }
@@ -174,11 +179,21 @@ header nav a.active {
   margin-bottom: 0.5rem;
 }
 
-/* Footer (loaded dynamically) */
+/* === Footer === */
 footer {
   background: #001f3f;
   color: var(--color-white);
   padding: 2rem 1.5rem;
   text-align: center;
   font-size: 0.95rem;
+}
+
+footer a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
