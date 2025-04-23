@@ -58,25 +58,26 @@ body {
   z-index: 2;
 }
 
-/* Logo in banner-header */
 .banner-header .logo {
+  display: block;
   width: clamp(80px, 10vw, 120px);
   height: auto;
   z-index: 3;
 }
 
-/* Nav in banner-header */
 .banner-header nav ul {
   list-style: none;
   display: flex;
   gap: 2rem;
 }
+
 .banner-header nav a {
   color: var(--color-white);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
+
 .banner-header nav a:hover,
 .banner-header nav a.active {
   color: var(--color-accent);
@@ -88,13 +89,14 @@ body {
 }
 
 /* === Banner Title & Tagline === */
-/* Title sizing bumped up */
+/* Title sizing aligned with other page titles */
 .banner-content h1.site-title {
-  font-size: clamp(2rem, 2vw, 4rem) !important;
+  font-size: clamp(2rem, 5vw, 3rem) !important;
   color: var(--color-white);
   text-shadow: 0 2px 4px rgba(0,0,0,0.4);
   margin-bottom: 0.5rem;
 }
+
 /* Tagline styling */
 .banner-content p.tagline {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
@@ -110,7 +112,7 @@ body {
   z-index: 1;
 }
 
-/* === Small-banner variant === */
+/* === Small-banner variant (for other pages) === */
 .small-banner {
   position: relative;
   width: 100%;
@@ -124,6 +126,14 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+/* Page‐title in small-banner matches banner sizing */
+.small-banner .page-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--color-white);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  margin-bottom: 0.5rem;
 }
 
 /* === Sections === */
@@ -231,12 +241,12 @@ footer a:hover {
     gap: 1.25rem;
   }
 
-  .body-block h2 {
-    font-size: 1.5rem;
+  .banner-content h1.site-title {
+    font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
   }
 
-  .banner-content h1.site-title {
-    font-size: clamp(2.5rem, 10vw, 4rem) !important;
+  .body-block h2 {
+    font-size: 1.5rem;
   }
 
   .card {
