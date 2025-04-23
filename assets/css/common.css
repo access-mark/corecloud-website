@@ -1,5 +1,35 @@
 /* assets/css/common.css */
 
+/* === Root Colors & Font === */
+:root {
+  --color-primary: #004B87;
+  --color-accent: #FDC02F;
+  --color-hover: #002d56;
+  --color-muted: #666;
+  --color-white: #fff;
+  --color-bg: #f4f6f9;
+  --font-main: 'Inter', sans-serif;
+}
+
+/* === Base Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  background-color: var(--color-bg);
+  color: #1a1a1a;
+  overflow-x: hidden;
+}
+
 /* === Banner & Small-Banner (with header inside) === */
 .banner {
   position: relative;
@@ -41,14 +71,12 @@
   display: flex;
   gap: 2rem;
 }
-
 .banner-header nav a {
   color: var(--color-white);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
-
 .banner-header nav a:hover,
 .banner-header nav a.active {
   color: var(--color-accent);
@@ -59,16 +87,16 @@
   z-index: 1;
 }
 
-/* Force title & tagline white */
-.banner .site-title,
-.banner .tagline {
-  color: var(--color-white);
+/* Title & tagline white */
+.banner-content h1.site-title,
+.banner-content p.tagline {
+  color: var(--color-white) !important;
   text-shadow: 0 2px 4px rgba(0,0,0,0.4);
   margin-bottom: 0.5rem;
 }
 
 /* Button spacing */
-.banner .btn-primary {
+.banner-content .btn-primary {
   margin-top: 1.5rem;
   position: relative;
   z-index: 1;
@@ -89,11 +117,126 @@
   align-items: center;
   text-align: center;
 }
-/* === Force banner title & tagline white === */
-.banner-content .site-title,
-.banner-content .tagline {
-  color: var(--color-white) !important;
+
+/* === Sections === */
+.body-block {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
 }
 
-/* === Sections, Cards, Footer, etc. (unchanged) === */
-/* … your existing styles for .body-block, .card, footer, etc. … */
+.body-block h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: var(--color-primary);
+}
+
+.body-block p {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+  color: var(--color-muted);
+}
+
+/* === Service Cards === */
+.services-block {
+  margin-top: 3rem;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+/* === Button Styling === */
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--color-hover);
+  transform: scale(1.04);
+}
+
+/* === Footer === */
+footer {
+  background: #001f3f;
+  color: var(--color-white);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+footer a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* === Responsive Fixes === */
+@media (max-width: 768px) {
+  .banner-header nav ul {
+    gap: 1.25rem;
+  }
+
+  .body-block h2 {
+    font-size: 1.5rem;
+  }
+
+  .banner-content h1.site-title {
+    font-size: 2.2rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .btn-primary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
