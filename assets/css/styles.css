@@ -44,22 +44,27 @@ header {
 }
 
 /* === Nav Buttons === */
-.nav-btn {
-  background: rgba(255, 255, 255, 0.2);
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+header nav a {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
   color: var(--color-white);
-  border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 4px;
   font-weight: 500;
   font-size: 1rem;
   text-decoration: none;
   transition: background 0.3s ease, color 0.3s ease;
 }
-.nav-btn:hover {
+header nav a:hover {
   background: var(--color-white);
   color: var(--color-primary);
 }
-.nav-btn.active {
+header nav a.active {
   background: var(--color-accent);
   color: var(--color-primary);
 }
@@ -72,6 +77,8 @@ header {
   overflow: hidden;
 }
 .banner-img {
+  position: absolute;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -82,7 +89,7 @@ header {
 /* === Banner Text Overlay === */
 .banner-text {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 40%; left: 50%;           /* moved up to 40% */
   transform: translate(-50%, -50%);
   text-align: center;
   color: var(--color-white);
@@ -92,7 +99,7 @@ header {
 .banner-text h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
   margin-bottom: 0.75rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  text-shadow: 0 4px 8px rgba(0,0,0,0.6);  /* increased drop shadow */
 }
 .banner-text p {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
@@ -143,14 +150,23 @@ header {
   gap: 2rem;
 }
 .banner-header nav a {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
   color: var(--color-white);
-  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
   font-weight: 500;
-  transition: color 0.3s ease;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
 }
-.banner-header nav a:hover,
+.banner-header nav a:hover {
+  background: var(--color-white);
+  color: var(--color-primary);
+}
 .banner-header nav a.active {
-  color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-primary);
 }
 
 /* === Button Styling === */
@@ -242,7 +258,7 @@ footer a:hover {
 
 /* === Responsive Fixes === */
 @media (max-width: 768px) {
-  .banner-header nav ul { gap: 1.25rem; }
+  header nav ul, .banner-header nav ul { gap: 1.25rem; }
   .banner-text h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
   .body-block h2 { font-size: 1.5rem; }
   .card { padding: 1.5rem; }
