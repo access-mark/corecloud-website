@@ -1,232 +1,225 @@
-/* === Root Colors & Font === */
+/* styles.css */
+
+/*----------------------------------------------  
+  Variables  
+----------------------------------------------*/
 :root {
-  --color-primary: #004B87;
-  --color-accent: #FDC02F;
-  --color-hover: #002d56;
-  --color-muted: #666;
-  --color-white: #fff;
-  --color-bg: #f4f6f9;
-  --font-main: 'Inter', sans-serif;
+  --color-primary: #1a202c;        /* Dark navy */
+  --color-secondary: #2c5282;      /* Mid blue */
+  --color-accent: #68d391;         /* Light green accent (optional) */
+  --color-bg: #f7fafc;             /* Very light gray background */
+  --font-sans: "Helvetica Neue", Arial, sans-serif;
+  --font-heading-weight: 600;
+  --font-body-weight: 400;
+  --spacing-unit: 1rem;
 }
 
-/* === Base Reset === */
-* {
+/*----------------------------------------------  
+  Global Reset & Base Styles  
+----------------------------------------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
+  font-size: 100%; /* 1rem = 16px */
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-main);
+  font-family: var(--font-sans);
+  font-weight: var(--font-body-weight);
   line-height: 1.6;
+  color: var(--color-primary);
   background-color: var(--color-bg);
-  color: #1a1a1a;
-  overflow-x: hidden;
+  min-height: 100vh;
 }
 
-/* === Logo === */
-.logo {
-  height: clamp(40px, 5vw, 60px);
-  width: auto;
+/*----------------------------------------------  
+  Utility Classes  
+----------------------------------------------*/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-unit);
 }
 
-/* === Header === */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  background: transparent;
-}
-
-header nav ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-}
-
-header nav a {
-  color: var(--color-white);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-header nav a:hover,
-header nav a.active {
-  border-bottom: 2px solid var(--color-accent);
-  color: var(--color-accent);
-}
-
-/* === Banner === */
-.banner-container {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-}
-
-.banner-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.banner-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--color-white);
-  text-align: center;
-  z-index: 5;
-  padding: 0 1.5rem;
-}
-
-.banner-text h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 0.75rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-}
-
-.banner-text p {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  max-width: 700px;
-  margin: 0 auto 1.5rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-}
-
-/* === Button Styling === */
-.btn-primary {
-  background: var(--color-primary);
-  color: var(--color-white);
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  font-weight: 600;
-  text-decoration: none;
+.btn {
   display: inline-block;
-  transition: all 0.3s ease;
+  padding: 0.75rem 1.5rem;
+  font-weight: var(--font-heading-weight);
+  text-decoration: none;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--color-secondary);
+  color: #fff;
 }
 
 .btn-primary:hover {
-  background: var(--color-hover);
-  transform: scale(1.04);
+  background-color: var(--color-primary);
 }
 
-/* === Sections === */
-.body-block {
-  max-width: 1200px;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
+/*----------------------------------------------  
+  Header & Navigation  
+----------------------------------------------*/
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-unit) 2rem;
+  background: transparent; /* or the dusk-sky background image */
+  position: relative;
+  z-index: 100;
 }
 
-.body-block h2 {
+.site-logo {
+  height: 3rem; /* Adjust logo height */
+  width: auto;
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.site-nav a {
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-primary);
+  padding: 0.5rem 0;
+  transition: color 0.2s ease-in-out;
+}
+
+.site-nav a:hover {
+  color: var(--color-secondary);
+}
+
+/*----------------------------------------------  
+  Hero Section (Homepage)  
+----------------------------------------------*/
+.hero {
+  background: url("assets/images/sandton-dusk.jpg") no-repeat center center/cover;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  color: #fff;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay for legibility */
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: var(--font-heading-weight);
   margin-bottom: 1rem;
-  font-size: 1.8rem;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/*----------------------------------------------  
+  Main Content  
+----------------------------------------------*/
+section {
+  padding: 4rem 0;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: var(--font-heading-weight);
+  margin-bottom: 1.5rem;
+  color: var(--color-secondary);
+}
+
+p {
+  margin-bottom: 1rem;
   color: var(--color-primary);
 }
 
-.body-block p {
-  text-align: center;
-  margin-bottom: 1.2rem;
-  font-size: 1.05rem;
-  color: var(--color-muted);
-}
-
-/* === Service Cards === */
-.services-block {
-  margin-top: 3rem;
-}
-
-.service-grid {
+/*----------------------------------------------  
+  Services Grid  
+----------------------------------------------*/
+.services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  padding: 1rem 0;
 }
 
-.card {
-  background: white;
+.service-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  will-change: transform;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
 
-.card h3 {
-  color: var(--color-primary);
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
+.service-card h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
 }
 
-.card p {
+.service-card p {
   font-size: 1rem;
-  color: #333;
-  margin-bottom: 0.5rem;
+  color: #4a5568;
 }
 
-/* === Footer === */
-footer {
-  background: #001f3f;
-  color: var(--color-white);
-  padding: 2rem 1.5rem;
+/*----------------------------------------------  
+  Footer  
+----------------------------------------------*/
+.site-footer {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 2rem 0;
   text-align: center;
-  font-size: 0.95rem;
 }
 
-footer a {
-  color: var(--color-accent);
-  text-decoration: none;
-  font-weight: 500;
+.site-footer p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
 }
 
-footer a:hover {
-  text-decoration: underline;
-}
-
-/* === Responsive Fixes === */
+/*----------------------------------------------  
+  Responsive Adjustments  
+----------------------------------------------*/
 @media (max-width: 768px) {
-  header nav ul {
-    gap: 1.25rem;
+  .site-header {
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  .body-block h2 {
-    font-size: 1.5rem;
+  .hero h1 {
+    font-size: 2.5rem;
   }
 
-  .banner-text h1 {
-    font-size: 2.2rem;
-  }
-
-  .card {
-    padding: 1.5rem;
-  }
-
-  .btn-primary {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
+  .hero p {
+    font-size: 1.1rem;
   }
 }
