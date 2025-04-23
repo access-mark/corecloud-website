@@ -22,10 +22,10 @@ body {
   overflow-x: hidden;
 }
 
-/* === Logo (increased 80% by default) === */
+/* === Logo (increased by total ~120% of original) === */
 .logo {
-  /* default size bumped by 80%: was clamp(60px,8vw,100px) now clamp(108px,14.4vw,180px) */
-  height: clamp(108px, 14.4vw, 180px);
+  /* default size bumped by additional 20%: clamp(130px, 17.3vw, 216px) */
+  height: clamp(130px, 17.3vw, 216px);
   width: auto;
   position: relative;
   z-index: 1001;
