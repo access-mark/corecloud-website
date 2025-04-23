@@ -28,14 +28,19 @@
   </div>
 
   <section class="body-block">
-    <!-- CoreFin content here -->
+    <h2>About CoreFin</h2>
+    <p>CoreFin provides tech enablement, OPEX finance solutions, and streamlined partner onboarding support to help you invest in innovation without capex constraints.</p>
+    <a href="contact.html" class="btn-primary">Learn More</a>
   </section>
 
+  <!-- Footer -->
   <div id="site-footer"></div>
   <script>
     fetch("footer.html")
-      .then(res => res.text())
-      .then(html => { document.getElementById("site-footer").outerHTML = html; });
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("site-footer").outerHTML = html;
+      });
   </script>
 
 </body>
