@@ -12,11 +12,7 @@
 }
 
 /* === Base Reset === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-main);
@@ -63,8 +59,7 @@ header {
 /* === Banner Text Overlay === */
 .banner-text {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   color: var(--color-white);
@@ -97,7 +92,6 @@ header {
   align-items: center;
   text-align: center;
 }
-/* page-title under small-banner */
 .small-banner .page-title {
   font-size: clamp(2rem, 5vw, 3rem);
   color: var(--color-white);
@@ -152,7 +146,7 @@ header {
   transform: scale(1.04);
 }
 
-/* === Sections === */
+/* === Page Sections === */
 .body-block {
   max-width: 1200px;
   margin: 3rem auto;
@@ -172,9 +166,7 @@ header {
 }
 
 /* === Service Cards === */
-.services-block {
-  margin-top: 3rem;
-}
+.services-block { margin-top: 3rem; }
 .service-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -227,20 +219,9 @@ footer a:hover {
 
 /* === Responsive Fixes === */
 @media (max-width: 768px) {
-  .banner-header nav ul {
-    gap: 1.25rem;
-  }
-  .banner-text h1 {
-    font-size: clamp(1.8rem, 8vw, 2.5rem);
-  }
-  .body-block h2 {
-    font-size: 1.5rem;
-  }
-  .card {
-    padding: 1.5rem;
-  }
-  .btn-primary {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
-  }
+  .banner-header nav ul { gap: 1.25rem; }
+  .banner-text h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+  .body-block h2 { font-size: 1.5rem; }
+  .card { padding: 1.5rem; }
+  .btn-primary { padding: 0.6rem 1.2rem; font-size: 0.95rem; }
 }
