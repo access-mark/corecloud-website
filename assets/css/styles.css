@@ -22,12 +22,18 @@ body {
   overflow-x: hidden;
 }
 
-/* === Logo === */
+/* === Logo (default) === */
 .logo {
   height: clamp(40px, 5vw, 60px);
   width: auto;
   position: relative;
   z-index: 1001;
+}
+
+/* === Homepage Logo Override === */
+.banner-container .logo {
+  /* larger on index: min 60px, ideal 8vw, max 100px */
+  height: clamp(60px, 8vw, 100px);
 }
 
 /* === Header Overlay === */
