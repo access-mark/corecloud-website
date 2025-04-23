@@ -90,7 +90,7 @@ body {
 /* === Banner Title & Tagline === */
 /* Title sizing bumped up */
 .banner-content h1.site-title {
-  font-size: clamp(3rem, 8vw, 6rem) !important;
+  font-size: clamp(2rem, 2vw, 4rem) !important;
   color: var(--color-white);
   text-shadow: 0 2px 4px rgba(0,0,0,0.4);
   margin-bottom: 0.5rem;
