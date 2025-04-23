@@ -48,33 +48,35 @@ header.banner-header {
   top: 0;
   left: 0;
   right: 0;
-  height: 4rem;             /* fixed header height */
-  padding: 0;               /* remove in-flow padding */
+  height: 4rem;
   z-index: 1000;
 }
 
-/* Logo at top left */
+/* Logo top-left */
 header.banner-header .logo {
   position: absolute;
   top: 1rem;
   left: 2rem;
 }
 
-/* Nav container at top right */
+/* Nav container top-right */
 header.banner-header nav {
   position: absolute;
   top: 1rem;
   right: 2rem;
 }
 
-/* Horizontal list of equal-width buttons */
+/* Vertical nav buttons for all pages */
 header.banner-header nav ul {
   list-style: none;
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
   margin: 0;
   padding: 0;
 }
+
+/* Equal-sized button items */
 header.banner-header nav ul li {
   flex: none;
 }
@@ -82,11 +84,11 @@ header.banner-header nav ul li a.nav-btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 100px;            /* equal button width */
-  height: 2rem;            /* uniform height */
+  width: 100px;       /* fixed width */
+  height: 2rem;       /* fixed height */
+  font-size: 0.9rem;
   background: rgba(255,255,255,0.2);
   color: var(--color-white);
-  font-size: 0.9rem;
   text-decoration: none;
   border: 2px solid transparent;
   border-radius: 4px;
@@ -101,6 +103,7 @@ header.banner-header nav ul li a.nav-btn.active {
   color: var(--color-primary);
   border-color: var(--color-accent);
 }
+
 
 
 /* Button styling */
