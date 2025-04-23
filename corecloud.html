@@ -13,14 +13,14 @@
       <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
       <nav>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="divisions.html">Divisions</a></li>
-          <li><a href="corecloud.html" class="active">CoreCloud</a></li>
-          <li><a href="coretech.html">CoreTech</a></li>
-          <li><a href="corecapacity.html">CoreCapacity</a></li>
-          <li><a href="coreai.html">CoreAI</a></li>
-          <li><a href="corefin.html">CoreFin</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html" class="nav-btn">Home</a></li>
+          <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
+          <li><a href="corecloud.html" class="nav-btn active">CoreCloud</a></li>
+          <li><a href="coretech.html" class="nav-btn">CoreTech</a></li>
+          <li><a href="corecapacity.html" class="nav-btn">CoreCapacity</a></li>
+          <li><a href="coreai.html" class="nav-btn">CoreAI</a></li>
+          <li><a href="corefin.html" class="nav-btn">CoreFin</a></li>
+          <li><a href="contact.html" class="nav-btn">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -33,14 +33,11 @@
     <a href="contact.html" class="btn-primary">Learn More</a>
   </section>
 
-  <!-- Footer -->
   <div id="site-footer"></div>
   <script>
-    fetch("footer.html")
-      .then((res) => res.text())
-      .then((html) => {
-        document.getElementById("site-footer").outerHTML = html;
-      });
+    fetch("footer.html").then(res => res.text()).then(html => {
+      document.getElementById("site-footer").outerHTML = html;
+    });
   </script>
 
 </body>
