@@ -39,7 +39,7 @@ body {
 /* === Homepage Logo Override (50% smaller) === */
 .banner-container .logo {
   /* dropped by 50% */
-  height: clamp(117px, 15.5vw, 195px);
+  height: clamp(300px, 60vh, 600px);
 }
 
 /* === Header & Navigation === */
@@ -184,7 +184,7 @@ header.banner-header nav ul li a.nav-btn.active {
 .small-banner {
   position: relative;
   width: 100%;
-  height: clamp(150px, 30vh, 300px);
+  height: clamp(300px, 60vh, 600px);
   overflow: hidden;
   background: url('../images/sandton-dusk.png') no-repeat top center;
   background-size: cover;
