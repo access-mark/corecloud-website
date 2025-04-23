@@ -1,0 +1,40 @@
+name: Site Health Check
+
+on:
+  push:
+    paths:
+      - '**/*.html'
+      - '**/*.css'
+      - '**/*.yml'
+  pull_request:
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run asset‐reference audit
+        run: |
+          echo "🔍 Scanning HTML for local asset references…"
+          grep -RhoE 'src="[^"]+"|href="[^"]+"' *.html \
+            | sed -E 's/.*="([^"]+)".*/\1/' \
+            | grep -vE '^#|^(https?:)?//' \
+            | sort -u \
+            | while read -r path; do
+                if [[ ! -f $path ]]; then
+                  echo "::error file=$path::Missing asset: $path"
+                fi
+              done
+
+      - name: Install HTML Validator
+        run: npm install --global html-validator-cli
+
+      - name: Validate HTML syntax
+        run: |
+          for f in *.html; do
+            echo "🔎 Validating $f…"
+            html-validator --file="$f" --verbose || exit 1
+          done
