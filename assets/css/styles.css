@@ -186,23 +186,20 @@ header.banner-header nav ul li a.nav-btn.active {
   height: clamp(300px, 60vh, 600px);
 
   /* everything else stays the same */
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  background: url('../images/sandton-dusk.png') no-repeat top center;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  color: var(--color-primary);
+  text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+  z-index: 500;
+  padding: 0 1.5rem;
 }
 
 /* === Small-Banner Title (matched to homepage) === */
 .small-banner .page-title {
   font-size: clamp(2rem, 5vw, 3.5rem);
-  color: var(--color-primary);
-  text-shadow: 0 4px 8px rgba(0,0,0,0.6);
   margin-bottom: 0.75rem;
 }
 
