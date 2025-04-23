@@ -39,7 +39,7 @@ body {
 /* === Homepage Logo Override (50% smaller) === */
 .banner-container .logo {
   /* dropped by 50% */
-  height: clamp(300px, 60vh, 600px);
+  height: clamp(130px, 17.3vw, 216px);
 }
 
 /* === Header & Navigation === */
