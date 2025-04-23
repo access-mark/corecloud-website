@@ -51,16 +51,15 @@ header {
 /* === Banner Container & Image (clamped height, top aligned) === */
 .banner-container {
   position: relative;
-  width: 100%;
+  width: 100%; /* scales with browser width */
   height: clamp(300px, 60vh, 600px); /* min 300px, ideal 60vh, max 600px */
   overflow: hidden;
 }
 .banner-img {
   position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: auto;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; /* fill width */
+  height: 100%; /* match container height */
   object-fit: cover;
   object-position: top center;
   display: block;
@@ -185,7 +184,7 @@ header {
 }
 .card {
   background: white;
-  padding: 2rem;
+ 	padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   text-decoration: none;
