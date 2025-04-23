@@ -71,12 +71,8 @@ header nav a.active {
 
 /* === Banner & Small-Banner === */
 .banner {
-  position: relative;
-  width: 100%;
-  height: clamp(200px, 45vw, 400px);
-  overflow: hidden;
-  /* Correct path from assets/css to assets/images */
-  background: url('../images/bannerimage_1.png') no-repeat center center;
+  /* … */
+  background: url('../images/sandton-dusk.png') no-repeat center center;
   background-size: cover;
 }
 
