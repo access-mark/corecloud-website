@@ -71,13 +71,21 @@ header nav a.active {
 
 /* === Banner & Small-Banner === */
 .banner {
-  /* … */
+  position: relative;
+  width: 100%;
+  height: clamp(200px, 45vw, 400px); /* ensures visible height */
+  overflow: hidden;
   background: url('../images/sandton-dusk.png') no-repeat center center;
   background-size: cover;
 }
 
 .small-banner {
+  position: relative;
+  width: 100%;
   height: clamp(100px, 25vw, 200px);
+  overflow: hidden;
+  background: url('../images/sandton-dusk.png') no-repeat center center;
+  background-size: cover;
 }
 
 /* === Banner Text Overlay === */
