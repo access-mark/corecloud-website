@@ -48,25 +48,60 @@ header.banner-header {
   top: 0;
   left: 0;
   right: 0;
-  display: flex;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: transparent;
+  height: 4rem;             /* fixed header height */
+  padding: 0;               /* remove in-flow padding */
   z-index: 1000;
 }
 
-/* Horizontal, right-aligned list */
+/* Logo at top left */
+header.banner-header .logo {
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+}
+
+/* Nav container at top right */
+header.banner-header nav {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+}
+
+/* Horizontal list of equal-width buttons */
 header.banner-header nav ul {
   list-style: none;
   display: flex;
   gap: 0.5rem;
-  margin-left: auto;
+  margin: 0;
+  padding: 0;
 }
-
-/* Uniform button widths */
 header.banner-header nav ul li {
   flex: none;
 }
+header.banner-header nav ul li a.nav-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;            /* equal button width */
+  height: 2rem;            /* uniform height */
+  background: rgba(255,255,255,0.2);
+  color: var(--color-white);
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+header.banner-header nav ul li a.nav-btn:hover {
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+header.banner-header nav ul li a.nav-btn.active {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  border-color: var(--color-accent);
+}
+
 
 /* Button styling */
 header.banner-header nav ul li a.nav-btn {
