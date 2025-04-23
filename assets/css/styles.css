@@ -38,8 +38,7 @@ body {
 
 /* === Homepage Logo Override (50% smaller) === */
 .banner-container .logo {
-  /* dropped by 50% */
-  height: clamp(130px, 17.3vw, 216px);
+  height: clamp(65px, 8.65vw, 108px);
 }
 
 /* === Header & Navigation === */
@@ -51,22 +50,16 @@ header.banner-header {
   height: 4rem;
   z-index: 1000;
 }
-
-/* Logo top-left */
 header.banner-header .logo {
   position: absolute;
   top: 1rem;
   left: 2rem;
 }
-
-/* Nav container top-right */
 header.banner-header nav {
   position: absolute;
   top: 1rem;
   right: 2rem;
 }
-
-/* Vertical nav buttons for all pages */
 header.banner-header nav ul {
   list-style: none;
   display: flex;
@@ -75,8 +68,6 @@ header.banner-header nav ul {
   margin: 0;
   padding: 0;
 }
-
-/* Equal-sized button items */
 header.banner-header nav ul li {
   flex: none;
 }
@@ -84,60 +75,34 @@ header.banner-header nav ul li a.nav-btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 100px;       /* fixed width */
-  height: 2rem;       /* fixed height */
+  width: 100px;
+  height: 2rem;
+  padding: 0.4rem 0;
   font-size: 0.9rem;
   background: rgba(255,255,255,0.2);
   color: var(--color-white);
   text-decoration: none;
   border: 2px solid transparent;
   border-radius: 4px;
-  transition: background 0.3s, color 0.3s, border-color 0.3s;
-}
-header.banner-header nav ul li a.nav-btn:hover {
-  background: var(--color-white);
-  color: var(--color-primary);
-}
-header.banner-header nav ul li a.nav-btn.active {
-  background: var(--color-accent);
-  color: var(--color-primary);
-  border-color: var(--color-accent);
-}
-
-
-
-/* Button styling */
-header.banner-header nav ul li a.nav-btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;            /* All buttons equal width */
-  padding: 0.4rem 0;       /* Smaller vertical padding */
-  font-size: 0.9rem;       /* Slightly smaller text */
-  background: rgba(255,255,255,0.2);
-  color: var(--color-white);
-  border: 2px solid transparent;
-  border-radius: 4px;
-  text-decoration: none;
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
-
 header.banner-header nav ul li a.nav-btn:hover {
   background: var(--color-white);
   color: var(--color-primary);
 }
-
 header.banner-header nav ul li a.nav-btn.active {
   background: var(--color-accent);
   color: var(--color-primary);
   border-color: var(--color-accent);
 }
 
-/* === Banner Nav Vertical Override === */
-.banner-container header nav ul {
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.5rem;
+/* === Unified banner titles for homepage & sub-pages === */
+.banner-text h1,
+.small-banner .page-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 0.75rem;
+  color: var(--color-primary);
+  text-shadow: 0 4px 8px rgba(0,0,0,0.6);
 }
 
 /* === Banner Container & Image === */
@@ -165,14 +130,8 @@ header.banner-header nav ul li a.nav-btn.active {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: var(--color-primary);
-  text-shadow: 0 4px 8px rgba(0,0,0,0.6);
   z-index: 500;
   padding: 0 1.5rem;
-}
-.banner-text h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 0.75rem;
 }
 .banner-text p {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
@@ -182,10 +141,7 @@ header.banner-header nav ul li a.nav-btn.active {
 
 /* === Small-Banner for sub-pages === */
 .small-banner {
-  /* now matches the homepage banner height exactly */
   height: clamp(300px, 60vh, 600px);
-
-  /* everything else stays the same */
   position: relative;
   width: 100%;
   overflow: hidden;
@@ -196,14 +152,6 @@ header.banner-header nav ul li a.nav-btn.active {
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-/* === Small-Banner Title (matched to homepage) === */
-.small-banner .page-title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  color: var(--color-primary);
-  text-shadow: 0 4px 8px rgba(0,0,0,0.6);
-  margin-bottom: 0.75rem;
 }
 
 /* === Sections & Content === */
@@ -226,9 +174,7 @@ header.banner-header nav ul li a.nav-btn.active {
 }
 
 /* === Service Cards === */
-.services-block {
-  margin-top: 3rem;
-}
+.services-block { margin-top: 3rem; }
 .service-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -240,12 +186,10 @@ header.banner-header nav ul li a.nav-btn.active {
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card:hover {
   transform: translateY(-6px);
@@ -297,20 +241,9 @@ footer a:hover {
 
 /* === Responsive Fixes === */
 @media (max-width: 768px) {
-  header nav ul {
-    gap: 0.75rem;
-  }
-  .banner-text h1 {
-    font-size: clamp(1.8rem, 8vw, 2.5rem);
-  }
-  .body-block h2 {
-    font-size: 1.5rem;
-  }
-  .card {
-    padding: 1.5rem;
-  }
-  .btn-primary {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
-  }
+  header nav ul { gap: 0.75rem; }
+  .banner-text h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+  .body-block h2 { font-size: 1.5rem; }
+  .card { padding: 1.5rem; }
+  .btn-primary { padding: 0.6rem 1.2rem; font-size: 0.95rem; }
 }
