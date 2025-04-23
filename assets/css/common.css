@@ -89,6 +89,11 @@
   align-items: center;
   text-align: center;
 }
+/* === Force banner title & tagline white === */
+.banner-content .site-title,
+.banner-content .tagline {
+  color: var(--color-white) !important;
+}
 
 /* === Sections, Cards, Footer, etc. (unchanged) === */
 /* … your existing styles for .body-block, .card, footer, etc. … */
