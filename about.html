@@ -30,15 +30,23 @@ body {
 
 /* === Logo Size (global) === */
 .logo {
+  /* Global logo size */
   height: clamp(130px, 17.3vw, 216px);
   width: auto;
   position: relative;
   z-index: 1001;
 }
 
+/* === Small-Banner Logo Override (sub-pages) === */
+.small-banner .logo,
+.banner-header .logo {
+  /* Smaller logo for interior pages */
+  height: clamp(80px, 10vw, 120px);
+}
+
 /* === Homepage Logo Override (if needed) === */
 .banner-container .logo {
-  /* 80% larger on homepage */
+  /* Extra-large logo on homepage */
   height: clamp(234px, 31vw, 389px);
 }
 
@@ -232,9 +240,21 @@ footer a:hover {
 
 /* === Responsive Fixes === */
 @media (max-width: 768px) {
-  header nav ul { gap: 0.75rem; }
-  .banner-text h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
-  .body-block h2 { font-size: 1.5rem; }
-  .card { padding: 1.5rem; }
-  .btn-primary { padding: 0.6rem 1.2rem; font-size: 0.95rem; }
+  header nav ul {
+    gap: 0.75rem;
+  }
+  .banner-text h1 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+  .body-block h2 {
+    font-size: 1.5rem;
+  }
+  .card {
+    padding: 1.5rem;
+  }
+  .btn-primary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
 }
+
