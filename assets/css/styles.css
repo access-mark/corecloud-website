@@ -43,42 +43,53 @@ body {
 }
 
 /* === Header & Navigation === */
-header {
+header.banner-header {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
   background: transparent;
   z-index: 1000;
 }
 
-/* Nav buttons horizontal default */
-header nav ul {
+/* Horizontal, right-aligned list */
+header.banner-header nav ul {
   list-style: none;
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
+  margin-left: auto;
 }
-header nav a.nav-btn {
-  display: inline-block;
+
+/* Uniform button widths */
+header.banner-header nav ul li {
+  flex: none;
+}
+
+/* Button styling */
+header.banner-header nav ul li a.nav-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;            /* All buttons equal width */
+  padding: 0.4rem 0;       /* Smaller vertical padding */
+  font-size: 0.9rem;       /* Slightly smaller text */
   background: rgba(255,255,255,0.2);
   color: var(--color-white);
-  padding: 0.6rem 1.2rem;
   border: 2px solid transparent;
   border-radius: 4px;
-  font-weight: 500;
-  font-size: 1rem;
   text-decoration: none;
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
-header nav a.nav-btn:hover {
+
+header.banner-header nav ul li a.nav-btn:hover {
   background: var(--color-white);
   color: var(--color-primary);
 }
-header nav a.nav-btn.active {
+
+header.banner-header nav ul li a.nav-btn.active {
   background: var(--color-accent);
   color: var(--color-primary);
   border-color: var(--color-accent);
