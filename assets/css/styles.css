@@ -182,9 +182,12 @@ header.banner-header nav ul li a.nav-btn.active {
 
 /* === Small-Banner for sub-pages === */
 .small-banner {
+  /* now matches the homepage banner height exactly */
+  height: clamp(300px, 60vh, 600px);
+
+  /* everything else stays the same */
   position: relative;
   width: 100%;
-  height: clamp(300px, 60vh, 600px);
   overflow: hidden;
   background: url('../images/sandton-dusk.png') no-repeat top center;
   background-size: cover;
@@ -194,6 +197,7 @@ header.banner-header nav ul li a.nav-btn.active {
   align-items: center;
   text-align: center;
 }
+
 /* === Small-Banner Title (matched to homepage) === */
 .small-banner .page-title {
   font-size: clamp(2rem, 5vw, 3.5rem);
