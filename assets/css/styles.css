@@ -2,262 +2,240 @@
 
 /* === Root Colors & Font === */
 :root {
-  --color-primary: #004B87;
-  --color-accent: #FDC02F;
-  --color-hover: #002d56;
-  --color-muted: #666;
-  --color-white: #fff;
-  --color-bg: #f4f6f9;
-  --font-main: 'Inter', sans-serif;
+--color-primary: #004B87;
+--color-accent: #FDC02F;
+--color-hover: #002d56;
+--color-muted: #666;
+--color-white: #fff;
+--color-bg: #f4f6f9;
+--font-main: 'Inter', sans-serif;
 }
 
 /* === Base Reset === */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+
+{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+html {
+scroll-behavior: smooth;
+}
 body {
-  font-family: var(--font-main);
-  line-height: 1.6;
-  background-color: var(--color-bg);
-  color: #1a1a1a;
-  overflow-x: hidden;
+font-family: var(--font-main);
+line-height: 1.6;
+background-color: var(--color-bg);
+color: #1a1a1a;
+overflow-x: hidden;
 }
 
-/* === Logo (increased by total ~120% of original) === */
+/* === Logo Size (global) === */
 .logo {
-  /* default size bumped by additional 20%: clamp(130px, 17.3vw, 216px) */
-  height: clamp(130px, 17.3vw, 216px);
-  width: auto;
-  position: relative;
-  z-index: 1001;
+height: clamp(130px, 17.3vw, 216px);
+width: auto;
+position: relative;
+z-index: 1001;
 }
 
-/* === Header Overlay === */
+/* === Homepage Logo Override (if needed) === */
+.banner-container .logo {
+height: clamp(234px, 31vw, 389px);
+}
+
+/* === Header & Navigation === */
 header {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: transparent;
-  z-index: 1000;
+position: absolute;
+top: 0; left: 0; right: 0;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1rem 2rem;
+background: transparent;
+z-index: 1000;
 }
 
-/* === Nav Buttons === */
+/* Nav buttons */
 header nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
+list-style: none;
+display: flex;
+gap: 1rem;
 }
-header nav a {
-  display: inline-block;
-  background: rgba(255,255,255,0.2);
-  color: var(--color-white);
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: background 0.3s ease, color 0.3s ease;
+header nav a.nav-btn {
+display: inline-block;
+background: rgba(255,255,255,0.2);
+color: var(--color-white);
+padding: 0.6rem 1.2rem;
+border: 2px solid transparent;
+border-radius: 4px;
+font-weight: 500;
+font-size: 1rem;
+text-decoration: none;
+transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
-header nav a:hover {
-  background: var(--color-white);
-  color: var(--color-primary);
+header nav a.nav-btn:hover {
+background: var(--color-white);
+color: var(--color-primary);
 }
-header nav a.active {
-  background: var(--color-accent);
-  color: var(--color-primary);
+header nav a.nav-btn.active {
+background: var(--color-accent);
+color: var(--color-primary);
+border-color: var(--color-accent);
 }
 
 /* === Banner Container & Image === */
 .banner-container {
-  position: relative;
-  width: 100%;
-  height: clamp(300px, 60vh, 600px);
-  overflow: hidden;
+position: relative;
+width: 100%;
+aspect-ratio: 16 / 9;
+overflow: hidden;
 }
 .banner-img {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  display: block;
+position: absolute;
+top: 0; left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: top center;
+display: block;
 }
 
 /* === Banner Text Overlay === */
 .banner-text {
-  position: absolute;
-  top: 25%; left: 50%;           /* moved up to 25% */
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: var(--color-primary);   /* changed text color to dark blue */
-  z-index: 500;
-  padding: 0 1.5rem;
+position: absolute;
+top: 25%; left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+color: var(--color-primary);
+text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+z-index: 500;
+padding: 0 1.5rem;
 }
 .banner-text h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 0.75rem;
-  text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+font-size: clamp(2rem, 5vw, 3.5rem);
+margin-bottom: 0.75rem;
 }
 .banner-text p {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  margin-bottom: 1.5rem;
-  max-width: 700px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+font-size: clamp(1rem, 2.5vw, 1.25rem);
+margin-bottom: 1.5rem;
+max-width: 700px;
 }
 
-/* === Small-Banner for sub-pages === */
+/* === Small-Banner for sub-pages (16:9 dynamic) === */
 .small-banner {
-  position: relative;
-  width: 100%;
-  height: clamp(150px, 40vh, 300px);
-  overflow: hidden;
-  background: url('../images/sandton-dusk.png') no-repeat center center;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+position: relative;
+width: 100%;
+aspect-ratio: 16 / 9;
+overflow: hidden;
+background: url('../images/sandton-dusk.png') no-repeat top center;
+background-size: cover;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
 }
 .small-banner .page-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  color: var(--color-white);
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-  margin-bottom: 0.5rem;
+font-size: clamp(2rem, 5vw, 3rem);
+color: var(--color-primary);
+text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+margin-bottom: 0.5rem;
 }
 
-/* === Header inside banner (sub-pages) === */
-.banner-header {
-  position: absolute;
-  top: 1rem; left: 1rem; right: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 2;
+/* === Sections & Content === */
+.body-block {
+max-width: 1200px;
+margin: 3rem auto;
+padding: 0 1.5rem;
 }
-.banner-header .logo {
-  display: block;
-  width: clamp(104px, 13vw, 156px);
-  height: auto;
-  z-index: 3;
+.body-block h2 {
+text-align: center;
+margin-bottom: 1rem;
+font-size: 1.8rem;
+color: var(--color-primary);
 }
-.banner-header nav ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
+.body-block p {
+text-align: center;
+margin-bottom: 1.2rem;
+font-size: 1.05rem;
+color: var(--color-muted);
 }
-.banner-header nav a {
-  display: inline-block;
-  background: rgba(255,255,255,0.2);
-  color: var(--color-white);
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: background 0.3s ease, color 0.3s ease;
+
+/* === Service Cards === */
+.services-block {
+margin-top: 3rem;
 }
-.banner-header nav a:hover {
-  background: var(--color-white);
-  color: var(--color-primary);
+.service-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 2rem;
+padding: 1rem 0;
 }
-.banner-header nav a.active {
-  background: var(--color-accent);
-  color: var(--color-primary);
+.card {
+background: white;
+padding: 2rem;
+border-radius: 8px;
+box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+text-decoration: none;
+color: inherit;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+display: flex;
+flex-direction: column;
+text-align: center;
+}
+.card:hover {
+transform: translateY(-6px);
+box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+}
+.card h3 {
+color: var(--color-primary);
+font-size: 1.4rem;
+margin-bottom: 0.5rem;
+}
+.card p {
+font-size: 1rem;
+color: #333;
+margin-bottom: 0.5rem;
 }
 
 /* === Button Styling === */
 .btn-primary {
-  background: var(--color-primary);
-  color: var(--color-white);
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
+background: var(--color-primary);
+color: var(--color-white);
+padding: 0.75rem 1.5rem;
+border-radius: 4px;
+font-weight: 600;
+text-decoration: none;
+display: inline-block;
+transition: all 0.3s ease;
 }
 .btn-primary:hover {
-  background: var(--color-hover);
-  transform: scale(1.04);
-}
-
-/* === Page Sections === */
-.body-block {
-  max-width: 1200px;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
-}
-.body-block h2 {
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
-  color: var(--color-primary);
-}
-.body-block p {
-  text-align: center;
-  margin-bottom: 1.2rem;
-  font-size: 1.05rem;
-  color: var(--color-muted);
-}
-
-/* === Service Cards === */
-.services-block { margin-top: 3rem; }
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 1rem 0;
-}
-.card {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.15);
-}
-.card h3 {
-  color: var(--color-primary);
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-}
-.card p {
-  font-size: 1rem;
-  color: #333;
-  margin-bottom: 0.5rem;
+background: var(--color-hover);
+transform: scale(1.04);
 }
 
 /* === Footer === */
 footer {
-  background: #001f3f;
-  color: var(--color-white);
-  padding: 2rem 1.5rem;
-  text-align: center;
-  font-size: 0.95rem;
+background: #001f3f;
+color: var(--color-white);
+padding: 2rem 1.5rem;
+text-align: center;
+font-size: 0.95rem;
 }
 footer a {
-  color: var(--color-accent);
-  text-decoration: none;
-  font-weight: 500;
+color: var(--color-accent);
+text-decoration: none;
+font-weight: 500;
 }
 footer a:hover {
-  text-decoration: underline;
+text-decoration: underline;
 }
 
 /* === Responsive Fixes === */
 @media (max-width: 768px) {
-  header nav ul, .banner-header nav ul { gap: 1.25rem; }
-  .banner-text h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+header nav ul { gap: 0.75rem; }
+.banner-text h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+.body-block h2 { font-size: 1.5rem; }
+.card { padding: 1.5rem; }
+.btn-primary { padding: 0.6rem 1.2rem; font-size: 0.95rem; }
+}
 
