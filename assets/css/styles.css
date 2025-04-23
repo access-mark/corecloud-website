@@ -36,6 +36,11 @@ body {
   z-index: 1001;
 }
 
+/* === Homepage Logo Override (50% smaller) === */
+.banner-container .logo {
+  height: clamp(65px, 8.65vw, 108px);
+}
+
 /* === Header & Navigation === */
 header.banner-header {
   position: absolute;
