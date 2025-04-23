@@ -28,14 +28,19 @@
   </div>
 
   <section class="body-block">
-    <!-- CoreCloud content here -->
+    <h2>About CoreCloud</h2>
+    <p>CoreCloud is our AWS strategy &amp; execution broker division. We partner with enterprises to migrate, modernize, and manage their cloud environments — ensuring performance, security, and cost efficiency.</p>
+    <a href="contact.html" class="btn-primary">Learn More</a>
   </section>
 
+  <!-- Footer -->
   <div id="site-footer"></div>
   <script>
     fetch("footer.html")
-      .then(res => res.text())
-      .then(html => { document.getElementById("site-footer").outerHTML = html; });
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("site-footer").outerHTML = html;
+      });
   </script>
 
 </body>
