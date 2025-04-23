@@ -28,48 +28,7 @@ body {
   overflow-x: hidden;
 }
 
-/* === Logo === */
-.logo {
-  height: clamp(40px, 5vw, 60px);
-  width: auto;
-  position: relative;
-  z-index: 1001;
-}
-
-/* === Header Overlay === */
-header {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: transparent;
-  z-index: 1000;
-}
-
-/* === Header Navigation === */
-header nav ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-}
-
-header nav a {
-  color: var(--color-white);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-header nav a:hover,
-header nav a.active {
-  border-bottom: 2px solid var(--color-accent);
-  color: var(--color-accent);
-}
-
-/* === Banner & Small-Banner (header inside) === */
+/* === Banner & Small-Banner (with header inside) === */
 .banner {
   position: relative;
   width: 100%;
@@ -98,21 +57,38 @@ header nav a.active {
   z-index: 2;
 }
 
-/* Logo in banner-header */
 .banner-header .logo {
   width: clamp(80px, 10vw, 120px);
   height: auto;
-  margin: 0;
 }
 
-/* Keep nav links visible */
+.banner-header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
 .banner-header nav a {
   color: var(--color-white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.banner-header nav a:hover,
+.banner-header nav a.active {
+  color: var(--color-accent);
 }
 
 /* Banner content wrapper */
 .banner-content {
   z-index: 1;
+}
+
+/* Title & tagline */
+.banner .site-title,
+.banner .tagline {
+  margin-bottom: 0.5rem;
 }
 
 /* Button spacing */
@@ -182,7 +158,6 @@ header nav a.active {
   display: flex;
   flex-direction: column;
   text-align: center;
-  will-change: transform;
 }
 
 .card:hover {
@@ -200,6 +175,23 @@ header nav a.active {
   font-size: 1rem;
   color: #333;
   margin-bottom: 0.5rem;
+}
+
+/* === Button Styling === */
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--color-hover);
+  transform: scale(1.04);
 }
 
 /* === Footer === */
@@ -223,7 +215,7 @@ footer a:hover {
 
 /* === Responsive Fixes === */
 @media (max-width: 768px) {
-  header nav ul {
+  .banner-header nav ul {
     gap: 1.25rem;
   }
 
