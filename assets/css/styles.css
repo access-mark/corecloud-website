@@ -170,17 +170,42 @@ header.banner-header nav ul li a.nav-btn.active {
   z-index: 500;
   padding: 0 1.5rem;
 }
-/* === Unified banner titles for homepage & sub-pages === */
-.banner-text h1,
-.small-banner .page-title {
-  /* exact same sizing */
+.banner-text h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
-  /* exact same spacing */
   margin-bottom: 0.75rem;
-  /* exact same color & shadow */
+}
+.banner-text p {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+/* === Small-Banner for sub-pages === */
+.small-banner {
+  /* now matches the homepage banner height exactly */
+  height: clamp(300px, 60vh, 600px);
+
+  /* everything else stays the same */
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: url('../images/sandton-dusk.png') no-repeat top center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* === Small-Banner Title (matched to homepage) === */
+.small-banner .page-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
   color: var(--color-primary);
   text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+  margin-bottom: 0.75rem;
 }
+
 /* === Sections & Content === */
 .body-block {
   max-width: 1200px;
@@ -289,5 +314,3 @@ footer a:hover {
     font-size: 0.95rem;
   }
 }
-
-
