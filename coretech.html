@@ -28,14 +28,19 @@
   </div>
 
   <section class="body-block">
-    <!-- CoreTech content here -->
+    <h2>About CoreTech</h2>
+    <p>CoreTech specializes in hybrid IT and managed infrastructure, designing resilient networks and on-premises/cloud integrations that power your business continuity and scalability.</p>
+    <a href="contact.html" class="btn-primary">Learn More</a>
   </section>
 
+  <!-- Footer -->
   <div id="site-footer"></div>
   <script>
     fetch("footer.html")
-      .then(res => res.text())
-      .then(html => { document.getElementById("site-footer").outerHTML = html; });
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("site-footer").outerHTML = html;
+      });
   </script>
 
 </body>
