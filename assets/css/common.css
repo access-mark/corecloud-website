@@ -69,7 +69,7 @@ header nav a.active {
   color: var(--color-accent);
 }
 
-/* === Banner & Small-Banner (updated heights) === */
+/* === Banner & Small-Banner (updated heights and centering) === */
 .banner {
   position: relative;
   width: 100%;
@@ -78,6 +78,13 @@ header nav a.active {
   overflow: hidden;
   background: url('../images/sandton-dusk.png') no-repeat center center;
   background-size: cover;
+
+  /* center content vertically & horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .small-banner {
@@ -88,6 +95,13 @@ header nav a.active {
   overflow: hidden;
   background: url('../images/sandton-dusk.png') no-repeat center center;
   background-size: cover;
+
+  /* center content as well */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 /* === Banner Text Overlay === */
@@ -107,6 +121,11 @@ header nav a.active {
   text-shadow: 0 2px 4px rgba(0,0,0,0.4);
   position: relative;
   z-index: 1;
+}
+
+/* add spacing above the button in the banner */
+.banner .btn-primary {
+  margin-top: 1.5rem;
 }
 
 /* === Button Styling === */
