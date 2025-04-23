@@ -1,225 +1,58 @@
-/* styles.css */
+/* assets/css/styles.css */
 
-/*----------------------------------------------  
-  Variables  
-----------------------------------------------*/
+/* Variables */
 :root {
-  --color-primary: #1a202c;        /* Dark navy */
-  --color-secondary: #2c5282;      /* Mid blue */
-  --color-accent: #68d391;         /* Light green accent (optional) */
-  --color-bg: #f7fafc;             /* Very light gray background */
-  --font-sans: "Helvetica Neue", Arial, sans-serif;
-  --font-heading-weight: 600;
-  --font-body-weight: 400;
-  --spacing-unit: 1rem;
+  --color-primary: #1a202c;
+  --color-secondary: #2c5282;
+  --font-sans: Arial, sans-serif;
+  --font-bold: 600;
+  --spacing: 1rem;
 }
 
-/*----------------------------------------------  
-  Global Reset & Base Styles  
-----------------------------------------------*/
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* Reset & Base */
+* { box-sizing: border-box; margin:0; padding:0 }
+html { font-size:100%; }
+body { font-family: var(--font-sans); line-height:1.6; color:var(--color-primary); }
 
-html {
-  font-size: 100%; /* 1rem = 16px */
-  scroll-behavior: smooth;
-}
+/* Utilities */
+.container { max-width:1200px; margin:0 auto; padding:0 var(--spacing); }
+.btn { display:inline-block; padding:0.75rem 1.5rem; border-radius:0.375rem; text-decoration:none; font-weight:var(--font-bold); }
+.btn-primary { background:var(--color-secondary); color:#fff; }
+.btn-primary:hover { background:var(--color-primary); }
 
-body {
-  font-family: var(--font-sans);
-  font-weight: var(--font-body-weight);
-  line-height: 1.6;
-  color: var(--color-primary);
-  background-color: var(--color-bg);
-  min-height: 100vh;
-}
+/* Header */
+.site-header { display:flex; align-items:center; justify-content:space-between; padding:var(--spacing) 2rem; }
+.site-logo { height:3rem; }
+.site-nav ul { display:flex; gap:1.5rem; list-style:none; }
+.site-nav a { text-decoration:none; font-weight:500; color:var(--color-primary); }
+.site-nav a.active, .site-nav a:hover { color:var(--color-secondary); }
 
-/*----------------------------------------------  
-  Utility Classes  
-----------------------------------------------*/
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-unit);
-}
+/* Hero/Banner */
+.hero { background: url("../images/sandton-dusk.jpg") no-repeat center/cover; min-height:50vh; display:flex; align-items:center; text-align:center; position:relative; }
+.hero::after { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.4); }
+.hero .container { position:relative; color:#fff; }
+.hero h1 { font-size:2.5rem; margin-bottom:1rem; }
+.hero p { font-size:1.1rem; margin-bottom:1.5rem; }
 
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  font-weight: var(--font-heading-weight);
-  text-decoration: none;
-  border-radius: 0.375rem;
-  transition: background-color 0.2s ease-in-out;
-}
+/* Main */
+main { padding:4rem 0; }
+h2 { font-size:2rem; margin-bottom:1rem; color:var(--color-secondary); }
+p, form, ul { margin-bottom:1.5rem; }
 
-.btn-primary {
-  background-color: var(--color-secondary);
-  color: #fff;
-}
+/* Services Grid */
+.services-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:2rem; }
+.service-card { background:#fff; padding:2rem; border-radius:0.5rem; box-shadow:0 2px 8px rgba(0,0,0,0.05); transition: transform .2s; }
+.service-card:hover { transform:translateY(-4px); }
 
-.btn-primary:hover {
-  background-color: var(--color-primary);
-}
+/* Contact Form */
+.contact-form { display:flex; flex-direction:column; gap:1rem; max-width:500px; }
+.contact-form input, .contact-form textarea { padding:0.75rem; border:1px solid #ccc; border-radius:0.375rem; }
 
-/*----------------------------------------------  
-  Header & Navigation  
-----------------------------------------------*/
-.site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--spacing-unit) 2rem;
-  background: transparent; /* or the dusk-sky background image */
-  position: relative;
-  z-index: 100;
-}
+/* Footer */
+.site-footer { background:var(--color-primary); color:#fff; text-align:center; padding:2rem 0; }
 
-.site-logo {
-  height: 3rem; /* Adjust logo height */
-  width: auto;
-}
-
-.site-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.site-nav a {
-  font-weight: 500;
-  text-decoration: none;
-  color: var(--color-primary);
-  padding: 0.5rem 0;
-  transition: color 0.2s ease-in-out;
-}
-
-.site-nav a:hover {
-  color: var(--color-secondary);
-}
-
-/*----------------------------------------------  
-  Hero Section (Homepage)  
-----------------------------------------------*/
-.hero {
-  background: url("assets/images/sandton-dusk.jpg") no-repeat center center/cover;
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-  position: relative;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4); /* Dark overlay for legibility */
-}
-
-.hero .container {
-  position: relative;
-  z-index: 1;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  font-weight: var(--font-heading-weight);
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.25rem;
-  margin-bottom: 1.5rem;
-}
-
-/*----------------------------------------------  
-  Main Content  
-----------------------------------------------*/
-section {
-  padding: 4rem 0;
-}
-
-h2 {
-  font-size: 2rem;
-  font-weight: var(--font-heading-weight);
-  margin-bottom: 1.5rem;
-  color: var(--color-secondary);
-}
-
-p {
-  margin-bottom: 1rem;
-  color: var(--color-primary);
-}
-
-/*----------------------------------------------  
-  Services Grid  
-----------------------------------------------*/
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-.service-card {
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.5rem;
-  padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-}
-
-.service-card h3 {
-  margin-bottom: 0.75rem;
-  font-size: 1.5rem;
-}
-
-.service-card p {
-  font-size: 1rem;
-  color: #4a5568;
-}
-
-/*----------------------------------------------  
-  Footer  
-----------------------------------------------*/
-.site-footer {
-  background: var(--color-primary);
-  color: #fff;
-  padding: 2rem 0;
-  text-align: center;
-}
-
-.site-footer p {
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-}
-
-/*----------------------------------------------  
-  Responsive Adjustments  
-----------------------------------------------*/
-@media (max-width: 768px) {
-  .site-header {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero p {
-    font-size: 1.1rem;
-  }
+/* Responsive */
+@media(max-width:768px){
+  .site-header { flex-direction:column; gap:1rem; }
+  .hero h1 { font-size:2rem; }
 }
