@@ -12,8 +12,14 @@
 }
 
 /* === Base Reset === */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: var(--font-main);
   line-height: 1.6;
@@ -22,26 +28,20 @@ body {
   overflow-x: hidden;
 }
 
-/* === Logo (default) === */
+/* === Logo (uniform) === */
 .logo {
-  height: clamp(40px, 5vw, 60px);
+  height: clamp(60px, 8vw, 100px);
   width: auto;
   position: relative;
   z-index: 1001;
 }
 
-/* === Unified Logo Size === */
-header .logo,
-.banner-header .logo,
-.banner-container .logo {
-  /* consistent logo height across all pages */
-  height: clamp(60px, 8vw, 100px);
-}
-
 /* === Header Overlay === */
 header {
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -50,13 +50,11 @@ header {
   z-index: 1000;
 }
 
-/* === Banner Container & 1080p Image === */
+/* === Banner Container & Responsive 16:9 === */
 .banner-container {
   position: relative;
   width: 100%;
-  max-width: 1920px;
-  height: 1080px; /* fixed 1080p height */
-  margin: 0 auto;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
 }
 .banner-img {
@@ -72,7 +70,8 @@ header {
 /* === Banner Text Overlay === */
 .banner-text {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   color: var(--color-white);
@@ -112,14 +111,20 @@ header {
   margin-bottom: 0.5rem;
 }
 
-/* === Header inside banner (sub-pages) === */
+/* === Header inside banner for sub-pages === */
 .banner-header {
   position: absolute;
-  top: 1rem; left: 1rem; right: 1rem;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 2;
+}
+.banner-header .logo {
+  width: clamp(104px, 13vw, 156px);
+  height: auto;
 }
 .banner-header nav ul {
   list-style: none;
@@ -173,7 +178,9 @@ header {
 }
 
 /* === Service Cards === */
-.services-block { margin-top: 3rem; }
+.services-block {
+  margin-top: 3rem;
+}
 .service-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -226,10 +233,21 @@ footer a:hover {
 
 /* === Responsive Fixes === */
 @media (max-width: 768px) {
-  .banner-header nav ul { gap: 1.25rem; }
-  .banner-text h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
-  .body-block h2 { font-size: 1.5rem; }
-  .card { padding: 1.5rem; }
-  .btn-primary { padding: 0.6rem 1.2rem; font-size: 0.95rem; }
+  .banner-header nav ul {
+    gap: 1.25rem;
+  }
+  .banner-text h1 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+  .body-block h2 {
+    font-size: 1.5rem;
+  }
+  .card {
+    padding: 1.5rem;
+  }
+  .btn-primary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
 }
 
