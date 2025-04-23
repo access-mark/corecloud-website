@@ -28,14 +28,19 @@
   </div>
 
   <section class="body-block">
-    <!-- CoreAI content here -->
+    <h2>About CoreAI</h2>
+    <p>CoreAI builds and deploys automation, data science, and applied AI platforms that drive efficiency, insight, and competitive advantage for your enterprise.</p>
+    <a href="contact.html" class="btn-primary">Learn More</a>
   </section>
 
+  <!-- Footer -->
   <div id="site-footer"></div>
   <script>
     fetch("footer.html")
-      .then(res => res.text())
-      .then(html => { document.getElementById("site-footer").outerHTML = html; });
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("site-footer").outerHTML = html;
+      });
   </script>
 
 </body>
