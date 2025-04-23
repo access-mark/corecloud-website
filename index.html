@@ -1,4 +1,3 @@
-<!-- index.html (and repeat/update in all page templates) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,80 +22,53 @@
     </nav>
   </header>
 
-  <!-- ...rest of page content... -->
-</body>
-</html>
-
-
-  <!-- Banner -->
-  <div class="banner-container">
-    <img src="assets/images/bannerimage_1.png" alt="CoreCloud Sandton Skyline Banner" class="banner-img" />
-    <header>
-      <img src="assets/images/Logo.png" alt="CoreCloud Logo" class="logo" />
-      <nav>
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="divisions.html">Divisions</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-    <div class="banner-text">
-      <h1>Modern IT. Orchestrated.</h1>
-      <p>We broker outcomes across infrastructure, cloud, AI, and talent — delivered by the best partners in the business.</p>
-      <a href="contact.html" class="btn-primary">Request a Consultation</a>
-    </div>
-  </div>
-
-  <!-- About -->
-  <section class="body-block">
-    <h2>About CoreCloud</h2>
-    <p>CoreCloud (Pty) Ltd is a South African technology group engineered to deliver scalable, secure, and intelligent IT solutions. We connect enterprise needs to world-class execution — across infrastructure, talent, cloud, and automation.</p>
-  </section>
-
-  <!-- Vision + Culture -->
-  <section class="body-block">
-    <h2>Vision & Culture</h2>
-    <p>We envision a modern African enterprise landscape — built on trust, talent, and intelligent technology. Our culture rewards execution, empowers bold thinking, and prioritizes real-world impact over buzzwords.</p>
-  </section>
-
-  <!-- Division Directory -->
-  <section class="body-block services-block">
-    <h2>Our Divisions</h2>
-    <div class="service-grid">
-      <a href="corecloud.html" class="card">
-        <h3>CoreCloud</h3>
-        <p>AWS strategy & execution broker — migrate, modernize, manage.</p>
-      </a>
-      <a href="coretech.html" class="card">
-        <h3>CoreTech</h3>
-        <p>Hybrid infrastructure, managed services, and network architecture.</p>
-      </a>
-      <a href="corecapacity.html" class="card">
-        <h3>CoreCapacity</h3>
-        <p>Elite IT talent placement and on-demand delivery teams.</p>
-      </a>
-      <a href="coreai.html" class="card">
-        <h3>CoreAI</h3>
-        <p>Automation, data science, and applied AI platforms.</p>
-      </a>
-      <a href="corefin.html" class="card">
-        <h3>CoreFin</h3>
-        <p>Tech enablement, OPEX finance, and partner onboarding support.</p>
-      </a>
+  <!-- Banner / Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Welcome to CoreCloud</h1>
+      <p>Your trusted partner for AWS migration, modernization, and management.</p>
+      <a href="services.html" class="btn btn-primary">Explore Our Services</a>
     </div>
   </section>
 
-  <!-- Footer -->
-  <div id="site-footer"></div>
-  <script>
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("site-footer").outerHTML = html;
-      });
-  </script>
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Example Services Preview -->
+    <section id="services-overview">
+      <h2>Our Core Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Cloud Migration</h3>
+          <p>Seamlessly move your workloads to AWS with zero downtime and expert support.</p>
+        </div>
+        <div class="service-card">
+          <h3>Modernization</h3>
+          <p>Refactor and optimize your cloud environment for performance and cost efficiency.</p>
+        </div>
+        <div class="service-card">
+          <h3>Managed Services</h3>
+          <p>24/7 monitoring, maintenance, and support to keep your cloud running smoothly.</p>
+        </div>
+      </div>
+    </section>
 
+    <!-- Example About Preview -->
+    <section id="about-overview">
+      <h2>About CoreCloud</h2>
+      <p>
+        CoreCloud Pty Ltd is a South African-based cloud solutions broker and orchestrator.
+        We partner with top-tier MSPs and technology specialists to deliver end-to-end AWS services,
+        backed by a finance house offering OPEX-friendly payment options.
+      </p>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 CoreCloud Pty Ltd. All rights reserved.</p>
+      <p>Reg. No. 2022/123456/07</p>
+    </div>
+  </footer>
 </body>
 </html>
