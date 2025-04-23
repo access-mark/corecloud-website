@@ -32,22 +32,25 @@ body {
 .logo {
   height: clamp(40px, 5vw, 60px);
   width: auto;
-  position: relative; /* ensure it layers correctly */
+  position: relative;
   z-index: 1001;
 }
 
 /* === Header Overlay === */
 header {
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
   background: transparent;
-  z-index: 1000; /* sit above the banner */
+  z-index: 1000;
 }
 
+/* === Header Navigation === */
 header nav ul {
   list-style: none;
   display: flex;
@@ -72,7 +75,7 @@ header nav a.active {
 .banner {
   position: relative;
   width: 100%;
-  height: clamp(200px, 45vw, 400px); /* responsive height */
+  height: clamp(200px, 45vw, 400px);
   overflow: hidden;
   background: url('../assets/sandton-dusk.jpg') no-repeat center center;
   background-size: cover;
