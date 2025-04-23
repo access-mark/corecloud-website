@@ -1,20 +1,19 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CoreCloud – Modern IT. Orchestrated.</title>
-  <link rel="stylesheet" href="assets/css/common.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
 
-  <!-- Banner (with header inside) -->
-  <div class="banner">
-    <header class="banner-header">
-      <img src="assets/images/corecloud-logo.png"
-           alt="CoreCloud Logo"
-           class="logo" />
+  <!-- Banner + Header overlay -->
+  <div class="banner-container">
+    <img src="assets/images/bannerimage_1.png" alt="CoreCloud Sandton Skyline Banner" class="banner-img" />
+
+    <header>
+      <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
       <nav>
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
@@ -25,11 +24,9 @@
       </nav>
     </header>
 
-    <div class="banner-content">
-      <h1 class="site-title">Modern IT. Orchestrated.</h1>
-      <p class="tagline">
-        We broker outcomes across infrastructure, cloud, AI, and talent — delivered by the best partners in the business.
-      </p>
+    <div class="banner-text">
+      <h1>Modern IT. Orchestrated.</h1>
+      <p>We broker outcomes across infrastructure, cloud, AI, and talent — delivered by the best partners in the business.</p>
       <a href="contact.html" class="btn-primary">Request a Consultation</a>
     </div>
   </div>
@@ -37,20 +34,16 @@
   <!-- About -->
   <section class="body-block">
     <h2>About CoreCloud</h2>
-    <p>
-      CoreCloud (Pty) Ltd is a South African technology group engineered to deliver scalable, secure, and intelligent IT solutions. We connect enterprise needs to world-class execution — across infrastructure, talent, cloud, and automation.
-    </p>
+    <p>CoreCloud (Pty) Ltd is a South African technology group engineered to deliver scalable, secure, and intelligent IT solutions. We connect enterprise needs to world-class execution — across infrastructure, talent, cloud, and automation.</p>
   </section>
 
-  <!-- Vision & Culture -->
+  <!-- Vision + Culture -->
   <section class="body-block">
     <h2>Vision &amp; Culture</h2>
-    <p>
-      We envision a modern African enterprise landscape — built on trust, talent, and intelligent technology. Our culture rewards execution, empowers bold thinking, and prioritizes real-world impact over buzzwords.
-    </p>
+    <p>We envision a modern African enterprise landscape — built on trust, talent, and intelligent technology. Our culture rewards execution, empowers bold thinking, and prioritizes real-world impact over buzzwords.</p>
   </section>
 
-  <!-- Division Directory -->
+  <!-- Divisions -->
   <section class="body-block services-block">
     <h2>Our Divisions</h2>
     <div class="service-grid">
@@ -82,9 +75,7 @@
   <script>
     fetch("footer.html")
       .then(res => res.text())
-      .then(html => {
-        document.getElementById("site-footer").outerHTML = html;
-      });
+      .then(html => { document.getElementById("site-footer").outerHTML = html; });
   </script>
 
 </body>
