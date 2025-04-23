@@ -69,17 +69,16 @@ header nav a.active {
   color: var(--color-accent);
 }
 
-/* === Banner & Small-Banner (updated heights and centering) === */
+/* === Banner & Small-Banner (header inside) === */
 .banner {
   position: relative;
   width: 100%;
-  /* taller banner: min 300px, ideal 60vh, max 600px */
   height: clamp(300px, 60vh, 600px);
   overflow: hidden;
   background: url('../images/sandton-dusk.png') no-repeat center center;
   background-size: cover;
 
-  /* center title, tagline, and button */
+  /* center banner-content */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,10 +86,46 @@ header nav a.active {
   text-align: center;
 }
 
+/* Header inside banner: logo top-left, nav top-right */
+.banner-header {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+/* Logo in banner-header */
+.banner-header .logo {
+  width: clamp(80px, 10vw, 120px);
+  height: auto;
+  margin: 0;
+}
+
+/* Keep nav links visible */
+.banner-header nav a {
+  color: var(--color-white);
+}
+
+/* Banner content wrapper */
+.banner-content {
+  z-index: 1;
+}
+
+/* Button spacing */
+.banner .btn-primary {
+  margin-top: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Small-banner variant if used elsewhere */
 .small-banner {
   position: relative;
   width: 100%;
-  /* taller small-banner: min 150px, ideal 40vh, max 300px */
   height: clamp(150px, 40vh, 300px);
   overflow: hidden;
   background: url('../images/sandton-dusk.png') no-repeat center center;
@@ -101,47 +136,6 @@ header nav a.active {
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-/* === Banner Text Overlay === */
-.banner .site-title,
-.banner .page-title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  color: var(--color-white);
-  margin-bottom: 0.5rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-  position: relative;
-  z-index: 1;
-}
-
-.banner .tagline {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  color: var(--color-white);
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-  position: relative;
-  z-index: 1;
-}
-
-/* add spacing above the button in the banner */
-.banner .btn-primary {
-  margin-top: 1.5rem;
-}
-
-/* === Button Styling === */
-.btn-primary {
-  background: var(--color-primary);
-  color: var(--color-white);
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-  background: var(--color-hover);
-  transform: scale(1.04);
 }
 
 /* === Sections === */
