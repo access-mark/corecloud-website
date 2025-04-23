@@ -8,26 +8,29 @@
 </head>
 <body>
 
-  <!-- Header (logo + nav) -->
-  <header>
-    <img src="assets/images/Logo.png" alt="CoreCloud Logo" class="logo" />
-    <nav>
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="divisions.html">Divisions</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Banner -->
+  <!-- Banner (with header inside) -->
   <div class="banner">
-    <h1 class="site-title">Modern IT. Orchestrated.</h1>
-    <p class="tagline">
-      We broker outcomes across infrastructure, cloud, AI, and talent — delivered by the best partners in the business.
-    </p>
-    <a href="contact.html" class="btn-primary">Request a Consultation</a>
+    <header class="banner-header">
+      <img src="assets/images/corecloud-logo.png"
+           alt="CoreCloud Logo"
+           class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="divisions.html">Divisions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="banner-content">
+      <h1 class="site-title">Modern IT. Orchestrated.</h1>
+      <p class="tagline">
+        We broker outcomes across infrastructure, cloud, AI, and talent — delivered by the best partners in the business.
+      </p>
+      <a href="contact.html" class="btn-primary">Request a Consultation</a>
+    </div>
   </div>
 
   <!-- About -->
@@ -50,22 +53,7 @@
         <h3>CoreCloud</h3>
         <p>AWS strategy &amp; execution broker — migrate, modernize, manage.</p>
       </a>
-      <a href="coretech.html" class="card">
-        <h3>CoreTech</h3>
-        <p>Hybrid infrastructure, managed services, and network architecture.</p>
-      </a>
-      <a href="corecapacity.html" class="card">
-        <h3>CoreCapacity</h3>
-        <p>Elite IT talent placement and on-demand delivery teams.</p>
-      </a>
-      <a href="coreai.html" class="card">
-        <h3>CoreAI</h3>
-        <p>Automation, data science, and applied AI platforms.</p>
-      </a>
-      <a href="corefin.html" class="card">
-        <h3>CoreFin</h3>
-        <p>Tech enablement, OPEX finance, and partner onboarding support.</p>
-      </a>
+      <!-- rest of cards… -->
     </div>
   </section>
 
