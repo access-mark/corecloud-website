@@ -8,6 +8,7 @@
 </head>
 <body>
 
+  <!-- Small-Banner -->
   <div class="small-banner">
     <header class="banner-header">
       <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
@@ -24,14 +25,23 @@
   </div>
 
   <section class="body-block">
-    <!-- Your contact form or details here -->
+    <h2>Get in Touch</h2>
+    <form action="#" method="POST" style="max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:1rem;">
+      <input type="text" name="name" placeholder="Your Name" required style="padding:0.75rem;"/>
+      <input type="email" name="email" placeholder="Your Email" required style="padding:0.75rem;"/>
+      <textarea name="message" rows="6" placeholder="How can we help?" required style="padding:0.75rem;"></textarea>
+      <button type="submit" class="btn-primary" style="align-self:center;">Send Message</button>
+    </form>
   </section>
 
+  <!-- Footer -->
   <div id="site-footer"></div>
   <script>
     fetch("footer.html")
-      .then(res => res.text())
-      .then(html => { document.getElementById("site-footer").outerHTML = html; });
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("site-footer").outerHTML = html;
+      });
   </script>
 
 </body>
