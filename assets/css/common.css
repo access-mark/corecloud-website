@@ -69,11 +69,12 @@ header nav a.active {
   color: var(--color-accent);
 }
 
-/* === Banner & Small-Banner === */
+/* === Banner & Small-Banner (updated heights) === */
 .banner {
   position: relative;
   width: 100%;
-  height: clamp(200px, 45vw, 400px); /* ensures visible height */
+  /* taller banner: min 300px, ideal 60vh, max 600px */
+  height: clamp(300px, 60vh, 600px);
   overflow: hidden;
   background: url('../images/sandton-dusk.png') no-repeat center center;
   background-size: cover;
@@ -82,7 +83,8 @@ header nav a.active {
 .small-banner {
   position: relative;
   width: 100%;
-  height: clamp(100px, 25vw, 200px);
+  /* taller small-banner: min 150px, ideal 40vh, max 300px */
+  height: clamp(150px, 40vh, 300px);
   overflow: hidden;
   background: url('../images/sandton-dusk.png') no-repeat center center;
   background-size: cover;
