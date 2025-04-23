@@ -1,75 +1,49 @@
+<!-- services.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CoreCloud Divisions</title>
-  <link rel="stylesheet" href="assets/css/common.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services – CoreCloud Pty Ltd</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+  <header class="site-header">
+    <a href="index.html" class="logo-link">
+      <img src="assets/images/corecloud-logo.png" alt="CoreCloud logo" class="site-logo">
+    </a>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Banner -->
-  <div class="banner-container">
-    <img src="assets/images/bannerimage_1.png" alt="CoreCloud Divisions Banner" class="banner-img" />
-    <header>
-      <img src="assets/images/Logo.png" alt="CoreCloud Logo" class="logo" />
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="divisions.html" class="active">Divisions</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-    <div class="banner-text">
-      <h1>Our Divisions</h1>
-      <p>CoreCloud operates as a group of focused technology business units — each built to solve a critical need in modern enterprise IT.</p>
-    </div>
-  </div>
-
-  <!-- Division Grid -->
-  <section class="body-block services-block">
-    <h2>Explore Our Specializations</h2>
-    <div class="service-grid">
-
-      <a href="corecloud.html" class="card">
-        <h3>CoreCloud</h3>
-        <p>AWS cloud transformation delivered via brokered partnerships. Migrate, modernize, and manage.</p>
-      </a>
-
-      <a href="coretech.html" class="card">
-        <h3>CoreTech</h3>
-        <p>Hybrid IT, managed infrastructure, and scalable enterprise systems.</p>
-      </a>
-
-      <a href="corecapacity.html" class="card">
-        <h3>CoreCapacity</h3>
-        <p>Elite IT talent and project-based resourcing, delivered at speed and scale.</p>
-      </a>
-
-      <a href="coreai.html" class="card">
-        <h3>CoreAI</h3>
-        <p>Applied intelligence, automation, and analytics engineered for execution.</p>
-      </a>
-
-      <a href="corefin.html" class="card">
-        <h3>CoreFin</h3>
-        <p>Tech leasing, OPEX financing, and enablement solutions for transformation.</p>
-      </a>
-
+  <section class="hero">
+    <div class="container">
+      <h1>Our Services</h1>
+      <p>How we migrate, modernize, and manage your AWS environment.</p>
+      <a href="contact.html" class="btn btn-primary">Get in Touch</a>
     </div>
   </section>
 
-  <!-- Footer -->
-  <div id="site-footer"></div>
-  <script>
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("site-footer").outerHTML = html;
-      });
-  </script>
+  <main class="container">
+    <h2>Cloud Migration</h2>
+    <p>Zero-downtime AWS migrations backed by expert engineers.</p>
+    <h2>Modernization</h2>
+    <p>Optimize performance and cost with best-practice refactoring.</p>
+    <h2>Managed Services</h2>
+    <p>24/7 monitoring, maintenance, and support.</p>
+  </main>
 
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 CoreCloud Pty Ltd. All rights reserved.</p>
+      <p>Reg. No. 2022/123456/07</p>
+    </div>
+  </footer>
 </body>
 </html>
