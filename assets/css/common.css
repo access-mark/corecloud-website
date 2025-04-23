@@ -79,7 +79,7 @@ header nav a.active {
   background: url('../images/sandton-dusk.png') no-repeat center center;
   background-size: cover;
 
-  /* center content vertically & horizontally */
+  /* center title, tagline, and button */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -96,7 +96,6 @@ header nav a.active {
   background: url('../images/sandton-dusk.png') no-repeat center center;
   background-size: cover;
 
-  /* center content as well */
   display: flex;
   flex-direction: column;
   justify-content: center;
