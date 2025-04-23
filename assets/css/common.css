@@ -1,156 +1,232 @@
-/* css/common.css */
+/* === Root Colors & Font === */
+:root {
+  --color-primary: #004B87;
+  --color-accent: #FDC02F;
+  --color-hover: #002d56;
+  --color-muted: #666;
+  --color-white: #fff;
+  --color-bg: #f4f6f9;
+  --font-main: 'Inter', sans-serif;
+}
 
-/* Reset and base styles */
+/* === Base Reset === */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-html, body {
-  font-family: Arial, sans-serif;
-  color: #333;
-  background-color: #f5faff;
-  line-height: 1.6;
+  box-sizing: border-box;
 }
 
-/* Header & Banner */
-.site-header {
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  background-color: var(--color-bg);
+  color: #1a1a1a;
+  overflow-x: hidden;
+}
+
+/* === Logo === */
+.logo {
+  height: clamp(40px, 5vw, 60px);
+  width: auto;
+}
+
+/* === Header === */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: transparent;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+header nav a {
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+header nav a:hover,
+header nav a.active {
+  border-bottom: 2px solid var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* === Banner === */
+.banner-container {
   position: relative;
+  width: 100%;
+  height: 400px;
   overflow: hidden;
 }
-.site-header .logo {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 4rem;
-  height: auto;
-  z-index: 10;
-}
-.main-nav {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  z-index: 10;
-}
-.main-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-}
-.main-nav a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: 500;
-  transition: opacity 0.2s ease;
-}
-.main-nav a:hover,
-.main-nav .active {
-  opacity: 0.8;
-}
 
-/* Banner backgrounds */
-.banner {
+.banner-img {
   width: 100%;
-  height: 60vh;
-  background: url('../assets/sandton-dusk.jpg') no-repeat center center;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-white);
   text-align: center;
-  padding: 0 1rem;
-}
-.small-banner {
-  height: 30vh;
-}
-.banner .site-title,
-.banner .page-title {
-  font-size: 3rem;
-  color: #fff;
-  margin-bottom: 0.5rem;
-}
-.banner .tagline {
-  font-size: 1.25rem;
-  color: #fff;
+  z-index: 5;
+  padding: 0 1.5rem;
 }
 
-/* Main content wrappers */
-.content-container {
-  max-width: 960px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: 2rem;
-  padding: 2rem 1rem;
-}
-.service-card {
-  background-color: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 1.5rem;
-  transition: transform 0.2s ease;
-}
-.service-card:hover {
-  transform: translateY(-4px);
-}
-.service-card h2 {
-  font-size: 1.5rem;
+.banner-text h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
   margin-bottom: 0.75rem;
-}
-.service-card p,
-.content-container p,
-.content-container ul,
-.content-container ol {
-  margin-bottom: 1rem;
-}
-.content-container ul,
-.content-container ol {
-  padding-left: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
-/* Call-to-Action Buttons */
-.button {
-  display: inline-block;
+.banner-text p {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+/* === Button Styling === */
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
   padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  border-radius: 4px;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 0.5rem;
-  background-color: #0070cc;
-  color: #fff;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-.button:hover {
-  background-color: #005fa3;
-  transform: translateY(-2px);
+  display: inline-block;
+  transition: all 0.3s ease;
 }
 
-/* Footer */
-.site-footer {
-  background-color: #002f5b;
-  color: #fff;
-  text-align: center;
-  padding: 1.5rem 1rem;
-  margin-top: 4rem;
+.btn-primary:hover {
+  background: var(--color-hover);
+  transform: scale(1.04);
 }
-.site-footer p {
+
+/* === Sections === */
+.body-block {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.body-block h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: var(--color-primary);
+}
+
+.body-block p {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+  color: var(--color-muted);
+}
+
+/* === Service Cards === */
+.services-block {
+  margin-top: 3rem;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  will-change: transform;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+  color: var(--color-primary);
+  font-size: 1.4rem;
   margin-bottom: 0.5rem;
 }
-.footer-nav {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
+
+.card p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
 }
-.footer-nav a {
-  color: #fff;
+
+/* === Footer === */
+footer {
+  background: #001f3f;
+  color: var(--color-white);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+footer a {
+  color: var(--color-accent);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-weight: 500;
 }
-.footer-nav a:hover {
-  opacity: 0.8;
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* === Responsive Fixes === */
+@media (max-width: 768px) {
+  header nav ul {
+    gap: 1.25rem;
+  }
+
+  .body-block h2 {
+    font-size: 1.5rem;
+  }
+
+  .banner-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .btn-primary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
 }
