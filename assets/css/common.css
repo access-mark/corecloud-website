@@ -87,10 +87,18 @@ body {
   z-index: 1;
 }
 
-/* Title & tagline white */
-.banner-content h1.site-title,
+/* === Banner Title & Tagline === */
+/* Title sizing bumped up */
+.banner-content h1.site-title {
+  font-size: clamp(3rem, 8vw, 6rem) !important;
+  color: var(--color-white);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  margin-bottom: 0.5rem;
+}
+/* Tagline styling */
 .banner-content p.tagline {
-  color: var(--color-white) !important;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--color-white);
   text-shadow: 0 2px 4px rgba(0,0,0,0.4);
   margin-bottom: 0.5rem;
 }
@@ -102,7 +110,7 @@ body {
   z-index: 1;
 }
 
-/* Small-banner variant */
+/* === Small-banner variant === */
 .small-banner {
   position: relative;
   width: 100%;
@@ -228,7 +236,7 @@ footer a:hover {
   }
 
   .banner-content h1.site-title {
-    font-size: 2.2rem;
+    font-size: clamp(2.5rem, 10vw, 4rem) !important;
   }
 
   .card {
