@@ -3,89 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CoreTech – Enterprise Infrastructure & Managed Services</title>
-  <link rel="stylesheet" href="assets/css/common.css" />
+  <title>CoreTech – Hybrid Infrastructure &amp; Managed Services</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
 
-  <!-- Banner -->
-  <div class="banner-container">
-    <img src="assets/images/bannerimage_1.png" alt="CoreTech Banner" class="banner-img" />
-    <header>
-      <img src="assets/images/Logo.png" alt="CoreCloud Logo" class="logo" />
+  <div class="small-banner">
+    <header class="banner-header">
+      <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="divisions.html">Divisions</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="corecloud.html">CoreCloud</a></li>
+          <li><a href="coretech.html" class="active">CoreTech</a></li>
+          <li><a href="corecapacity.html">CoreCapacity</a></li>
+          <li><a href="coreai.html">CoreAI</a></li>
+          <li><a href="corefin.html">CoreFin</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
-    <div class="banner-text">
-      <h1>CoreTech</h1>
-      <p>Modern infrastructure. Managed performance. Mission-critical reliability.</p>
-      <a href="contact.html" class="btn-primary">Request Infrastructure Consultation</a>
-    </div>
+    <h1 class="page-title">CoreTech</h1>
   </div>
 
-  <!-- Overview -->
   <section class="body-block">
-    <h2>Strategic Infrastructure Delivery</h2>
-    <p>CoreTech is the infrastructure and managed services arm of CoreCloud — purpose-built for enterprise scale, security, and performance. We design, deploy, and manage the digital backbones of Africa’s most ambitious organizations.</p>
-    <p>From hyperconverged environments to global WAN, we don’t just support IT — we accelerate outcomes.</p>
+    <!-- CoreTech content here -->
   </section>
 
-  <!-- Core Services -->
-  <section class="body-block">
-    <h2>Our Core Offerings</h2>
-    <ul style="max-width: 900px; margin: 0 auto; padding-left: 1.5rem; text-align: left;">
-      <li><strong>Hybrid Infrastructure:</strong> Data center modernization, cloud interconnects, and virtualized platforms.</li>
-      <li><strong>Enterprise Networking:</strong> SD-WAN, Wi‑Fi 6, VPN, firewalling, and secure access architecture.</li>
-      <li><strong>Managed IT Services:</strong> 24/7 support, asset lifecycle, patching, capacity monitoring, and reporting.</li>
-      <li><strong>Business Continuity:</strong> DRaaS, backup, replication, and multi-region recovery strategy.</li>
-      <li><strong>IT-as-a-Service:</strong> Subscription-based infrastructure, OPEX financing, and scale-as-you-go models.</li>
-    </ul>
-  </section>
-
-  <!-- Case Study -->
-  <section class="body-block">
-    <h2>Client Impact Snapshot</h2>
-    <p><strong>Industry:</strong> Retail | <strong>Challenge:</strong> Outdated infrastructure across 60+ locations</p>
-    <p>CoreTech led a full infrastructure modernization effort — deploying SD-WAN, replacing aging servers with virtualized nodes, and rolling out a centralized monitoring layer. This included proactive patching and end-user support.</p>
-    <ul style="max-width: 800px; margin: 1rem auto; padding-left: 1.5rem; text-align: left;">
-      <li>⏱ Reduced downtime by 76% in 90 days</li>
-      <li>📉 Cut infrastructure TCO by 42%</li>
-      <li>📈 Improved end-user satisfaction from 62% → 91%</li>
-    </ul>
-  </section>
-
-  <!-- Differentiators -->
-  <section class="body-block">
-    <h2>Why CoreTech</h2>
-    <ul style="max-width: 900px; margin: 0 auto; padding-left: 1.5rem; text-align: left;">
-      <li><strong>Tier 1 Partnerships:</strong> Certified with Dell, HPE, Cisco, VMware, Fortinet, and Microsoft.</li>
-      <li><strong>Embedded Engineers:</strong> Available on-premise or hybrid support models across the continent.</li>
-      <li><strong>Guaranteed SLAs:</strong> Service levels aligned to uptime, recovery, and performance goals.</li>
-      <li><strong>Executive Dashboards:</strong> Infrastructure visibility and strategic alignment in real-time.</li>
-    </ul>
-  </section>
-
-  <!-- CTA -->
-  <section class="body-block" style="text-align: center;">
-    <h2>Need Enterprise-Ready Infrastructure?</h2>
-    <p>Let’s align your platforms with your business strategy — and turn IT into a growth enabler.</p>
-    <a href="contact.html" class="btn-primary">Talk to CoreTech</a>
-  </section>
-
-  <!-- Footer -->
   <div id="site-footer"></div>
   <script>
     fetch("footer.html")
       .then(res => res.text())
-      .then(html => {
-        document.getElementById("site-footer").outerHTML = html;
-      });
+      .then(html => { document.getElementById("site-footer").outerHTML = html; });
   </script>
 
 </body>
