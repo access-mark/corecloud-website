@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CoreAI – Intelligent Automation & Applied Analytics</title>
+  <link rel="stylesheet" href="assets/css/common.css" />
+</head>
+<body>
+
+  <!-- Banner -->
+  <div class="banner-container">
+    <img src="assets/images/bannerimage_1.png" alt="CoreAI Banner" class="banner-img" />
+    <header>
+      <img src="assets/images/Logo.png" alt="CoreCloud Logo" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="divisions.html">Divisions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="banner-text">
+      <h1>CoreAI</h1>
+      <p>Applied intelligence that turns insight into action — fast, secure, and measurable.</p>
+      <a href="contact.html" class="btn-primary">Request AI Strategy Session</a>
+    </div>
+  </div>
+
+  <!-- Overview -->
+  <section class="body-block">
+    <h2>From Hype to Impact</h2>
+    <p>CoreAI helps organizations move beyond experimentation — applying intelligent automation and data-driven decisioning at scale. From forecasting and fraud detection to personalized customer experiences, we turn models into momentum.</p>
+  </section>
+
+  <!-- Services -->
+  <section class="body-block">
+    <h2>What We Deliver</h2>
+    <ul style="max-width: 900px; margin: 0 auto; padding-left: 1.5rem; text-align: left;">
+      <li><strong>AI Strategy & Advisory:</strong> Business alignment, roadmap design, and executive readiness sessions.</li>
+      <li><strong>Workflow Automation:</strong> RPA, chatbot flows, and smart document pipelines.</li>
+      <li><strong>Predictive Modeling:</strong> Forecasting, anomaly detection, churn analysis, and classification models.</li>
+      <li><strong>Generative AI:</strong> Private LLMs, content automation, and operational copilots.</li>
+      <li><strong>Data Engineering:</strong> Scalable pipelines, warehouses, lakehouses, and platform integrations.</li>
+    </ul>
+  </section>
+
+  <!-- Case Study -->
+  <section class="body-block">
+    <h2>Client Impact Snapshot</h2>
+    <p><strong>Industry:</strong> Financial Services | <strong>Challenge:</strong> Manual onboarding and reporting</p>
+    <p>CoreAI deployed a hybrid automation stack including OCR, NLP-driven classification, and integrated Power BI dashboards. Using Azure AI services and RPA bots, we slashed turnaround time and elevated visibility.</p>
+    <ul style="max-width: 800px; margin: 1rem auto; padding-left: 1.5rem; text-align: left;">
+      <li>⏱ Reduced onboarding time by 84%</li>
+      <li>📊 Replaced 9 spreadsheets with a single live reporting layer</li>
+      <li>🧠 Achieved 92% accuracy in document recognition</li>
+    </ul>
+  </section>
+
+  <!-- Differentiators -->
+  <section class="body-block">
+    <h2>Why CoreAI</h2>
+    <ul style="max-width: 900px; margin: 0 auto; padding-left: 1.5rem; text-align: left;">
+      <li><strong>Outcome-First Thinking:</strong> Every use case starts with a commercial value target.</li>
+      <li><strong>Cross-Disciplinary Teams:</strong> We bring together data scientists, solution architects, and agile practitioners.</li>
+      <li><strong>Responsible by Design:</strong> Compliance, privacy, and ethical frameworks built in.</li>
+      <li><strong>Technology Neutral:</strong> Azure, AWS, GCP, Snowflake, Databricks, open source — we adapt to you.</li>
+    </ul>
+  </section>
+
+  <!-- CTA -->
+  <section class="body-block" style="text-align: center;">
+    <h2>Operationalize Your AI Vision</h2>
+    <p>We don’t do proof of concept. We do proof of value. Let’s start where it matters most to your business.</p>
+    <a href="contact.html" class="btn-primary">Book Your AI Session</a>
+  </section>
+
+  <!-- Footer -->
+  <div id="site-footer"></div>
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("site-footer").outerHTML = html;
+      });
+  </script>
+
+</body>
+</html>
