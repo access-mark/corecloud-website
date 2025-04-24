@@ -1,113 +1,257 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CoreCloud – Modern IT. Orchestrated.</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <style>
-    /* Remove underline from homepage cards */
-    .services-block .card,
-    .services-block .card h3,
-    .services-block .card p {
-      text-decoration: none !important;
-    }
-  </style>
-</head>
-<body>
+/* assets/css/styles.css */
 
-  <!-- Banner + Header overlay -->
-  <div class="banner-container">
-    <img
-      src="assets/images/sandton-dusk.png"
-      alt="CoreCloud Sandton Skyline Banner"
-      class="banner-img"
-    />
+/* === Root Colors & Font === */
+:root {
+  --color-primary: #004B87;
+  --color-accent: #FDC02F;
+  --color-hover: #002d56;
+  --color-muted: #666;
+  --color-white: #fff;
+  --color-bg: #f4f6f9;
+  --font-main: 'Inter', sans-serif;
+}
 
-    <header class="banner-header">
-      <img
-        src="assets/images/corecloud-logo.png"
-        alt="CoreCloud Logo"
-        class="logo"
-      />
-      <nav>
-        <ul style="display:flex; flex-direction: row; gap:1rem; align-items: flex-start;">
-          <li><a href="index.html" class="nav-btn active">Home</a></li>
-          <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
-          <li><a href="about.html" class="nav-btn">About</a></li>
-          <li><a href="contact.html" class="nav-btn">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+/* === Base Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  background-color: var(--color-bg);
+  color: #1a1a1a;
+  overflow-x: hidden;
+}
 
-    <div class="banner-text">
-      <h1>Modern IT. Orchestrated.</h1>
-      <p>
-        We broker outcomes across infrastructure, cloud, AI, and talent —
-        delivered by the best partners in the business.
-      </p>
-      <a href="contact.html" class="btn-primary">Request a Consultation</a>
-    </div>
-  </div>
+/* === Remove underlines on all card links === */
+.card {
+  text-decoration: none;
+}
 
-  <!-- About teaser -->
-  <section class="body-block">
-    <h2>About CoreCloud</h2>
-    <p>
-      CoreCloud (Pty) Ltd is a South African technology group engineered to
-      deliver scalable, secure, and intelligent IT solutions. We connect
-      enterprise needs to world-class execution — across infrastructure,
-      talent, cloud, and automation.
-    </p>
-  </section>
+/* === Logo (default) === */
+.logo {
+  height: clamp(130px, 17.3vw, 216px);
+  width: auto;
+  position: relative;
+  z-index: 1001;
+}
 
-  <!-- Vision + Culture -->
-  <section class="body-block">
-    <h2>Vision &amp; Culture</h2>
-    <p>
-      We envision a modern African enterprise landscape — built on trust,
-      talent, and intelligent technology. Our culture rewards execution,
-      empowers bold thinking, and prioritizes real-world impact over
-      buzzwords.
-    </p>
-  </section>
+/* === Homepage Logo Override (50% smaller) === */
+.banner-container .logo {
+  height: clamp(130px, 17.3vw, 216px);
+}
 
-  <!-- Our Divisions -->
-  <section class="body-block services-block">
-    <h2>Our Divisions</h2>
-    <div class="service-grid">
-      <a href="corecloud.html" class="card">
-        <h3>CoreCloud</h3>
-        <p>AWS strategy &amp; execution broker — migrate, modernize, manage.</p>
-      </a>
-      <a href="coretech.html" class="card">
-        <h3>CoreTech</h3>
-        <p>Hybrid infrastructure, managed services, and network architecture.</p>
-      </a>
-      <a href="corecapacity.html" class="card">
-        <h3>CoreCapacity</h3>
-        <p>Elite IT talent placement and on-demand delivery teams.</p>
-      </a>
-      <a href="coreai.html" class="card">
-        <h3>CoreAI</h3>
-        <p>Automation, data science, and applied AI platforms.</p>
-      </a>
-      <a href="corefin.html" class="card">
-        <h3>CoreFin</h3>
-        <p>Tech enablement, OPEX finance, and partner onboarding support.</p>
-      </a>
-    </div>
-  </section>
+/* === Header & Navigation === */
+header.banner-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rem;
+  z-index: 1000;
+}
+header.banner-header .logo {
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+}
+header.banner-header nav {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+}
+header.banner-header nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+header.banner-header nav ul li a.nav-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  padding: 0.4rem 0;
+  font-size: 0.9rem;
+  background: rgba(255,255,255,0.2);
+  color: var(--color-white);
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+header.banner-header nav ul li a.nav-btn:hover {
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+header.banner-header nav ul li a.nav-btn.active {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  border-color: var(--color-accent);
+}
 
-  <!-- Footer -->
-  <div id="site-footer"></div>
-  <script>
-    fetch("footer.html")
-      .then((res) => res.text())
-      .then((html) => {
-        document.getElementById("site-footer").outerHTML = html;
-      });
-  </script>
+/* === Banner Container & Image === */
+.banner-container {
+  position: relative;
+  width: 100%;
+  height: clamp(300px, 60vh, 600px);
+  overflow: hidden;
+}
+.banner-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
 
-</body>
-</html>
+/* === Unified Banner Titles === */
+.banner-text h1,
+.small-banner .page-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 0.75rem;
+  color: var(--color-primary);
+  text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 500;
+  padding: 0 1.5rem;
+}
+
+/* === Banner Text Specifics === */
+.banner-text p {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+/* === Small-Banner for Sub-Pages === */
+.small-banner {
+  position: relative;
+  width: 100%;
+  height: clamp(300px, 60vh, 600px);
+  overflow: hidden;
+  background: url('../images/sandton-dusk.png') no-repeat top center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.small-banner .page-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--color-primary);
+  text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+  margin-bottom: 0.75rem;
+}
+
+/* === Sections & Content === */
+.body-block {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+.body-block h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: var(--color-primary);
+}
+.body-block p {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+  color: var(--color-muted);
+}
+
+/* === Service Cards === */
+.services-block {
+  margin-top: 3rem;
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+}
+
+/* === Call-to-Action Buttons === */
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 auto; /* center on sub-pages and homepage teaser */
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: var(--color-hover);
+  transform: scale(1.04);
+}
+
+/* === Footer === */
+footer {
+  background: #001f3f;
+  color: var(--color-white);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+footer a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* === Responsive Fixes === */
+@media (max-width: 768px) {
+  header.banner-header nav ul {
+    gap: 0.75rem;
+  }
+  .banner-text h1,
+  .small-banner .page-title {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+  .body-block h2 {
+    font-size: 1.5rem;
+  }
+  .card {
+    padding: 1.5rem;
+  }
+  .btn-primary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
