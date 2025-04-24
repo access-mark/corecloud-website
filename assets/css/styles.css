@@ -254,4 +254,15 @@ footer a:hover {
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
   }
+  /* === Fix card-title color (override purple visited links) === */
+.card,
+.card:link,
+.card:visited {
+  /* make the entire card inherit your default text color */
+  color: inherit !important;
+}
+
+.card h3 {
+  /* force your primary blue */
+  color: var(--color-primary) !important;
 }
