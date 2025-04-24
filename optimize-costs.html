@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Optimize Costs – Your Strategic Advantage | CoreCloud</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- Banner + Header -->
+  <div class="small-banner">
+    <header class="banner-header">
+      <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html" class="nav-btn">Home</a></li>
+          <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
+          <li><a href="about.html" class="nav-btn">About</a></li>
+          <li><a href="contact.html" class="nav-btn">Contact</a></li>
+          <li><a href="downloads.html" class="nav-btn btn-download">Downloads</a></li>
+          <li><a href="optimize-costs.html" class="nav-btn active">Optimize Costs</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1 class="page-title">Optimize Costs</h1>
+  </div>
+
+  <!-- Deep Dive Content -->
+  <section class="body-block">
+    <h2>Drive 30%+ Savings Across Your IT Estate</h2>
+    <p>
+      Our FinOps-certified team embeds with your finance and IT stakeholders to implement consumption-based models, rightsizing frameworks, and continuous spend analytics—ensuring you only pay for what you need, when you need it.
+    </p>
+  </section>
+
+  <section class="body-block">
+    <h2>Core Strategies</h2>
+    <ul style="list-style: disc; padding-left: 1.5rem;">
+      <li><strong>Automated Rightsizing:</strong> Real-time workload adjustments to eliminate idle capacity.</li>
+      <li><strong>Reserved Savings:</strong> Strategic commitments on core services, unlocking up to 70% discount.</li>
+      <li><strong>Continuous Audit & Alerting:</strong> Custom dashboards and proactive alerts to avoid unexpected overages.</li>
+    </ul>
+  </section>
+
+  <section class="body-block leadership-block">
+    <h2>Governance & Transparency</h2>
+    <p>
+      We align your CFO, CIO, and business units with standardized reporting, monthly executive summaries, and immediate visibility into cost drivers—transforming financial control into competitive advantage.
+    </p>
+    <a href="contact.html" class="btn-primary">Discuss Cost Optimization</a>
+  </section>
+
+  <!-- Footer -->
+  <div id="site-footer"></div>
+  <script>
+    fetch("footer.html").then(r => r.text()).then(html => {
+      document.getElementById("site-footer").outerHTML = html;
+    });
+  </script>
+
+</body>
+</html>
