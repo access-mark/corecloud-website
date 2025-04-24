@@ -1,106 +1,110 @@
-// assets/js/crm-pipeline.js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CRM & Pipeline – CoreCloud</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
 
-(function(){
-  const PASSWORD = '50050058';
-  if (prompt('Enter CRM password:') !== PASSWORD) {
-    document.body.innerHTML = '<p style="text-align:center;margin-top:4rem;">Access Denied.</p>';
-    return;
-  }
+  <!-- Subpage banner + header -->
+  <div class="small-banner">
+    <header class="banner-header">
+      <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html" class="nav-btn">Home</a></li>
+          <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
+          <li><a href="about.html" class="nav-btn">About</a></li>
+          <li><a href="contact.html" class="nav-btn">Contact</a></li>
+          <li><a href="downloads.html" class="nav-btn">Downloads</a></li>
+          <li><a href="crm.html" class="nav-btn active">CRM</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1 class="page-title">CRM &amp; Pipeline Management</h1>
+  </div>
 
-  // Helper functions
-  function csvArrayToObjects(lines, headers) {
-    return lines.slice(1).map(r => {
-      const cols = r.split(/,(?=(?:(?:[^\"]*\"){2})*[^\"]*$)/).map(c=>c.replace(/^\"|\"$/g,''));
-      return headers.reduce((obj,h,i)=> (obj[h]=cols[i]||'',obj), {});
+  <!-- CRM, Pipeline, Dashboard Side-by-Side -->
+  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem;">
+    <div class="portal-container">
+      <h2>CRM Contacts</h2>
+      <div id="crmApp"></div>
+    </div>
+
+    <div class="portal-container">
+      <h2>Sales Pipeline</h2>
+      <div id="pipelineApp"></div>
+    </div>
+
+    <div class="portal-container">
+      <h2>Dashboard</h2>
+      <canvas id="dealCountChart" style="margin-bottom:2rem;"></canvas>
+      <canvas id="dealValueChart"></canvas>
+    </div>
+  </div>
+
+  <!-- CRM, Pipeline, and Dashboard Scripts -->
+  <script src="assets/js/crm-pipeline.js"></script>
+  <script>
+    const ctx1 = document.getElementById('dealCountChart').getContext('2d');
+    const ctx2 = document.getElementById('dealValueChart').getContext('2d');
+
+    function renderDashboard(pipeline) {
+      const stages = ['Qualification', 'Proposal', 'Negotiation', 'Closed Won', 'Closed Lost'];
+      const counts = stages.map(stage => pipeline.filter(p => p.stage === stage).length);
+      const totals = stages.map(stage => pipeline
+        .filter(p => p.stage === stage)
+        .reduce((sum, p) => sum + (parseFloat(p.dealValue) || 0), 0));
+
+      new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: stages,
+          datasets: [{
+            label: 'Deals per Stage',
+            data: counts,
+            backgroundColor: '#004B87',
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } }
+        }
+      });
+
+      new Chart(ctx2, {
+        type: 'bar',
+        data: {
+          labels: stages,
+          datasets: [{
+            label: 'Deal Value (ZAR)',
+            data: totals,
+            backgroundColor: '#FDC02F',
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } }
+        }
+      });
+    }
+
+    // Wait for pipeline data to render dashboard
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        if (window.getPipelineData) {
+          renderDashboard(window.getPipelineData());
+        }
+      }, 300);
     });
-  }
-  function downloadCSV(filename, headers, rows) {
-    const csv = [headers, ...rows]
-      .map(r=>r.map(f=>`"${(f||'').replace(/"/g,'""')}"`).join(','))
-      .join('\r\n');
-    const blob = new Blob([csv], { type:'text/csv' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = filename; a.click();
-    URL.revokeObjectURL(url);
-  }
+  </script>
 
-  // CRM Setup
-  const contactsKey = 'crmContacts';
-  let contacts = JSON.parse(localStorage.getItem(contactsKey)||'[]');
-  const crmEl = document.getElementById('crmApp');
-  crmEl.innerHTML = `
-    <form class="portal-form" id="contactForm">
-      <input type="hidden" id="contactIndex" />
-      <input type="text" id="firstName" placeholder="First Name" required />
-      <input type="text" id="lastName" placeholder="Last Name" required />
-      <input type="text" id="company" placeholder="Company" />
-      <input type="text" id="position" placeholder="Position" />
-      <input type="text" id="industry" placeholder="Industry Focus" />
-      <input type="tel" id="mobile" placeholder="Mobile Number" />
-      <input type="tel" id="landline" placeholder="Landline Number" />
-      <input type="url" id="website" placeholder="Company Website" />
-      <input type="email" id="email" placeholder="Email Address" required />
-      <button type="submit" class="btn-primary">Save Contact</button>
-    </form>
-    <input type="file" id="importCsvContacts" accept=".csv" />
-    <button id="exportCsvContacts" class="btn-primary">Export Contacts CSV</button>
-    <table class="portal-table">
-      <thead><tr><th>First</th><th>Last</th><th>Company</th><th>Position</th><th>Industry</th><th>Mobile</th><th>Landline</th><th>Website</th><th>Email</th><th></th></tr></thead>
-      <tbody id="contactsList"></tbody>
-    </table>`;
-
-  function renderContacts() {
-    const list = document.getElementById('contactsList');
-    list.innerHTML = contacts.map((c,i)=>`
-      <tr>
-        <td>${c.firstName}</td><td>${c.lastName}</td><td>${c.company||''}</td>
-        <td>${c.position||''}</td><td>${c.industry||''}</td><td>${c.mobile||''}</td>
-        <td>${c.landline||''}</td>
-        <td>${c.website ? `<a href='${c.website}' target='_blank'>Website</a>` : ''}</td>
-        <td>${c.email}</td>
-        <td><span data-i="${i}" class="portal-delete">&times;</span></td>
-      </tr>`).join('');
-  }
-  function saveContacts() {
-    localStorage.setItem(contactsKey, JSON.stringify(contacts));
-    renderContacts();
-    document.getElementById('contactForm').reset();
-    document.getElementById('contactIndex').value = '';
-  }
-  document.getElementById('contactForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const idx = document.getElementById('contactIndex').value;
-    const obj = {};
-    ['firstName','lastName','company','position','industry','mobile','landline','website','email']
-      .forEach(id => obj[id] = document.getElementById(id).value.trim());
-    idx === '' ? contacts.push(obj) : contacts[idx] = obj;
-    saveContacts();
-  });
-  document.getElementById('contactsList').addEventListener('click', e => {
-    if (!e.target.matches('.portal-delete')) return;
-    const i = e.target.dataset.i;
-    if (confirm('Delete this contact?')) { contacts.splice(i,1); saveContacts(); }
-  });
-  document.getElementById('exportCsvContacts').addEventListener('click', () => {
-    const hdr = ['firstName','lastName','company','position','industry','mobile','landline','website','email'];
-    const rows = contacts.map(c => hdr.map(h => c[h]));
-    downloadCSV('contacts.csv', hdr, rows);
-  });
-  document.getElementById('importCsvContacts').addEventListener('change', e => {
-    const f = e.target.files[0]; if (!f) return;
-    const r = new FileReader();
-    r.onload = ev => {
-      const lines = ev.target.result.trim().split(/\r?\n/);
-      const headers = lines[0].split(/,(?=(?:(?:[^\"]*\"){2})*[^\"]*$)/).map(h => h.replace(/^\"|\"$/g,''));
-      csvArrayToObjects(lines, headers).forEach(o => contacts.push(o));
-      saveContacts();
-      e.target.value = '';
-    };
-    r.readAsText(f);
-  });
-  renderContacts();
-
-  // Expose pipeline data for dashboard access
-  window.getPipelineData = () => JSON.parse(localStorage.getItem('crmPipeline') || '[]');
-})();
+</body>
+</html>
