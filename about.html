@@ -5,48 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About CoreCloud – Leadership &amp; Vision</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
-  <style>
-    /* Centered wrapper */
-    .centered-container {
-      max-width: 1200px;
-      margin: 0 auto 3rem;
-      padding: 0 1rem;
-    }
-    /* 2×2 grid with uniform gaps */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-    /* Each block same height & flex layout */
-    .body-block {
-      background: #fff;
-      border: 1px solid rgba(0,0,0,0.1);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 420px;
-    }
-    .body-block h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    .body-block p,
-    .body-block ul {
-      text-align: left;
-      line-height: 1.6;
-    }
-    .leadership-block .btn-primary {
-      align-self: center;
-      margin-top: 2rem;
-    }
-  </style>
 </head>
 <body>
 
-  <!-- Banner + Header -->
+  <!-- Header + Small‐Banner -->
   <div class="small-banner">
     <header class="banner-header">
       <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
@@ -56,70 +18,47 @@
           <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
           <li><a href="about.html" class="nav-btn active">About</a></li>
           <li><a href="contact.html" class="nav-btn">Contact</a></li>
+          <li><a href="downloads.html" class="nav-btn btn-download">Downloads</a></li>
         </ul>
       </nav>
     </header>
     <h1 class="page-title">About CoreCloud</h1>
   </div>
 
-  <!-- Four equal blocks -->
+  <!-- 2×2 Info Grid -->
   <div class="centered-container">
     <div class="info-grid">
-
-      <!-- Executive Overview -->
       <section class="body-block">
         <h2>Executive Overview</h2>
-        <div>
-          <p>
-            CoreCloud was founded by tech visionary <strong>Mark Louw</strong> with a clear mandate: simplify enterprise IT while delivering measurable business outcomes.  
-          </p>
-          <p>
-            Leveraging decades of leadership at global firms like Dell EMC, NTT and TrueMark, Mark built CoreCloud to bridge strategy and execution—ensuring every solution scales, secures, and accelerates growth.
-          </p>
-        </div>
+        <p>Founded by tech visionary <strong>Mark Louw</strong>, CoreCloud simplifies enterprise IT while delivering measurable outcomes.</p>
+        <p>Leveraging decades at Dell EMC, NTT &amp; TrueMark, we bridge strategy and execution.</p>
       </section>
 
-      <!-- Mission & Values -->
       <section class="body-block">
         <h2>Our Mission &amp; Values</h2>
-        <div>
-          <p>
-            We exist to empower African enterprises with modern, intelligent IT.  
-          </p>
-          <ul style="padding-left:1.5rem;">
-            <li><strong>Excellence:</strong> We uphold the highest standards in everything we do.</li>
-            <li><strong>Integrity:</strong> Transparent, accountable partnerships you can trust.</li>
-            <li><strong>Execution:</strong> We deliver on time, on budget, and on promise.</li>
-          </ul>
-        </div>
+        <ul style="padding-left:1.5rem;">
+          <li><strong>Excellence:</strong> We uphold the highest standards.</li>
+          <li><strong>Integrity:</strong> Transparent, accountable partnerships.</li>
+          <li><strong>Execution:</strong> On time, on budget, on promise.</li>
+        </ul>
       </section>
 
-      <!-- Group Structure -->
       <section class="body-block">
         <h2>Group Structure</h2>
-        <div>
-          <p>
-            CoreCloud is structured into four specialist divisions, each engineered to solve a critical enterprise challenge:
-          </p>
-          <p><strong>CoreTech:</strong> Hybrid infrastructure architects—designing and managing resilient, performant networks and data centers.</p>
-          <p><strong>CoreCapacity:</strong> Elite talent placement—building on-demand teams of certified engineers, developers, and data scientists.</p>
-          <p><strong>CoreAI:</strong> Data & AI platforms—delivering custom automation, analytics, and machine-learning solutions.</p>
-          <p><strong>CoreFin:</strong> OPEX financing—enabling flexible consumption models and partner onboarding support.</p>
-        </div>
+        <p>Four focused divisions solving critical enterprise challenges:</p>
+        <ul style="padding-left:1.5rem;">
+          <li><strong>CoreTech</strong> – Hybrid infrastructure</li>
+          <li><strong>CoreCapacity</strong> – Elite talent placement</li>
+          <li><strong>CoreAI</strong> – Automation & AI platforms</li>
+          <li><strong>CoreFin</strong> – OPEX financing models</li>
+        </ul>
       </section>
 
-      <!-- Leadership CTA -->
       <section class="body-block leadership-block">
-        <h2>Speak with Our Leadership</h2>
-        <div>
-          <p>
-            Ready to modernize your enterprise IT with confidence?  
-            Schedule a strategy session with Mark and his executive team to explore tailored roadmaps, risk mitigation plans, and ROI-driven execution.
-          </p>
-        </div>
+        <h2>Meet Our Leadership</h2>
+        <p>Ready to modernize your IT with confidence? Schedule a strategy session with Mark and our executive team.</p>
         <a href="contact.html" class="btn-primary">Schedule a Strategy Session</a>
       </section>
-
     </div>
   </div>
 
@@ -128,9 +67,8 @@
   <script>
     fetch("footer.html")
       .then(res => res.text())
-      .then(html => {
-        document.getElementById("site-footer").outerHTML = html;
-      });
+      .then(html => document.getElementById("site-footer").outerHTML = html);
   </script>
+
 </body>
 </html>
