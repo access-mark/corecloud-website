@@ -254,4 +254,10 @@ footer a:hover {
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
   }
+/* === Remove underlines from every .card link === */
+.card,
+.card h3,
+.card p {
+  text-decoration: none !important;
 }
+
