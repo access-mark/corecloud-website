@@ -28,17 +28,22 @@ body {
   overflow-x: hidden;
 }
 
+/* === Remove underlines on all card links === */
+.card {
+  text-decoration: none;
+}
+
 /* === Logo (default) === */
 .logo {
-height: clamp(130px, 17.3vw, 216px);
+  height: clamp(130px, 17.3vw, 216px);
   width: auto;
   position: relative;
   z-index: 1001;
 }
 
-/* === Homepage Logo Override === */
+/* === Homepage Logo Override (50% smaller) === */
 .banner-container .logo {
-height: clamp(130px, 17.3vw, 216px);
+  height: clamp(130px, 17.3vw, 216px);
 }
 
 /* === Header & Navigation === */
@@ -107,7 +112,6 @@ header.banner-header nav ul li a.nav-btn.active {
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  display: block;
 }
 
 /* === Unified Banner Titles === */
@@ -141,6 +145,17 @@ header.banner-header nav ul li a.nav-btn.active {
   overflow: hidden;
   background: url('../images/sandton-dusk.png') no-repeat top center;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.small-banner .page-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--color-primary);
+  text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+  margin-bottom: 0.75rem;
 }
 
 /* === Sections & Content === */
@@ -163,7 +178,9 @@ header.banner-header nav ul li a.nav-btn.active {
 }
 
 /* === Service Cards === */
-.services-block { margin-top: 3rem; }
+.services-block {
+  margin-top: 3rem;
+}
 .service-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -183,18 +200,8 @@ header.banner-header nav ul li a.nav-btn.active {
   transform: translateY(-6px);
   box-shadow: 0 8px 28px rgba(0,0,0,0.15);
 }
-.card h3 {
-  color: var(--color-primary);
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-}
-.card p {
-  font-size: 1rem;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
 
-/* === Button Styling === */
+/* === Call-to-Action Buttons === */
 .btn-primary {
   background: var(--color-primary);
   color: var(--color-white);
@@ -202,10 +209,9 @@ header.banner-header nav ul li a.nav-btn.active {
   border-radius: 4px;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s ease;
   display: inline-block;
-  margin: 0 auto; /* center CTAs */
-  text-align: center;
+  margin: 0 auto; /* center on sub-pages and homepage teaser */
+  transition: all 0.3s ease;
 }
 .btn-primary:hover {
   background: var(--color-hover);
@@ -231,21 +237,21 @@ footer a:hover {
 
 /* === Responsive Fixes === */
 @media (max-width: 768px) {
-  header.banner-header nav ul { gap: 0.75rem; }
+  header.banner-header nav ul {
+    gap: 0.75rem;
+  }
   .banner-text h1,
   .small-banner .page-title {
     font-size: clamp(1.8rem, 8vw, 2.5rem);
   }
-  .body-block h2 { font-size: 1.5rem; }
-  .card { padding: 1.5rem; }
+  .body-block h2 {
+    font-size: 1.5rem;
+  }
+  .card {
+    padding: 1.5rem;
+  }
   .btn-primary {
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
   }
-  /* === Remove underlines from all cards on all pages === */
-.card,
-.card h3,
-.card p {
-  text-decoration: none !important;
 }
-
