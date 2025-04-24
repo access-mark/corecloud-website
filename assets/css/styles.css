@@ -28,12 +28,7 @@ body {
   overflow-x: hidden;
 }
 
-/* === Remove underlines on all card links === */
-.card {
-  text-decoration: none;
-}
-
-/* === Logo (default) === */
+/* === Logo (global) === */
 .logo {
   height: clamp(130px, 17.3vw, 216px);
   width: auto;
@@ -41,7 +36,7 @@ body {
   z-index: 1001;
 }
 
-/* === Homepage Logo Override (50% smaller) === */
+/* === Homepage Logo Override === */
 .banner-container .logo {
   height: clamp(130px, 17.3vw, 216px);
 }
@@ -190,15 +185,13 @@ header.banner-header nav ul li a.nav-btn.active {
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+  /* hover lift will be overridden by punchy shadow below */
 }
 
 /* === Call-to-Action Buttons === */
@@ -210,7 +203,7 @@ header.banner-header nav ul li a.nav-btn.active {
   font-weight: 600;
   text-decoration: none;
   display: inline-block;
-  margin: 0 auto; /* center on sub-pages and homepage teaser */
+  margin: 0 auto;
   transition: all 0.3s ease;
 }
 .btn-primary:hover {
@@ -235,6 +228,28 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* === Punchy Card Color Override & Heavy Shadows === */
+.card,
+.card:link,
+.card:visited {
+  /* force primary blue on all link states */
+  color: var(--color-primary) !important;
+  text-decoration: none !important;
+}
+.card p {
+  /* reset paragraph back to dark copy */
+  color: #333 !important;
+}
+.card {
+  /* heavy, modern shadow */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.25), 0 8px 24px rgba(0,0,0,0.20);
+}
+
 /* === Responsive Fixes === */
 @media (max-width: 768px) {
   header.banner-header nav ul {
@@ -254,15 +269,4 @@ footer a:hover {
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
   }
-  /* === Fix card-title color (override purple visited links) === */
-.card,
-.card:link,
-.card:visited {
-  /* make the entire card inherit your default text color */
-  color: inherit !important;
-}
-
-.card h3 {
-  /* force your primary blue */
-  color: var(--color-primary) !important;
 }
