@@ -1,13 +1,15 @@
+<!-- divisions.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Our Divisions</title>
+  <title>Our Divisions – CoreCloud</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
 
+  <!-- Small-Banner + Header -->
   <div class="small-banner">
     <header class="banner-header">
       <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
@@ -17,6 +19,7 @@
           <li><a href="divisions.html" class="nav-btn active">Divisions</a></li>
           <li><a href="about.html" class="nav-btn">About</a></li>
           <li><a href="contact.html" class="nav-btn">Contact</a></li>
+          <li><a href="downloads.html" class="nav-btn btn-download">Downloads</a></li>
         </ul>
       </nav>
     </header>
@@ -24,21 +27,22 @@
   </div>
 
   <section class="body-block services-block">
+    <h2>Expertise, Unlocked</h2>
     <div class="service-grid">
-      <a href="corecloud.html" class="card"><h3>CoreCloud</h3><p>AWS strategy &amp; execution broker — migrate, modernize, manage.</p></a>
-      <a href="coretech.html" class="card"><h3>CoreTech</h3><p>Hybrid infrastructure, managed services, and network architecture.</p></a>
-      <a href="corecapacity.html" class="card"><h3>CoreCapacity</h3><p>Elite IT talent placement and on-demand delivery teams.</p></a>
-      <a href="coreai.html" class="card"><h3>CoreAI</h3><p>Automation, data science, and applied AI platforms.</p></a>
-      <a href="corefin.html" class="card"><h3>CoreFin</h3><p>Tech enablement, OPEX finance, and partner onboarding support.</p></a>
+      <a href="corecloud.html"    class="card"><h3>CoreCloud</h3><p>Cloud strategy & execution broker—migrate, modernize, manage.</p></a>
+      <a href="coretech.html"     class="card"><h3>CoreTech</h3><p>Hybrid IT & managed infrastructure for high-availability operations.</p></a>
+      <a href="corecapacity.html" class="card"><h3>CoreCapacity</h3><p>Talent placement & on-demand delivery teams—staff your critical projects instantly.</p></a>
+      <a href="coreai.html"       class="card"><h3>CoreAI</h3><p>Automation, data science & applied AI—turn data into decisions.</p></a>
+      <a href="corefin.html"      class="card"><h3>CoreFin</h3><p>OPEX finance & partner onboarding—fund innovation without capital constraints.</p></a>
+      <a href="coredev.html"      class="card"><h3>CoreDev</h3><p>Development partnerships—bespoke software engineered by global experts.</p></a>
     </div>
   </section>
 
   <div id="site-footer"></div>
   <script>
-    fetch("footer.html").then(res => res.text()).then(html => {
+    fetch("footer.html").then(r => r.text()).then(html => {
       document.getElementById("site-footer").outerHTML = html;
     });
   </script>
-
 </body>
 </html>
