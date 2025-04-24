@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Partner Ecosystem – CoreCloud</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* === Partners Grid Styles === */
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 2rem;
+      margin: 2rem auto;
+      max-width: 1200px;
+      align-items: center;
+      justify-items: center;
+    }
+    .partner-logo img {
+      max-height: 80px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+    .partner-logo img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Small-Banner + Header overlay -->
+  <div class="small-banner">
+    <header class="banner-header">
+      <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html" class="nav-btn">Home</a></li>
+          <li><a href="partners.html" class="nav-btn active">Partners</a></li>
+          <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
+          <li><a href="about.html" class="nav-btn">About</a></li>
+          <li><a href="contact.html" class="nav-btn">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1 class="page-title">Partner Ecosystem</h1>
+  </div>
+
+  <!-- Partner Logos Grid -->
+  <section class="body-block">
+    <h2>Our Trusted Partners</h2>
+    <div class="partner-grid">
+      <div class="partner-logo"><img src="assets/images/partners/dell-logo.png"     alt="Dell Logo"></div>
+      <div class="partner-logo"><img src="assets/images/partners/aws-logo.png"      alt="AWS Logo"></div>
+      <div class="partner-logo"><img src="assets/images/partners/lsd-logo.png"      alt="LSD.io Logo"></div>
+      <div class="partner-logo"><img src="assets/images/partners/dvt-logo.png"      alt="DVT Logo"></div>
+      <div class="partner-logo"><img src="assets/images/partners/accesszero-logo.png"alt="Access Zero Logo"></div>
+      <div class="partner-logo"><img src="assets/images/partners/synthesis-logo.png" alt="Synthesis Logo"></div>
+      <div class="partner-logo"><img src="assets/images/partners/infinetix-logo.png"alt="Infinetix Logo"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="site-footer"></div>
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => { document.getElementById("site-footer").outerHTML = html; });
+  </script>
+
+</body>
+</html>
