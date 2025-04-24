@@ -7,39 +7,35 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    .grid-3col {
+    .crm-wrapper {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 1rem;
+      gap: 2rem;
     }
-    .grid-2col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+    .portal-container {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     }
-    .portal-form input,
-    .portal-form select,
-    .portal-form button {
-      width: 100%;
-      padding: 0.6rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+    .portal-container h2 {
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      text-align: center;
     }
-    .portal-form button {
-      background: var(--color-primary);
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      grid-column: span 3;
-    }
-    .portal-form button:hover {
-      background: var(--color-hover);
+    canvas {
+      width: 100% !important;
+      min-height: 200px;
     }
   </style>
 </head>
 <body>
 
+  <!-- Banner -->
   <div class="small-banner">
     <header class="banner-header">
       <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
@@ -57,50 +53,89 @@
     <h1 class="page-title">CRM &amp; Pipeline Management</h1>
   </div>
 
-  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem;">
+  <!-- Main Content Grid -->
+  <div class="crm-wrapper">
+    
+    <!-- CRM Section -->
     <div class="portal-container">
       <h2>CRM Contacts</h2>
-      <form id="crmForm" class="portal-form grid-3col">
-        <input type="text" placeholder="First Name" required>
-        <input type="text" placeholder="Last Name" required>
-        <input type="text" placeholder="Company">
-        <input type="text" placeholder="Position">
-        <input type="text" placeholder="Industry Focus">
-        <input type="tel" placeholder="Mobile Number">
-        <input type="tel" placeholder="Landline Number">
-        <input type="url" placeholder="Company Website">
-        <input type="email" placeholder="Email Address" required>
-        <button type="submit">Save Contact</button>
-      </form>
+      <div id="crmApp"></div>
     </div>
 
+    <!-- Pipeline Section -->
     <div class="portal-container">
       <h2>Sales Pipeline</h2>
-      <form id="pipelineForm" class="portal-form grid-2col">
-        <input type="text" placeholder="Opportunity Name" required>
-        <input type="text" placeholder="Client / Company" required>
-        <input type="text" placeholder="Contact Person">
-        <input type="number" placeholder="Deal Value">
-        <select required>
-          <option value="">Select Stage…</option>
-          <option>Qualification</option>
-          <option>Proposal</option>
-          <option>Negotiation</option>
-          <option>Closed Won</option>
-          <option>Closed Lost</option>
-        </select>
-        <input type="date" placeholder="Expected Close Date">
-        <button type="submit">Save Pipeline Item</button>
-      </form>
+      <div id="pipelineApp"></div>
     </div>
 
+    <!-- Dashboard Section -->
     <div class="portal-container">
       <h2>Dashboard</h2>
-      <canvas id="dealCountChart" style="margin-bottom:2rem;"></canvas>
+      <canvas id="dealCountChart" style="margin-bottom: 2rem;"></canvas>
       <canvas id="dealValueChart"></canvas>
     </div>
+
   </div>
 
+  <!-- CRM Logic & Chart Script -->
   <script src="assets/js/crm-pipeline.js"></script>
+  <script>
+    const ctx1 = document.getElementById('dealCountChart').getContext('2d');
+    const ctx2 = document.getElementById('dealValueChart').getContext('2d');
+
+    function renderDashboard(pipeline) {
+      const stages = ['Qualification', 'Proposal', 'Negotiation', 'Closed Won', 'Closed Lost'];
+      const counts = stages.map(stage => pipeline.filter(p => p.stage === stage).length);
+      const totals = stages.map(stage =>
+        pipeline.filter(p => p.stage === stage).reduce((sum, p) => sum + (parseFloat(p.dealValue) || 0), 0)
+      );
+
+      new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: stages,
+          datasets: [{
+            label: 'Deals per Stage',
+            data: counts,
+            backgroundColor: '#004B87',
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } }
+        }
+      });
+
+      new Chart(ctx2, {
+        type: 'bar',
+        data: {
+          labels: stages,
+          datasets: [{
+            label: 'Deal Value (ZAR)',
+            data: totals,
+            backgroundColor: '#FDC02F',
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } }
+        }
+      });
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        if (window.getPipelineData) {
+          console.log('Pipeline data loaded:', window.getPipelineData());
+          renderDashboard(window.getPipelineData());
+        }
+      }, 300);
+    });
+  </script>
+
 </body>
 </html>
