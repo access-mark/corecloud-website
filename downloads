@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Downloads – CoreCloud</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>
+    // Simple client-side password protection
+    const requiredPassword = 'Secure2025'; // <-- change this to your desired password
+    window.addEventListener('DOMContentLoaded', () => {
+      const userPass = prompt('Enter the password to access downloads:');
+      if (userPass !== requiredPassword) {
+        alert('Incorrect password. Redirecting to home.');
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="banner-header">
+    <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html" class="nav-btn">Home</a></li>
+        <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
+        <li><a href="about.html" class="nav-btn">About</a></li>
+        <li><a href="contact.html" class="nav-btn">Contact</a></li>
+        <li><a href="downloads.html" class="nav-btn active">Downloads</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="body-block">
+    <h2>Secure Document Downloads</h2>
+    <p>Below is a list of protected documents. Click to download.</p>
+    <ul style="padding-left:1.5rem;">
+      <li><a href="assets/docs/Whitepaper_CoreCloud.pdf" download>CoreCloud Whitepaper (PDF)</a></li>
+      <li><a href="assets/docs/CaseStudy_Enterprise.pdf" download>Enterprise Case Study (PDF)</a></li>
+      <li><a href="assets/docs/SolutionOverview.pdf" download>Solution Overview (PDF)</a></li>
+      <!-- add more links as needed -->
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <div id="site-footer"></div>
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('site-footer').outerHTML = html;
+      });
+  </script>
+
+</body>
+</html>
