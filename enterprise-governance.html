@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enterprise Governance – Your Strategic Advantage | CoreCloud</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- Banner + Header -->
+  <div class="small-banner">
+    <header class="banner-header">
+      <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html" class="nav-btn">Home</a></li>
+          <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
+          <li><a href="enterprise-governance.html" class="nav-btn active">Enterprise Governance</a></li>
+          <li><a href="about.html" class="nav-btn">About</a></li>
+          <li><a href="contact.html" class="nav-btn">Contact</a></li>
+          <li><a href="downloads.html" class="nav-btn btn-download">Downloads</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1 class="page-title">Enterprise Governance</h1>
+  </div>
+
+  <!-- Deep Dive Content -->
+  <section class="body-block">
+    <h2>Embed Security & Compliance Across Your Stack</h2>
+    <p>
+      From automated policy enforcement to continuous audit trails, our governance framework ensures adherence to ISO 27001, POPIA, and global best practices—minimizing risk while empowering innovation.
+    </p>
+  </section>
+
+  <section class="body-block">
+    <h2>Governance Pillars</h2>
+    <ul style="list-style: disc; padding-left: 1.5rem;">
+      <li><strong>Policy-as-Code:</strong> Automated, version-controlled policy enforcement at CI/CD gates.</li>
+      <li><strong>Continuous Compliance:</strong> Real-time compliance dashboards with instant remediation workflows.</li>
+      <li><strong>Risk Management:</strong> Integrated GRC tooling and quarterly executive risk reviews.</li>
+    </ul>
+  </section>
+
+  <section class="body-block leadership-block">
+    <h2>Board-Level Visibility</h2>
+    <p>
+      We deliver quarterly executive summaries and live dashboards to your Board Audit & Risk committees—transforming governance from check-the-box into strategic advantage.
+    </p>
+    <a href="contact.html" class="btn-primary">Elevate Your Governance</a>
+  </section>
+
+  <!-- Footer -->
+  <div id="site-footer"></div>
+  <script>
+    fetch("footer.html").then(r => r.text()).then(html => {
+      document.getElementById("site-footer").outerHTML = html;
+    });
+  </script>
+
+</body>
+</html>
