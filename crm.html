@@ -1,65 +1,113 @@
-<!-- Pie & Doughnut Chart Dashboard -->
-<canvas id="dealCountChart" style="margin-bottom:2rem;"></canvas>
-<canvas id="dealValueChart"></canvas>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CRM & Pipeline – CoreCloud</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
 
-<script>
-  const ctx1 = document.getElementById('dealCountChart').getContext('2d');
-  const ctx2 = document.getElementById('dealValueChart').getContext('2d');
+  <!-- Subpage banner + header -->
+  <div class="small-banner">
+    <header class="banner-header">
+      <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html" class="nav-btn">Home</a></li>
+          <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
+          <li><a href="about.html" class="nav-btn">About</a></li>
+          <li><a href="contact.html" class="nav-btn">Contact</a></li>
+          <li><a href="downloads.html" class="nav-btn">Downloads</a></li>
+          <li><a href="crm.html" class="nav-btn active">CRM</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1 class="page-title">CRM &amp; Pipeline Management</h1>
+  </div>
 
-  function renderDashboard(pipeline) {
-    const stages = ['Qualification', 'Proposal', 'Negotiation', 'Closed Won', 'Closed Lost'];
-    const counts = stages.map(stage => pipeline.filter(p => p.stage === stage).length);
-    const totals = stages.map(stage => pipeline
-      .filter(p => p.stage === stage)
-      .reduce((sum, p) => sum + (parseFloat(p.dealValue) || 0), 0));
+  <!-- CRM, Pipeline, Dashboard Layout -->
+  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem;">
+    <div class="portal-container">
+      <h2>CRM Contacts</h2>
+      <div id="crmApp"></div>
+    </div>
+    <div class="portal-container">
+      <h2>Sales Pipeline</h2>
+      <div id="pipelineApp"></div>
+    </div>
+    <div class="portal-container">
+      <h2>Dashboard</h2>
+      <canvas id="dealCountChart" style="margin-bottom:2rem;"></canvas>
+      <canvas id="dealValueChart"></canvas>
+    </div>
+  </div>
 
-    new Chart(ctx1, {
-      type: 'pie',
-      data: {
-        labels: stages,
-        datasets: [{
-          label: 'Deals per Stage',
-          data: counts,
-          backgroundColor: ['#004B87', '#005fa3', '#0073bf', '#FDC02F', '#ffdd75'],
-          borderColor: '#ffffff',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { position: 'bottom' }
+  <!-- Core Logic & Charts -->
+  <script src="assets/js/crm-pipeline.js"></script>
+  <script>
+    function renderDashboard(pipeline) {
+      const ctx1 = document.getElementById('dealCountChart')?.getContext('2d');
+      const ctx2 = document.getElementById('dealValueChart')?.getContext('2d');
+      if (!ctx1 || !ctx2) return;
+
+      const stages = ['Qualification', 'Proposal', 'Negotiation', 'Closed Won', 'Closed Lost'];
+      const counts = stages.map(stage => pipeline.filter(p => p.stage === stage).length);
+      const totals = stages.map(stage =>
+        pipeline.filter(p => p.stage === stage).reduce((sum, p) => sum + (parseFloat(p.dealValue) || 0), 0)
+      );
+
+      new Chart(ctx1, {
+        type: 'pie',
+        data: {
+          labels: stages,
+          datasets: [{
+            label: 'Deals per Stage',
+            data: counts,
+            backgroundColor: ['#004B87', '#005fa3', '#0073bf', '#FDC02F', '#ffdd75'],
+            borderColor: '#ffffff',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: 'bottom' }
+          }
         }
-      }
-    });
+      });
 
-    new Chart(ctx2, {
-      type: 'doughnut',
-      data: {
-        labels: stages,
-        datasets: [{
-          label: 'Deal Value (ZAR)',
-          data: totals,
-          backgroundColor: ['#FDC02F', '#fdd74f', '#fdeb7f', '#004B87', '#005fa3'],
-          borderColor: '#ffffff',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        cutout: '60%',
-        plugins: {
-          legend: { position: 'bottom' }
+      new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+          labels: stages,
+          datasets: [{
+            label: 'Deal Value (ZAR)',
+            data: totals,
+            backgroundColor: ['#FDC02F', '#fdd74f', '#fdeb7f', '#004B87', '#005fa3'],
+            borderColor: '#ffffff',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          cutout: '60%',
+          plugins: {
+            legend: { position: 'bottom' }
+          }
         }
-      }
-    });
-  }
+      });
+    }
 
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      if (window.getPipelineData) {
-        renderDashboard(window.getPipelineData());
-      }
-    }, 300);
-  });
-</script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        if (window.getPipelineData) {
+          renderDashboard(window.getPipelineData());
+        }
+      }, 300);
+    });
+  </script>
+
+</body>
+</html>
