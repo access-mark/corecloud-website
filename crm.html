@@ -3,22 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CRM – CoreCloud</title>
+  <title>CRM & Pipeline – CoreCloud</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <style>
-    .crm-container {
-      max-width: 900px;
+    .crm-pipeline-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1200px;
       margin: 3rem auto;
-      padding: 1.5rem;
+      padding: 0 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .crm-pipeline-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+    .portal-container {
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      padding: 1.5rem;
     }
-    .crm-form input,
-    .crm-form textarea,
-    .crm-form button,
-    .crm-tools button,
-    .crm-tools input[type=file] {
+    .portal-container h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+    }
+    .portal-form input,
+    .portal-form select,
+    .portal-form button,
+    .portal-tools button,
+    .portal-tools input[type=file] {
       width: 100%;
       margin: 0.5rem 0;
       padding: 0.75rem;
@@ -26,28 +42,28 @@
       border: 1px solid #ccc;
       border-radius: 4px;
     }
-    .crm-tools {
+    .portal-tools {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
       margin-bottom: 1rem;
     }
-    .crm-tools button {
+    .portal-tools button {
       width: auto;
     }
-    .crm-table {
+    .portal-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
     }
-    .crm-table th,
-    .crm-table td {
+    .portal-table th,
+    .portal-table td {
       padding: 0.75rem;
       border-bottom: 1px solid #eee;
       text-align: left;
       font-size: 0.95rem;
     }
-    .crm-delete {
+    .portal-delete {
       color: #c00;
       cursor: pointer;
       font-weight: bold;
@@ -71,42 +87,78 @@
         </ul>
       </nav>
     </header>
-    <h1 class="page-title">Client Relationship Management</h1>
+    <h1 class="page-title">CRM &amp; Pipeline Management</h1>
   </div>
 
-  <!-- CRM App -->
-  <div class="crm-container" id="crmApp" style="display:none;">
-    <div class="crm-tools">
-      <input type="file" id="importCsv" accept=".csv" />
-      <button id="exportCsv" class="btn-primary">Export CSV</button>
+  <div class="crm-pipeline-wrapper">
+
+    <!-- CONTACTS CRM -->
+    <div class="portal-container" id="crmApp" style="display:none;">
+      <div class="portal-tools">
+        <input type="file" id="importCsvContacts" accept=".csv" />
+        <button id="exportCsvContacts" class="btn-primary">Export Contacts CSV</button>
+      </div>
+      <h2>Contacts</h2>
+      <form class="portal-form" id="contactForm">
+        <input type="hidden" id="contactIndex" value="" />
+        <input type="text" id="firstName" placeholder="First Name" required />
+        <input type="text" id="lastName"  placeholder="Last Name"  required />
+        <input type="text" id="company"   placeholder="Company"    />
+        <input type="text" id="position"  placeholder="Position"   />
+        <input type="text" id="industry"  placeholder="Industry Focus" />
+        <input type="tel"   id="mobile"    placeholder="Mobile Number" />
+        <input type="tel"   id="landline"  placeholder="Landline Number" />
+        <input type="url"   id="website"   placeholder="Company Website" />
+        <input type="email" id="email"     placeholder="Email Address" required />
+        <button type="submit" class="btn-primary">Save Contact</button>
+      </form>
+      <table class="portal-table">
+        <thead>
+          <tr>
+            <th>First</th><th>Last</th><th>Company</th><th>Position</th>
+            <th>Industry</th><th>Mobile</th><th>Landline</th>
+            <th>Website</th><th>Email</th><th> </th>
+          </tr>
+        </thead>
+        <tbody id="contactsList"></tbody>
+      </table>
     </div>
 
-    <h2>Add / Update Contact</h2>
-    <form class="crm-form" id="contactForm">
-      <input type="hidden" id="contactIndex" value="" />
-      <input type="text" id="firstName" placeholder="First Name" required />
-      <input type="text" id="lastName"  placeholder="Last Name"  required />
-      <input type="text" id="company"   placeholder="Company"    />
-      <input type="text" id="position"  placeholder="Position"   />
-      <input type="text" id="industry"  placeholder="Industry Focus" />
-      <input type="tel"   id="mobile"    placeholder="Mobile Number" />
-      <input type="tel"   id="landline"  placeholder="Landline Number" />
-      <input type="url"   id="website"   placeholder="Company Website" />
-      <input type="email" id="email"     placeholder="Email Address" required />
-      <button type="submit" class="btn-primary">Save Contact</button>
-    </form>
+    <!-- PIPELINE MANAGEMENT -->
+    <div class="portal-container" id="pipelineApp" style="display:none;">
+      <div class="portal-tools">
+        <input type="file" id="importCsvPipeline" accept=".csv" />
+        <button id="exportCsvPipeline" class="btn-primary">Export Pipeline CSV</button>
+      </div>
+      <h2>Pipeline</h2>
+      <form class="portal-form" id="pipelineForm">
+        <input type="hidden" id="pipelineIndex" value="" />
+        <input type="text" id="oppName"     placeholder="Opportunity Name" required />
+        <input type="text" id="clientName"  placeholder="Client / Company"    required />
+        <input type="text" id="contactPerson" placeholder="Contact Person"     />
+        <input type="number" id="dealValue"  placeholder="Deal Value"         />
+        <select id="stage" required>
+          <option value="">Select Stage…</option>
+          <option>Qualification</option>
+          <option>Proposal</option>
+          <option>Negotiation</option>
+          <option>Closed Won</option>
+          <option>Closed Lost</option>
+        </select>
+        <input type="date"   id="closeDate"  placeholder="Expected Close Date" />
+        <button type="submit" class="btn-primary">Save Pipeline Item</button>
+      </form>
+      <table class="portal-table">
+        <thead>
+          <tr>
+            <th>Opportunity</th><th>Client</th><th>Contact</th>
+            <th>Value</th><th>Stage</th><th>Close Date</th><th> </th>
+          </tr>
+        </thead>
+        <tbody id="pipelineList"></tbody>
+      </table>
+    </div>
 
-    <h2>Saved Contacts</h2>
-    <table class="crm-table">
-      <thead>
-        <tr>
-          <th>First</th><th>Last</th><th>Company</th><th>Position</th>
-          <th>Industry</th><th>Mobile</th><th>Landline</th>
-          <th>Website</th><th>Email</th><th> </th>
-        </tr>
-      </thead>
-      <tbody id="contactsList"></tbody>
-    </table>
   </div>
 
   <script>
@@ -117,110 +169,138 @@
       return;
     }
 
-    const form = document.getElementById('contactForm');
-    const list = document.getElementById('contactsList');
-    const importInput = document.getElementById('importCsv');
-    const exportBtn    = document.getElementById('exportCsv');
-    let contacts = JSON.parse(localStorage.getItem('crmContacts')||'[]');
+    // --- Generic helpers ---
+    function csvArrayToObjects(lines, headers) {
+      return lines.slice(1).map(r => {
+        const cols = r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(c=>c.replace(/^"|"$/g,''));
+        return headers.reduce((obj,h,i)=> (obj[h]=cols[i]||'',obj), {});
+      });
+    }
+    function downloadCSV(filename, headers, rows) {
+      const csv = [headers, ...rows]
+        .map(r=>r.map(f=>`"${(f||'').replace(/"/g,'""')}"`).join(','))
+        .join('\r\n');
+      const blob = new Blob([csv], { type:'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = filename; a.click();
+      URL.revokeObjectURL(url);
+    }
 
-    function render() {
-      list.innerHTML = contacts.map((c,i)=>`
+    // --- CONTACTS CRM ---
+    const contactsKey = 'crmContacts';
+    let contacts = JSON.parse(localStorage.getItem(contactsKey)||'[]');
+    const cForm = document.getElementById('contactForm'),
+          cList = document.getElementById('contactsList'),
+          impC  = document.getElementById('importCsvContacts'),
+          expC  = document.getElementById('exportCsvContacts');
+    function renderContacts(){
+      cList.innerHTML = contacts.map((c,i)=>`
         <tr>
           <td>${c.firstName}</td><td>${c.lastName}</td><td>${c.company||''}</td>
           <td>${c.position||''}</td><td>${c.industry||''}</td><td>${c.mobile||''}</td>
           <td>${c.landline||''}</td>
-          <td>${c.website?'<a href="'+c.website+'" target="_blank">'+c.website+'</a>':''}</td>
+          <td>${c.website?`<a href="${c.website}" target="_blank">${c.website}</a>`:''}</td>
           <td>${c.email}</td>
-          <td><span class="crm-delete" data-i="${i}">&times;</span></td>
+          <td><span data-i="${i}" class="portal-delete">&times;</span></td>
         </tr>`).join('');
     }
-
-    function save() {
-      localStorage.setItem('crmContacts', JSON.stringify(contacts));
-      render();
-      form.reset();
+    function saveContacts(){
+      localStorage.setItem(contactsKey, JSON.stringify(contacts));
+      renderContacts();
+      cForm.reset();
       document.getElementById('contactIndex').value = '';
     }
-
-    form.addEventListener('submit', e=>{
+    cForm.addEventListener('submit',e=>{
       e.preventDefault();
       const idx = document.getElementById('contactIndex').value;
-      const c = {
-        firstName: document.getElementById('firstName').value.trim(),
-        lastName:  document.getElementById('lastName').value.trim(),
-        company:   document.getElementById('company').value.trim(),
-        position:  document.getElementById('position').value.trim(),
-        industry:  document.getElementById('industry').value.trim(),
-        mobile:    document.getElementById('mobile').value.trim(),
-        landline:  document.getElementById('landline').value.trim(),
-        website:   document.getElementById('website').value.trim(),
-        email:     document.getElementById('email').value.trim(),
+      const obj = {};
+      ['firstName','lastName','company','position','industry','mobile','landline','website','email']
+        .forEach(id=> obj[id]=document.getElementById(id).value.trim());
+      idx==='' ? contacts.push(obj) : contacts[idx]=obj;
+      saveContacts();
+    });
+    cList.addEventListener('click',e=>{
+      if(!e.target.matches('.portal-delete'))return;
+      const i=e.target.dataset.i;
+      if(confirm('Delete this contact?')){ contacts.splice(i,1); saveContacts(); }
+    });
+    expC.addEventListener('click',()=>{
+      const hdr=['firstName','lastName','company','position','industry','mobile','landline','website','email'];
+      const rows=contacts.map(c=>hdr.map(h=>c[h]));
+      downloadCSV('contacts.csv',hdr,rows);
+    });
+    impC.addEventListener('change',e=>{
+      const f=e.target.files[0]; if(!f)return;
+      const r=new FileReader();
+      r.onload=ev=>{
+        const lines=ev.target.result.trim().split(/\r?\n/);
+        const headers=lines[0].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(h=>h.replace(/^"|"$/g,''));
+        csvArrayToObjects(lines,headers).forEach(o=>contacts.push(o));
+        saveContacts();
+        impC.value='';
       };
-      if (idx==='') contacts.push(c);
-      else contacts[idx] = c;
-      save();
+      r.readAsText(f);
     });
 
-    list.addEventListener('click', e=>{
-      if (!e.target.matches('.crm-delete')) return;
-      const i = e.target.dataset.i;
-      if (confirm('Delete this contact?')) {
-        contacts.splice(i,1);
-        save();
-      }
+    // --- PIPELINE MANAGEMENT ---
+    const pipeKey='crmPipeline';
+    let pipeline = JSON.parse(localStorage.getItem(pipeKey)||'[]');
+    const pForm = document.getElementById('pipelineForm'),
+          pList = document.getElementById('pipelineList'),
+          impP  = document.getElementById('importCsvPipeline'),
+          expP  = document.getElementById('exportCsvPipeline');
+    function renderPipeline(){
+      pList.innerHTML = pipeline.map((p,i)=>`
+        <tr>
+          <td>${p.oppName}</td><td>${p.clientName}</td><td>${p.contactPerson||''}</td>
+          <td>${p.dealValue||''}</td><td>${p.stage||''}</td><td>${p.closeDate||''}</td>
+          <td><span data-i="${i}" class="portal-delete">&times;</span></td>
+        </tr>`).join('');
+    }
+    function savePipeline(){
+      localStorage.setItem(pipeKey, JSON.stringify(pipeline));
+      renderPipeline();
+      pForm.reset();
+      document.getElementById('pipelineIndex').value = '';
+    }
+    pForm.addEventListener('submit',e=>{
+      e.preventDefault();
+      const idx = document.getElementById('pipelineIndex').value;
+      const obj = {};
+      ['oppName','clientName','contactPerson','dealValue','stage','closeDate']
+        .forEach(id=> obj[id]=document.getElementById(id).value);
+      idx==='' ? pipeline.push(obj) : pipeline[idx]=obj;
+      savePipeline();
     });
-
-    // **Export CSV**
-    exportBtn.addEventListener('click', ()=>{
-      const header = ['First','Last','Company','Position','Industry','Mobile','Landline','Website','Email'];
-      const rows = contacts.map(c => [
-        c.firstName, c.lastName, c.company, c.position,
-        c.industry, c.mobile, c.landline,
-        c.website, c.email
-      ]);
-      const csvContent = [header, ...rows]
-        .map(r => r.map(f => `"${(f||'').replace(/"/g,'""')}"`).join(','))
-        .join('\r\n');
-      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'contacts.csv';
-      a.click();
-      URL.revokeObjectURL(url);
+    pList.addEventListener('click',e=>{
+      if(!e.target.matches('.portal-delete'))return;
+      const i=e.target.dataset.i;
+      if(confirm('Delete this pipeline item?')){ pipeline.splice(i,1); savePipeline(); }
     });
-
-    // **Import CSV**
-    importInput.addEventListener('change', e=>{
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = ev => {
-        const lines = ev.target.result.trim().split(/\r?\n/);
-        const [header, ...data] = lines.map(l => l.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/));
-        // map each row to our object keys
-        data.forEach(cols => {
-          if (cols.length < 9) return;
-          contacts.push({
-            firstName: cols[0].replace(/^"|"$/g,''),
-            lastName:  cols[1].replace(/^"|"$/g,''),
-            company:   cols[2].replace(/^"|"$/g,''),
-            position:  cols[3].replace(/^"|"$/g,''),
-            industry:  cols[4].replace(/^"|"$/g,''),
-            mobile:    cols[5].replace(/^"|"$/g,''),
-            landline:  cols[6].replace(/^"|"$/g,''),
-            website:   cols[7].replace(/^"|"$/g,''),
-            email:     cols[8].replace(/^"|"$/g,'')
-          });
-        });
-        save();
-        importInput.value = '';
+    expP.addEventListener('click',()=>{
+      const hdr=['oppName','clientName','contactPerson','dealValue','stage','closeDate'];
+      const rows=pipeline.map(p=>hdr.map(h=>p[h]));
+      downloadCSV('pipeline.csv',hdr,rows);
+    });
+    impP.addEventListener('change',e=>{
+      const f=e.target.files[0]; if(!f)return;
+      const r=new FileReader();
+      r.onload=ev=>{
+        const lines=ev.target.result.trim().split(/\r?\n/);
+        const headers=lines[0].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(h=>h.replace(/^"|"$/g,''));
+        csvArrayToObjects(lines,headers).forEach(o=>pipeline.push(o));
+        savePipeline();
+        impP.value='';
       };
-      reader.readAsText(file);
+      r.readAsText(f);
     });
 
+    // Show both apps
     document.getElementById('crmApp').style.display = 'block';
-    render();
+    document.getElementById('pipelineApp').style.display = 'block';
+    renderContacts();
+    renderPipeline();
   })();
   </script>
 
