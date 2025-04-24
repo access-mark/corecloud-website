@@ -1,4 +1,6 @@
-(function () {
+// assets/js/crm-pipeline.js
+
+document.addEventListener('DOMContentLoaded', () => {
   const PASSWORD = '50050058';
   if (prompt('Enter CRM password:') !== PASSWORD) {
     document.body.innerHTML = '<p style="text-align:center;margin-top:4rem;">Access Denied.</p>';
@@ -7,7 +9,6 @@
 
   const contactsKey = 'crmContacts';
   const pipelineKey = 'crmPipeline';
-
   const crmApp = document.getElementById('crmApp');
   const pipelineApp = document.getElementById('pipelineApp');
 
@@ -16,18 +17,18 @@
     input.type = type;
     input.id = id;
     input.placeholder = placeholder;
-    input.style.marginBottom = '0.75rem';
     if (required) input.required = true;
+    input.style.marginBottom = '1rem';
     return input;
   }
 
-  // === CRM FORM ===
+  // CRM Form
   const crmForm = document.createElement('form');
   crmForm.className = 'portal-form';
   crmForm.innerHTML = '<input type="hidden" id="contactIndex" />';
-  ['firstName', 'lastName', 'company', 'position', 'industry', 'mobile', 'landline', 'website', 'email'].forEach(f => {
+  ['firstName','lastName','company','position','industry','mobile','landline','website','email'].forEach(f => {
     const type = f === 'email' ? 'email' : f === 'website' ? 'url' : 'text';
-    crmForm.appendChild(createInput(type, f, f.replace(/([A-Z])/g, ' $1').replace(/^./, s => s.toUpperCase()), ['firstName', 'lastName', 'email'].includes(f)));
+    crmForm.appendChild(createInput(type, f, f.replace(/([A-Z])/g, ' $1').replace(/^./, s => s.toUpperCase()), ['firstName','lastName','email'].includes(f)));
   });
   const saveBtn = document.createElement('button');
   saveBtn.className = 'btn-primary';
@@ -43,7 +44,7 @@
     <tbody id="contactsList"></tbody>`;
   crmApp.appendChild(contactsTable);
 
-  // === PIPELINE FORM ===
+  // Pipeline Form
   const pipeForm = document.createElement('form');
   pipeForm.className = 'portal-form';
   pipeForm.innerHTML = '<input type="hidden" id="pipelineIndex" />';
@@ -60,7 +61,7 @@
       const select = document.createElement('select');
       select.id = id;
       select.required = true;
-      select.style.marginBottom = '0.75rem';
+      select.style.marginBottom = '1rem';
       select.innerHTML = `
         <option value="">Select Stage…</option>
         <option>Qualification</option><option>Proposal</option><option>Negotiation</option>
@@ -85,14 +86,14 @@
     <tbody id="pipelineList"></tbody>`;
   pipelineApp.appendChild(pipeTable);
 
-  // === CRM DATA ===
+  // Data logic
   let contacts = JSON.parse(localStorage.getItem(contactsKey) || '[]');
   const cList = document.getElementById('contactsList');
   function renderContacts() {
-    cList.innerHTML = contacts.map((c, i) => `
+    cList.innerHTML = contacts.map((c,i)=>`
       <tr>
-        <td>${c.firstName}</td><td>${c.lastName}</td><td>${c.company || ''}</td><td>${c.position || ''}</td>
-        <td>${c.industry || ''}</td><td>${c.mobile || ''}</td><td>${c.landline || ''}</td>
+        <td>${c.firstName}</td><td>${c.lastName}</td><td>${c.company||''}</td><td>${c.position||''}</td>
+        <td>${c.industry||''}</td><td>${c.mobile||''}</td><td>${c.landline||''}</td>
         <td>${c.website ? `<a href="${c.website}" target="_blank">${c.website}</a>` : ''}</td>
         <td>${c.email}</td>
         <td><span data-i="${i}" class="portal-delete">&times;</span></td>
@@ -102,7 +103,7 @@
     e.preventDefault();
     const idx = document.getElementById('contactIndex').value;
     const obj = {};
-    ['firstName', 'lastName', 'company', 'position', 'industry', 'mobile', 'landline', 'website', 'email']
+    ['firstName','lastName','company','position','industry','mobile','landline','website','email']
       .forEach(id => obj[id] = document.getElementById(id).value.trim());
     idx === '' ? contacts.push(obj) : contacts[idx] = obj;
     localStorage.setItem(contactsKey, JSON.stringify(contacts));
@@ -121,14 +122,13 @@
   };
   renderContacts();
 
-  // === PIPELINE DATA ===
   let pipeline = JSON.parse(localStorage.getItem(pipelineKey) || '[]');
   const pList = document.getElementById('pipelineList');
   function renderPipeline() {
-    pList.innerHTML = pipeline.map((p, i) => `
+    pList.innerHTML = pipeline.map((p,i)=>`
       <tr>
-        <td>${p.oppName}</td><td>${p.clientName}</td><td>${p.contactPerson || ''}</td>
-        <td>${p.dealValue || ''}</td><td>${p.stage || ''}</td><td>${p.closeDate || ''}</td>
+        <td>${p.oppName}</td><td>${p.clientName}</td><td>${p.contactPerson||''}</td>
+        <td>${p.dealValue||''}</td><td>${p.stage||''}</td><td>${p.closeDate||''}</td>
         <td><span data-i="${i}" class="portal-delete">&times;</span></td>
       </tr>`).join('');
   }
@@ -136,7 +136,7 @@
     e.preventDefault();
     const idx = document.getElementById('pipelineIndex').value;
     const obj = {};
-    ['oppName', 'clientName', 'contactPerson', 'dealValue', 'stage', 'closeDate']
+    ['oppName','clientName','contactPerson','dealValue','stage','closeDate']
       .forEach(id => obj[id] = document.getElementById(id).value);
     idx === '' ? pipeline.push(obj) : pipeline[idx] = obj;
     localStorage.setItem(pipelineKey, JSON.stringify(pipeline));
@@ -155,6 +155,5 @@
   };
   renderPipeline();
 
-  // For chart dashboard
   window.getPipelineData = () => pipeline;
-})();
+});
