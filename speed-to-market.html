@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Speed to Market – Your Strategic Advantage | CoreCloud</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- Banner + Header -->
+  <div class="small-banner">
+    <header class="banner-header">
+      <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html" class="nav-btn">Home</a></li>
+          <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
+          <li><a href="speed-to-market.html" class="nav-btn active">Speed to Market</a></li>
+          <li><a href="about.html" class="nav-btn">About</a></li>
+          <li><a href="contact.html" class="nav-btn">Contact</a></li>
+          <li><a href="downloads.html" class="nav-btn btn-download">Downloads</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1 class="page-title">Speed to Market</h1>
+  </div>
+
+  <!-- Deep Dive Content -->
+  <section class="body-block">
+    <h2>Launch Digital Services in Weeks, Not Months</h2>
+    <p>
+      By combining our AWS Cloud Factory methodology with agile delivery pods, we compress traditional 6-month rollouts into 6-week sprints—empowering your business to outpace the competition.
+    </p>
+  </section>
+
+  <section class="body-block">
+    <h2>Acceleration Tactics</h2>
+    <ul style="list-style: disc; padding-left: 1.5rem;">
+      <li><strong>Pre-Built AWS Blueprints:</strong> Hardened, production-ready templates for common workloads.</li>
+      <li><strong>DevOps & CI/CD:</strong> Automated pipelines with integrated testing and security gating.</li>
+      <li><strong>Dedicated Delivery Pods:</strong> Cross-functional teams aligned to your KPIs and SLAs.</li>
+    </ul>
+  </section>
+
+  <section class="body-block leadership-block">
+    <h2>Executive Oversight</h2>
+    <p>
+      Our program managers provide weekly executive dashboards and stand-ups, ensuring transparency, mitigation of roadblocks, and alignment with your strategic roadmap.
+    </p>
+    <a href="contact.html" class="btn-primary">Accelerate Your Launch</a>
+  </section>
+
+  <!-- Footer -->
+  <div id="site-footer"></div>
+  <script>
+    fetch("footer.html").then(r => r.text()).then(html => {
+      document.getElementById("site-footer").outerHTML = html;
+    });
+  </script>
+
+</body>
+</html>
