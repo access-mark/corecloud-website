@@ -1,166 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CRM & Pipeline – CoreCloud</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    .crm-wrapper {
-      max-width: 1400px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2rem;
-    }
-    .portal-container {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-      padding: 2rem;
-    }
-    .portal-container h2 {
-      margin-top: 0;
-      font-size: 1.5rem;
-      color: var(--color-primary);
-      text-align: center;
-    }
-    .portal-form input,
-    .portal-form select,
-    .portal-form button {
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 0.75rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .portal-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
-    .portal-table th, .portal-table td {
-      padding: 0.75rem;
-      text-align: left;
-      border-bottom: 1px solid #eee;
-      font-size: 0.95rem;
-    }
-    .portal-delete {
-      color: #c00;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    canvas {
-      width: 100% !important;
-      height: auto !important;
-    }
-  </style>
-</head>
-<body>
+<!-- Pie & Doughnut Chart Dashboard -->
+<canvas id="dealCountChart" style="margin-bottom:2rem;"></canvas>
+<canvas id="dealValueChart"></canvas>
 
-  <!-- Banner -->
-  <div class="small-banner">
-    <header class="banner-header">
-      <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
-      <nav>
-        <ul>
-          <li><a href="index.html" class="nav-btn">Home</a></li>
-          <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
-          <li><a href="about.html" class="nav-btn">About</a></li>
-          <li><a href="contact.html" class="nav-btn">Contact</a></li>
-          <li><a href="downloads.html" class="nav-btn">Downloads</a></li>
-          <li><a href="crm.html" class="nav-btn active">CRM</a></li>
-        </ul>
-      </nav>
-    </header>
-    <h1 class="page-title">CRM &amp; Pipeline Management</h1>
-  </div>
+<script>
+  const ctx1 = document.getElementById('dealCountChart').getContext('2d');
+  const ctx2 = document.getElementById('dealValueChart').getContext('2d');
 
-  <!-- CRM, Pipeline, Dashboard -->
-  <div class="crm-wrapper">
-    <!-- CRM Section -->
-    <div class="portal-container">
-      <h2>CRM Contacts</h2>
-      <div id="crmApp"></div>
-    </div>
+  function renderDashboard(pipeline) {
+    const stages = ['Qualification', 'Proposal', 'Negotiation', 'Closed Won', 'Closed Lost'];
+    const counts = stages.map(stage => pipeline.filter(p => p.stage === stage).length);
+    const totals = stages.map(stage => pipeline
+      .filter(p => p.stage === stage)
+      .reduce((sum, p) => sum + (parseFloat(p.dealValue) || 0), 0));
 
-    <!-- Pipeline Section -->
-    <div class="portal-container">
-      <h2>Sales Pipeline</h2>
-      <div id="pipelineApp"></div>
-    </div>
-
-    <!-- Dashboard Section -->
-    <div class="portal-container">
-      <h2>Dashboard</h2>
-      <canvas id="dealCountChart" style="margin-bottom:2rem;"></canvas>
-      <canvas id="dealValueChart"></canvas>
-    </div>
-  </div>
-
-  <!-- JavaScript -->
-  <script src="assets/js/crm-pipeline.js"></script>
-  <script>
-    const ctx1 = document.getElementById('dealCountChart').getContext('2d');
-    const ctx2 = document.getElementById('dealValueChart').getContext('2d');
-
-    function renderDashboard(pipeline) {
-      const stages = ['Qualification', 'Proposal', 'Negotiation', 'Closed Won', 'Closed Lost'];
-      const counts = stages.map(stage => pipeline.filter(p => p.stage === stage).length);
-      const totals = stages.map(stage =>
-        pipeline.filter(p => p.stage === stage)
-                .reduce((sum, p) => sum + (parseFloat(p.dealValue) || 0), 0)
-      );
-
-      new Chart(ctx1, {
-        type: 'bar',
-        data: {
-          labels: stages,
-          datasets: [{
-            label: 'Deals per Stage',
-            data: counts,
-            backgroundColor: '#004B87',
-            borderRadius: 4
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: { legend: { display: false } },
-          scales: { y: { beginAtZero: true } }
+    new Chart(ctx1, {
+      type: 'pie',
+      data: {
+        labels: stages,
+        datasets: [{
+          label: 'Deals per Stage',
+          data: counts,
+          backgroundColor: ['#004B87', '#005fa3', '#0073bf', '#FDC02F', '#ffdd75'],
+          borderColor: '#ffffff',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom' }
         }
-      });
-
-      new Chart(ctx2, {
-        type: 'bar',
-        data: {
-          labels: stages,
-          datasets: [{
-            label: 'Deal Value (ZAR)',
-            data: totals,
-            backgroundColor: '#FDC02F',
-            borderRadius: 4
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: { legend: { display: false } },
-          scales: { y: { beginAtZero: true } }
-        }
-      });
-    }
-
-    // Load chart after pipeline is available
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        if (window.getPipelineData) {
-          renderDashboard(window.getPipelineData());
-        }
-      }, 300);
+      }
     });
-  </script>
 
-</body>
-</html>
+    new Chart(ctx2, {
+      type: 'doughnut',
+      data: {
+        labels: stages,
+        datasets: [{
+          label: 'Deal Value (ZAR)',
+          data: totals,
+          backgroundColor: ['#FDC02F', '#fdd74f', '#fdeb7f', '#004B87', '#005fa3'],
+          borderColor: '#ffffff',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        cutout: '60%',
+        plugins: {
+          legend: { position: 'bottom' }
+        }
+      }
+    });
+  }
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      if (window.getPipelineData) {
+        renderDashboard(window.getPipelineData());
+      }
+    }, 300);
+  });
+</script>
