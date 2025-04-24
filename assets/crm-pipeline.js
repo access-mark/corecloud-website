@@ -1,15 +1,5 @@
-
 // crm-pipeline.js
 (function() {
-  const PASSWORD = '50050058';
-  if (prompt('Enter CRM password:') !== PASSWORD) {
-    document.body.innerHTML = '<p style="text-align:center;margin-top:4rem;">Access Denied.</p>';
-    return;
-  }
-
-  // All existing CRM + pipeline logic goes below...
-
-(function(){
   const PASSWORD = '50050058';
   if (prompt('Enter CRM password:') !== PASSWORD) {
     document.body.innerHTML = '<p style="text-align:center;margin-top:4rem;">Access Denied.</p>';
@@ -32,7 +22,7 @@
     return input;
   }
 
-  // CRM UI
+  // === CRM FORM ===
   const crmForm = document.createElement('form');
   crmForm.className = 'portal-form';
   crmForm.innerHTML = '<input type="hidden" id="contactIndex" />';
@@ -54,7 +44,7 @@
     <tbody id="contactsList"></tbody>`;
   crmApp.appendChild(contactsTable);
 
-  // Pipeline UI
+  // === PIPELINE FORM ===
   const pipeForm = document.createElement('form');
   pipeForm.className = 'portal-form';
   pipeForm.innerHTML = '<input type="hidden" id="pipelineIndex" />';
@@ -95,7 +85,7 @@
     <tbody id="pipelineList"></tbody>`;
   pipelineApp.appendChild(pipeTable);
 
-  // --- CRM Data ---
+  // === CRM DATA ===
   let contacts = JSON.parse(localStorage.getItem(contactsKey) || '[]');
   const cList = document.getElementById('contactsList');
   function renderContacts() {
@@ -131,7 +121,7 @@
   };
   renderContacts();
 
-  // --- Pipeline Data ---
+  // === PIPELINE DATA ===
   let pipeline = JSON.parse(localStorage.getItem(pipelineKey) || '[]');
   const pList = document.getElementById('pipelineList');
   function renderPipeline() {
@@ -165,7 +155,6 @@
   };
   renderPipeline();
 
-  // For dashboard
+  // For dashboard access
   window.getPipelineData = () => pipeline;
 })();
-
