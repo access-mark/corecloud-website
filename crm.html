@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     .crm-wrapper {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 3rem auto;
       padding: 0 1.5rem;
       display: grid;
@@ -17,19 +17,45 @@
     }
     .portal-container {
       background: #fff;
-      padding: 1.5rem;
       border-radius: 8px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      padding: 2rem;
     }
     .portal-container h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
       color: var(--color-primary);
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
       text-align: center;
+    }
+    .portal-form input,
+    .portal-form select,
+    .portal-form button {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .portal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    .portal-table th, .portal-table td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+      font-size: 0.95rem;
+    }
+    .portal-delete {
+      color: #c00;
+      font-weight: bold;
+      cursor: pointer;
     }
     canvas {
       width: 100% !important;
-      min-height: 200px;
+      height: auto !important;
     }
   </style>
 </head>
@@ -53,9 +79,8 @@
     <h1 class="page-title">CRM &amp; Pipeline Management</h1>
   </div>
 
-  <!-- Main Content Grid -->
+  <!-- CRM, Pipeline, Dashboard -->
   <div class="crm-wrapper">
-    
     <!-- CRM Section -->
     <div class="portal-container">
       <h2>CRM Contacts</h2>
@@ -71,13 +96,12 @@
     <!-- Dashboard Section -->
     <div class="portal-container">
       <h2>Dashboard</h2>
-      <canvas id="dealCountChart" style="margin-bottom: 2rem;"></canvas>
+      <canvas id="dealCountChart" style="margin-bottom:2rem;"></canvas>
       <canvas id="dealValueChart"></canvas>
     </div>
-
   </div>
 
-  <!-- CRM Logic & Chart Script -->
+  <!-- JavaScript -->
   <script src="assets/js/crm-pipeline.js"></script>
   <script>
     const ctx1 = document.getElementById('dealCountChart').getContext('2d');
@@ -87,7 +111,8 @@
       const stages = ['Qualification', 'Proposal', 'Negotiation', 'Closed Won', 'Closed Lost'];
       const counts = stages.map(stage => pipeline.filter(p => p.stage === stage).length);
       const totals = stages.map(stage =>
-        pipeline.filter(p => p.stage === stage).reduce((sum, p) => sum + (parseFloat(p.dealValue) || 0), 0)
+        pipeline.filter(p => p.stage === stage)
+                .reduce((sum, p) => sum + (parseFloat(p.dealValue) || 0), 0)
       );
 
       new Chart(ctx1, {
@@ -127,10 +152,10 @@
       });
     }
 
+    // Load chart after pipeline is available
     window.addEventListener('load', () => {
       setTimeout(() => {
         if (window.getPipelineData) {
-          console.log('Pipeline data loaded:', window.getPipelineData());
           renderDashboard(window.getPipelineData());
         }
       }, 300);
