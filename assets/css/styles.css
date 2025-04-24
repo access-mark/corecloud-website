@@ -30,7 +30,7 @@ body {
 
 /* === Logo (default) === */
 .logo {
-  height: clamp(40px, 5vw, 60px);
+height: clamp(130px, 17.3vw, 216px);
   width: auto;
   position: relative;
   z-index: 1001;
