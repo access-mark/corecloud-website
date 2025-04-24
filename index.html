@@ -28,7 +28,6 @@
           <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
           <li><a href="about.html" class="nav-btn">About</a></li>
           <li><a href="contact.html" class="nav-btn">Contact</a></li>
-          <li><a href="downloads.html" class="nav-btn btn-download">Downloads</a></li>
         </ul>
       </nav>
     </header>
@@ -36,41 +35,59 @@
     <div class="banner-text">
       <h1>Modern IT. Orchestrated.</h1>
       <p>
-        Delivering enterprise-grade infrastructure, AI, talent—and bespoke software—empowering Africa’s boldest organizations to lead in the digital economy.
+        We broker outcomes across infrastructure, cloud, AI, and talent —
+        delivered by the best partners in the business.
       </p>
-      <a href="contact.html" class="btn-primary">Request Executive Briefing</a>
+      <a href="contact.html" class="btn-primary">Request a Consultation</a>
     </div>
   </div>
 
-  <!-- Strategic Pillars -->
+  <!-- About teaser -->
   <section class="body-block">
-    <h2>Your Strategic Advantage</h2>
-    <div class="service-grid">
-      <a href="optimize-costs.html" class="card">
-        <h3>Optimize Costs</h3>
-        <p>Reduce IT spend by up to 30% through usage-based models and continuous spend analytics.</p>
-      </a>
-      <a href="speed-to-market.html" class="card">
-        <h3>Speed to Market</h3>
-        <p>Launch new digital services in weeks, not months—powered by AWS Cloud Factory and agile delivery pods.</p>
-      </a>
-      <a href="enterprise-governance.html" class="card">
-        <h3>Enterprise Governance</h3>
-        <p>Embed security and compliance at every layer with policy-as-code and real-time audit dashboards.</p>
-      </a>
-    </div>
+    <h2>About CoreCloud</h2>
+    <p>
+      CoreCloud (Pty) Ltd is a South African technology group engineered to
+      deliver scalable, secure, and intelligent IT solutions. We connect
+      enterprise needs to world-class execution — across infrastructure,
+      talent, cloud, and automation.
+    </p>
   </section>
 
-  <!-- Divisions Overview -->
+  <!-- Vision + Culture -->
+  <section class="body-block">
+    <h2>Vision &amp; Culture</h2>
+    <p>
+      We envision a modern African enterprise landscape — built on trust,
+      talent, and intelligent technology. Our culture rewards execution,
+      empowers bold thinking, and prioritizes real-world impact over
+      buzzwords.
+    </p>
+  </section>
+
+  <!-- Our Divisions -->
   <section class="body-block services-block">
-    <h2>How We Deliver</h2>
+    <h2>Our Divisions</h2>
     <div class="service-grid">
-      <a href="corecloud.html"    class="card"><h3>CoreCloud</h3><p>Cloud strategy, migration & management—scalable, resilient platforms.</p></a>
-      <a href="coretech.html"     class="card"><h3>CoreTech</h3><p>Hybrid infrastructure & managed networks for 24×7 uptime.</p></a>
-      <a href="corecapacity.html" class="card"><h3>CoreCapacity</h3><p>Elite talent & delivery teams on demand—accelerate your roadmap.</p></a>
-      <a href="coreai.html"       class="card"><h3>CoreAI</h3><p>Data science, automation & AI—turn insights into competitive advantage.</p></a>
-      <a href="corefin.html"      class="card"><h3>CoreFin</h3><p>OPEX financing & partner enablement—unlock growth without CAPEX.</p></a>
-      <a href="coredev.html"      class="card"><h3>CoreDev</h3><p>Software development partnerships—engineered by leading experts.</p></a>
+      <a href="corecloud.html" class="card">
+        <h3>CoreCloud</h3>
+        <p>AWS strategy &amp; execution broker — migrate, modernize, manage.</p>
+      </a>
+      <a href="coretech.html" class="card">
+        <h3>CoreTech</h3>
+        <p>Hybrid infrastructure, managed services, and network architecture.</p>
+      </a>
+      <a href="corecapacity.html" class="card">
+        <h3>CoreCapacity</h3>
+        <p>Elite IT talent placement and on-demand delivery teams.</p>
+      </a>
+      <a href="coreai.html" class="card">
+        <h3>CoreAI</h3>
+        <p>Automation, data science, and applied AI platforms.</p>
+      </a>
+      <a href="corefin.html" class="card">
+        <h3>CoreFin</h3>
+        <p>Tech enablement, OPEX finance, and partner onboarding support.</p>
+      </a>
     </div>
   </section>
 
@@ -79,7 +96,9 @@
   <script>
     fetch("footer.html")
       .then(res => res.text())
-      .then(html => { document.getElementById("site-footer").outerHTML = html });
+      .then(html => {
+        document.getElementById("site-footer").outerHTML = html;
+      });
   </script>
 
 </body>
