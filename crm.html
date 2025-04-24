@@ -1,113 +1,161 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CRM & Pipeline – CoreCloud</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+// crm-pipeline.js
+(function(){
+  const PASSWORD = '50050058';
+  if (prompt('Enter CRM password:') !== PASSWORD) {
+    document.body.innerHTML = '<p style="text-align:center;margin-top:4rem;">Access Denied.</p>';
+    return;
+  }
 
-  <!-- Subpage banner + header -->
-  <div class="small-banner">
-    <header class="banner-header">
-      <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
-      <nav>
-        <ul>
-          <li><a href="index.html" class="nav-btn">Home</a></li>
-          <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
-          <li><a href="about.html" class="nav-btn">About</a></li>
-          <li><a href="contact.html" class="nav-btn">Contact</a></li>
-          <li><a href="downloads.html" class="nav-btn">Downloads</a></li>
-          <li><a href="crm.html" class="nav-btn active">CRM</a></li>
-        </ul>
-      </nav>
-    </header>
-    <h1 class="page-title">CRM &amp; Pipeline Management</h1>
-  </div>
+  const contactsKey = 'crmContacts';
+  const pipelineKey = 'crmPipeline';
 
-  <!-- CRM, Pipeline, Dashboard Layout -->
-  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem;">
-    <div class="portal-container">
-      <h2>CRM Contacts</h2>
-      <div id="crmApp"></div>
-    </div>
-    <div class="portal-container">
-      <h2>Sales Pipeline</h2>
-      <div id="pipelineApp"></div>
-    </div>
-    <div class="portal-container">
-      <h2>Dashboard</h2>
-      <canvas id="dealCountChart" style="margin-bottom:2rem;"></canvas>
-      <canvas id="dealValueChart"></canvas>
-    </div>
-  </div>
+  const crmApp = document.getElementById('crmApp');
+  const pipelineApp = document.getElementById('pipelineApp');
 
-  <!-- Core Logic & Charts -->
-  <script src="assets/js/crm-pipeline.js"></script>
-  <script>
-    function renderDashboard(pipeline) {
-      const ctx1 = document.getElementById('dealCountChart')?.getContext('2d');
-      const ctx2 = document.getElementById('dealValueChart')?.getContext('2d');
-      if (!ctx1 || !ctx2) return;
+  function createInput(type, id, placeholder, required = false) {
+    const input = document.createElement('input');
+    input.type = type;
+    input.id = id;
+    input.placeholder = placeholder;
+    if (required) input.required = true;
+    input.style.marginBottom = '1rem';
+    return input;
+  }
 
-      const stages = ['Qualification', 'Proposal', 'Negotiation', 'Closed Won', 'Closed Lost'];
-      const counts = stages.map(stage => pipeline.filter(p => p.stage === stage).length);
-      const totals = stages.map(stage =>
-        pipeline.filter(p => p.stage === stage).reduce((sum, p) => sum + (parseFloat(p.dealValue) || 0), 0)
-      );
+  // === CRM FORM ===
+  const crmForm = document.createElement('form');
+  crmForm.className = 'portal-form';
+  crmForm.innerHTML = '<input type="hidden" id="contactIndex" />';
+  ['firstName','lastName','company','position','industry','mobile','landline','website','email'].forEach(f => {
+    const type = f === 'email' ? 'email' : f === 'website' ? 'url' : 'text';
+    crmForm.appendChild(createInput(type, f, f.replace(/([A-Z])/g, ' $1').replace(/^./, s => s.toUpperCase()), ['firstName','lastName','email'].includes(f)));
+  });
+  const saveBtn = document.createElement('button');
+  saveBtn.className = 'btn-primary';
+  saveBtn.textContent = 'Save Contact';
+  crmForm.appendChild(saveBtn);
+  crmApp.appendChild(crmForm);
 
-      new Chart(ctx1, {
-        type: 'pie',
-        data: {
-          labels: stages,
-          datasets: [{
-            label: 'Deals per Stage',
-            data: counts,
-            backgroundColor: ['#004B87', '#005fa3', '#0073bf', '#FDC02F', '#ffdd75'],
-            borderColor: '#ffffff',
-            borderWidth: 1
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { position: 'bottom' }
-          }
-        }
-      });
+  const contactsTable = document.createElement('table');
+  contactsTable.className = 'portal-table';
+  contactsTable.innerHTML = `
+    <thead><tr><th>First</th><th>Last</th><th>Company</th><th>Position</th>
+    <th>Industry</th><th>Mobile</th><th>Landline</th><th>Website</th><th>Email</th><th></th></tr></thead>
+    <tbody id="contactsList"></tbody>`;
+  crmApp.appendChild(contactsTable);
 
-      new Chart(ctx2, {
-        type: 'doughnut',
-        data: {
-          labels: stages,
-          datasets: [{
-            label: 'Deal Value (ZAR)',
-            data: totals,
-            backgroundColor: ['#FDC02F', '#fdd74f', '#fdeb7f', '#004B87', '#005fa3'],
-            borderColor: '#ffffff',
-            borderWidth: 1
-          }]
-        },
-        options: {
-          responsive: true,
-          cutout: '60%',
-          plugins: {
-            legend: { position: 'bottom' }
-          }
-        }
-      });
+  // === PIPELINE FORM ===
+  const pipeForm = document.createElement('form');
+  pipeForm.className = 'portal-form';
+  pipeForm.innerHTML = '<input type="hidden" id="pipelineIndex" />';
+  const pipeFields = [
+    ['oppName', 'Opportunity Name'],
+    ['clientName', 'Client / Company'],
+    ['contactPerson', 'Contact Person'],
+    ['dealValue', 'Deal Value'],
+    ['stage', 'Stage'],
+    ['closeDate', 'Expected Close Date']
+  ];
+  pipeFields.forEach(([id, label]) => {
+    if (id === 'stage') {
+      const select = document.createElement('select');
+      select.id = id;
+      select.required = true;
+      select.style.marginBottom = '1rem';
+      select.innerHTML = `
+        <option value="">Select Stage…</option>
+        <option>Qualification</option><option>Proposal</option><option>Negotiation</option>
+        <option>Closed Won</option><option>Closed Lost</option>`;
+      pipeForm.appendChild(select);
+    } else {
+      const input = createInput(id === 'dealValue' ? 'number' : id === 'closeDate' ? 'date' : 'text', id, label, id !== 'contactPerson');
+      pipeForm.appendChild(input);
     }
+  });
+  const pipeSaveBtn = document.createElement('button');
+  pipeSaveBtn.className = 'btn-primary';
+  pipeSaveBtn.textContent = 'Save Pipeline Item';
+  pipeForm.appendChild(pipeSaveBtn);
+  pipelineApp.appendChild(pipeForm);
 
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        if (window.getPipelineData) {
-          renderDashboard(window.getPipelineData());
-        }
-      }, 300);
-    });
-  </script>
+  const pipeTable = document.createElement('table');
+  pipeTable.className = 'portal-table';
+  pipeTable.innerHTML = `
+    <thead><tr><th>Opportunity</th><th>Client</th><th>Contact</th>
+    <th>Value</th><th>Stage</th><th>Close Date</th><th></th></tr></thead>
+    <tbody id="pipelineList"></tbody>`;
+  pipelineApp.appendChild(pipeTable);
 
-</body>
-</html>
+  // === CRM DATA ===
+  let contacts = JSON.parse(localStorage.getItem(contactsKey) || '[]');
+  const cList = document.getElementById('contactsList');
+  function renderContacts() {
+    cList.innerHTML = contacts.map((c,i)=>`
+      <tr>
+        <td>${c.firstName}</td><td>${c.lastName}</td><td>${c.company||''}</td><td>${c.position||''}</td>
+        <td>${c.industry||''}</td><td>${c.mobile||''}</td><td>${c.landline||''}</td>
+        <td>${c.website ? `<a href="${c.website}" target="_blank">${c.website}</a>` : ''}</td>
+        <td>${c.email}</td>
+        <td><span data-i="${i}" class="portal-delete">&times;</span></td>
+      </tr>`).join('');
+  }
+  crmForm.onsubmit = e => {
+    e.preventDefault();
+    const idx = document.getElementById('contactIndex').value;
+    const obj = {};
+    ['firstName','lastName','company','position','industry','mobile','landline','website','email']
+      .forEach(id => obj[id] = document.getElementById(id).value.trim());
+    idx === '' ? contacts.push(obj) : contacts[idx] = obj;
+    localStorage.setItem(contactsKey, JSON.stringify(contacts));
+    crmForm.reset();
+    document.getElementById('contactIndex').value = '';
+    renderContacts();
+  };
+  cList.onclick = e => {
+    if (!e.target.classList.contains('portal-delete')) return;
+    const i = e.target.dataset.i;
+    if (confirm('Delete contact?')) {
+      contacts.splice(i, 1);
+      localStorage.setItem(contactsKey, JSON.stringify(contacts));
+      renderContacts();
+    }
+  };
+  renderContacts();
+
+  // === PIPELINE DATA ===
+  let pipeline = JSON.parse(localStorage.getItem(pipelineKey) || '[]');
+  const pList = document.getElementById('pipelineList');
+  function renderPipeline() {
+    pList.innerHTML = pipeline.map((p,i)=>`
+      <tr>
+        <td>${p.oppName}</td><td>${p.clientName}</td><td>${p.contactPerson||''}</td>
+        <td>${p.dealValue||''}</td><td>${p.stage||''}</td><td>${p.closeDate||''}</td>
+        <td><span data-i="${i}" class="portal-delete">&times;</span></td>
+      </tr>`).join('');
+  }
+  pipeForm.onsubmit = e => {
+    e.preventDefault();
+    const idx = document.getElementById('pipelineIndex').value;
+    const obj = {};
+    ['oppName','clientName','contactPerson','dealValue','stage','closeDate']
+      .forEach(id => obj[id] = document.getElementById(id).value);
+    idx === '' ? pipeline.push(obj) : pipeline[idx] = obj;
+    localStorage.setItem(pipelineKey, JSON.stringify(pipeline));
+    pipeForm.reset();
+    document.getElementById('pipelineIndex').value = '';
+    renderPipeline();
+  };
+  pList.onclick = e => {
+    if (!e.target.classList.contains('portal-delete')) return;
+    const i = e.target.dataset.i;
+    if (confirm('Delete this pipeline item?')) {
+      pipeline.splice(i, 1);
+      localStorage.setItem(pipelineKey, JSON.stringify(pipeline));
+      renderPipeline();
+    }
+  };
+  renderPipeline();
+
+  // For dashboard access
+  window.getPipelineData = () => pipeline;
+})();
