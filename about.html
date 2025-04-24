@@ -8,71 +8,76 @@
 </head>
 <body>
 
-  <!-- Banner + Header overlay -->
+  <!-- Small-Banner + Header overlay -->
   <div class="small-banner">
     <header class="banner-header">
       <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
       <nav>
         <ul>
-          <li><a href="index.html"    class="nav-btn">Home</a></li>
+          <li><a href="index.html" class="nav-btn">Home</a></li>
           <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
-          <li><a href="about.html"     class="nav-btn active">About</a></li>
-          <li><a href="contact.html"    class="nav-btn">Contact</a></li>
-          <li><a href="downloads.html"  class="nav-btn btn-download">Downloads</a></li>
+          <li><a href="about.html" class="nav-btn active">About</a></li>
+          <li><a href="contact.html" class="nav-btn">Contact</a></li>
+          <li><a href="downloads.html" class="nav-btn btn-download">Downloads</a></li>
         </ul>
       </nav>
     </header>
     <h1 class="page-title">About CoreCloud</h1>
   </div>
 
-  <!-- Side-by-Side Core Narrative -->
-  <section class="body-block" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+  <!-- Executive Overview & Mission Side-by-Side -->
+  <section class="body-block" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; text-align: left;">
     <div class="column">
-      <h2>Executive Overview</h2>
+      <h2 style="text-align: center;">Executive Overview</h2>
       <p>
-        CoreCloud was founded by cloud strategist <strong>Mark Louw</strong> to address Africa’s unique enterprise challenges. With leadership roles at NTT, Dell EMC & TrueMark, Mark’s vision is to deliver trusted, outcome-driven IT solutions that fuel growth.
+        CoreCloud was founded by visionary strategist <strong>Mark Louw</strong> to address Africa’s most pressing enterprise IT challenges. With senior leadership experience at NTT, Dell EMC, and TrueMark, Mark brings a deep understanding of cloud, infrastructure, and transformation to the South African market.
       </p>
       <p>
-        From secure infrastructure to AI-powered decision support, we exist to help organizations modernize with confidence and measurable ROI.
+        Whether deploying secure cloud environments, augmenting delivery teams, or optimizing infrastructure, CoreCloud drives measurable outcomes — with precision, pace, and purpose.
       </p>
     </div>
     <div class="column">
-      <h2>Mission & Values</h2>
+      <h2 style="text-align: center;">Mission & Values</h2>
       <p>
-        We’re more than a technology provider—we’re your strategic partner. We lead with integrity, execute with excellence, and deliver real-world impact.
+        Our mission is bold but simple — to be the engine room for Africa’s modern enterprise. We lead engagements with strategic intent, operational precision, and relentless execution.
       </p>
-      <ul style="list-style:disc; padding-left:1.5rem;">
-        <li><strong>Excellence.</strong> World-class execution, every time.</li>
-        <li><strong>Integrity.</strong> Transparent, trust-based partnerships.</li>
-        <li><strong>Accountability.</strong> We own outcomes, not just outputs.</li>
+      <ul style="list-style: disc; padding-left: 1.5rem;">
+        <li><strong>Excellence:</strong> Execution without compromise.</li>
+        <li><strong>Integrity:</strong> Transparent partnerships built on trust.</li>
+        <li><strong>Accountability:</strong> We own delivery. We own impact.</li>
       </ul>
     </div>
   </section>
 
-  <!-- Structure & Leadership -->
-  <section class="body-block" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
+  <!-- Structure & Leadership Side-by-Side -->
+  <section class="body-block" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; text-align: left;">
     <div class="column">
-      <h2>Group Structure</h2>
-      <ul style="list-style:disc; padding-left:1.5rem;">
+      <h2 style="text-align: center;">Group Structure</h2>
+      <ul style="list-style: disc; padding-left: 1.5rem;">
         <li><strong>Access Zero:</strong> Cybersecurity & digital infrastructure.</li>
         <li><strong>CoreTech:</strong> Hybrid IT & managed services.</li>
         <li><strong>CoreCapacity:</strong> Talent placement & delivery teams.</li>
+        <li><strong>CoreAI:</strong> Automation, data science & applied AI.</li>
+        <li><strong>CoreFin:</strong> Tech enablement & OPEX financing.</li>
+        <li><strong>CoreDev:</strong> Strategic software development partners.</li>
       </ul>
     </div>
-    <div class="column leadership-block">
-      <h2>Meet the Founder</h2>
-      <p>
-        <strong>Mark Louw</strong>, Founder & CEO, is committed to building African enterprises that compete globally—backed by a proven track record and an unwavering focus on results.
+    <div class="column leadership-block" style="display: flex; flex-direction: column; align-items: center;">
+      <h2 style="text-align: center;">Meet the Founder</h2>
+      <p style="text-align: center;">
+        <strong>Mark Louw</strong>, Founder & CEO, is a results-focused operator with deep experience building revenue-generating IT ecosystems across Africa. He is relentless in delivery — and committed to empowering African enterprises to scale, secure, and lead.
       </p>
-      <a href="contact.html" class="btn-primary">Schedule a Strategy Session</a>
+      <a href="contact.html" class="btn-primary" style="margin-top: 1.5rem;">Schedule a Strategy Session</a>
     </div>
   </section>
 
+  <!-- Footer -->
   <div id="site-footer"></div>
   <script>
     fetch("footer.html")
-      .then(r => r.text())
+      .then(res => res.text())
       .then(html => document.getElementById("site-footer").outerHTML = html);
   </script>
+
 </body>
 </html>
