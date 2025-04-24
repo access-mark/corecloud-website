@@ -10,20 +10,24 @@
 
   <!-- Banner + Header overlay -->
   <div class="banner-container">
-    <img src="assets/images/sandton-dusk.png"
-         alt="Sandton Skyline at Dusk"
-         class="banner-img" />
+    <img
+      src="assets/images/sandton-dusk.png"
+      alt="CoreCloud Sandton Skyline Banner"
+      class="banner-img"
+    />
 
     <header class="banner-header">
-      <img src="assets/images/corecloud-logo.png"
-           alt="CoreCloud Logo"
-           class="logo" />
+      <img
+        src="assets/images/corecloud-logo.png"
+        alt="CoreCloud Logo"
+        class="logo"
+      />
       <nav>
         <ul>
-          <li><a href="index.html"    class="nav-btn active">Home</a></li>
+          <li><a href="index.html" class="nav-btn active">Home</a></li>
           <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
-          <li><a href="about.html"     class="nav-btn">About</a></li>
-          <li><a href="contact.html"   class="nav-btn">Contact</a></li>
+          <li><a href="about.html" class="nav-btn">About</a></li>
+          <li><a href="contact.html" class="nav-btn">Contact</a></li>
           <li><a href="downloads.html" class="nav-btn btn-download">Downloads</a></li>
         </ul>
       </nav>
@@ -32,7 +36,7 @@
     <div class="banner-text">
       <h1>Modern IT. Orchestrated.</h1>
       <p>
-        Delivering enterprise-grade infrastructure, AI, and talent at scale—empowering Africa’s boldest organizations to lead in the digital economy.
+        Delivering enterprise-grade infrastructure, AI, talent—and bespoke software—empowering Africa’s boldest organizations to lead in the digital economy.
       </p>
       <a href="contact.html" class="btn-primary">Request Executive Briefing</a>
     </div>
@@ -42,18 +46,18 @@
   <section class="body-block">
     <h2>Your Strategic Advantage</h2>
     <div class="service-grid">
-      <div class="card">
+      <a href="optimize-costs.html" class="card">
         <h3>Optimize Costs</h3>
-        <p>Reduce IT spend by up to 30% through usage-based models and continuous optimization.</p>
-      </div>
-      <div class="card">
+        <p>Reduce IT spend by up to 30% through usage-based models and continuous spend analytics.</p>
+      </a>
+      <a href="speed-to-market.html" class="card">
         <h3>Speed to Market</h3>
-        <p>Launch new digital services in weeks, not months—powered by AWS and hybrid cloud expertise.</p>
-      </div>
-      <div class="card">
+        <p>Launch new digital services in weeks, not months—powered by AWS Cloud Factory and agile delivery pods.</p>
+      </a>
+      <a href="enterprise-governance.html" class="card">
         <h3>Enterprise Governance</h3>
-        <p>Embed security and compliance at every layer, ensuring resilience and regulatory adherence.</p>
-      </div>
+        <p>Embed security and compliance at every layer with policy-as-code and real-time audit dashboards.</p>
+      </a>
     </div>
   </section>
 
@@ -65,7 +69,7 @@
       <a href="coretech.html"     class="card"><h3>CoreTech</h3><p>Hybrid infrastructure & managed networks for 24×7 uptime.</p></a>
       <a href="corecapacity.html" class="card"><h3>CoreCapacity</h3><p>Elite talent & delivery teams on demand—accelerate your roadmap.</p></a>
       <a href="coreai.html"       class="card"><h3>CoreAI</h3><p>Data science, automation & AI—turn insights into competitive advantage.</p></a>
-      <a href="corefin.html"      class="card"><h3>CoreFin</h3><p>OPEX financing & partner enablement—fund innovation without capital constraints.</p></a>
+      <a href="corefin.html"      class="card"><h3>CoreFin</h3><p>OPEX financing & partner enablement—unlock growth without CAPEX.</p></a>
       <a href="coredev.html"      class="card"><h3>CoreDev</h3><p>Software development partnerships—engineered by leading experts.</p></a>
     </div>
   </section>
@@ -74,8 +78,9 @@
   <div id="site-footer"></div>
   <script>
     fetch("footer.html")
-      .then(r => r.text())
-      .then(html => document.getElementById("site-footer").outerHTML = html);
+      .then(res => res.text())
+      .then(html => { document.getElementById("site-footer").outerHTML = html });
   </script>
+
 </body>
 </html>
