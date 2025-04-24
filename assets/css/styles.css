@@ -263,4 +263,10 @@ footer a:hover {
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
   }
+  /* === Center all bottom CTA buttons === */
+.body-block .btn-primary,
+.leadership-block .btn-primary,
+.column .btn-primary {
+  display: inline-block;    /* ensure block‐level centering works */
+  margin: 2rem auto 0;      /* 2rem top gap, auto left/right, 0 bottom */
 }
