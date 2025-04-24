@@ -8,6 +8,7 @@
 </head>
 <body>
 
+  <!-- Banner + Header overlay -->
   <div class="small-banner">
     <header class="banner-header">
       <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
@@ -27,18 +28,39 @@
     <h1 class="page-title">CoreAI</h1>
   </div>
 
+  <!-- Executive Overview -->
   <section class="body-block">
-    <h2>About CoreAI</h2>
-    <p>CoreAI builds and deploys automation, data science, and applied AI platforms that drive efficiency, insight, and competitive advantage for your enterprise.</p>
-    <a href="contact.html" class="btn-primary">Learn More</a>
+    <h2>Driving 50% Automation with Our AI Platform</h2>
+    <p>
+      CoreAI integrates proprietary automation engines and data science pipelines to deliver:
+    </p>
+    <ul style="max-width:800px; margin:1rem auto 0; padding-left:1.5rem; text-align:left;">
+      <li><strong>50% Task Automation:</strong> Rule-based bots freeing up human capital.</li>
+      <li><strong>30% Productivity Uplift:</strong> Insights-driven workflows that accelerate decisions.</li>
+      <li><strong>24/7 Intelligent Ops:</strong> AI-powered monitoring with self-healing routines.</li>
+      <li><strong>Custom ML Models:</strong> Tailored to your data, driving predictive accuracy.</li>
+      <li><strong>Executive Analytics:</strong> Natural-language executive summaries in your dashboard.</li>
+    </ul>
   </section>
 
+  <!-- Call to Action -->
+  <section class="body-block">
+    <h2>Unlock AI-Driven Growth</h2>
+    <p>
+      Ready to harness machine learning and intelligent automation at scale?  
+      CoreAI will deliver the platform and expertise to transform your operations.
+    </p>
+    <a href="contact.html" class="btn-primary">Schedule an AI Strategy Call</a>
+  </section>
+
+  <!-- Footer -->
   <div id="site-footer"></div>
   <script>
-    fetch("footer.html").then(res => res.text()).then(html => {
-      document.getElementById("site-footer").outerHTML = html;
-    });
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("site-footer").outerHTML = html;
+      });
   </script>
-
 </body>
 </html>
