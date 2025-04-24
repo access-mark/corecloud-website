@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CRM – CoreCloud</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* Additional CRM-specific tweaks */
+    .crm-container { max-width:800px; margin:4rem auto; padding:1rem; background:#fff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+    .crm-form, .crm-table { width:100%; margin-bottom:2rem; }
+    .crm-form input, .crm-form textarea, .crm-form button { width:100%; margin:0.5rem 0; padding:0.75rem; font-size:1rem; }
+    .crm-table th, .crm-table td { padding:0.5rem; border-bottom:1px solid #eee; }
+    .crm-table { border-collapse: collapse; width:100%; }
+    .crm-delete { color:#c00; cursor:pointer; }
+  </style>
+</head>
+<body>
+
+  <!-- Banner + Header overlay -->
+  <div class="small-banner">
+    <header class="banner-header">
+      <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html" class="nav-btn">Home</a></li>
+          <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
+          <li><a href="about.html" class="nav-btn">About</a></li>
+          <li><a href="contact.html" class="nav-btn">Contact</a></li>
+          <li><a href="downloads.html" class="nav-btn">Downloads</a></li>
+          <li><a href="crm.html" class="nav-btn active">CRM</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1 class="page-title">Client Relationship Management</h1>
+  </div>
+
+  <div class="crm-container" id="crmApp" style="display:none;">
+    <h2>Add / Update Contact</h2>
+    <form class="crm-form" id="contactForm">
+      <input type="hidden" id="contactIndex" value="">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email Address" required />
+      <input type="text" id="company" placeholder="Company" />
+      <textarea id="notes" rows="4" placeholder="Notes…"></textarea>
+      <button type="submit" class="btn-primary">Save Contact</button>
+    </form>
+
+    <h2>Saved Contacts</h2>
+    <table class="crm-table">
+      <thead><tr><th>Name</th><th>Email</th><th>Company</th><th>Notes</th><th> </th></tr></thead>
+      <tbody id="contactsList"></tbody>
+    </table>
+  </div>
+
+  <script>
+    (function(){
+      const PASSWORD = 'Secure2025'; // set your CRM password here
+      if (prompt('Enter CRM password:') !== PASSWORD) {
+        document.body.innerHTML = '<p style="text-align:center;margin-top:4rem;">Access Denied.</p>';
+        return;
+      }
+
+      const form = document.getElementById('contactForm');
+      const list = document.getElementById('contactsList');
+      let contacts = JSON.parse(localStorage.getItem('crmContacts')||'[]');
+
+      function render() {
+        list.innerHTML = contacts.map((c,i)=>
+          `<tr>
+            <td>${c.name}</td>
+            <td>${c.email}</td>
+            <td>${c.company||''}</td>
+            <td>${c.notes||''}</td>
+            <td><span class="crm-delete" data-i="${i}">&times;</span></td>
+          </tr>`
+        ).join('');
+      }
+
+      function save() {
+        localStorage.setItem('crmContacts', JSON.stringify(contacts));
+        render();
+        form.reset();
+        document.getElementById('contactIndex').value = '';
+      }
+
+      form.addEventListener('submit', e=>{
+        e.preventDefault();
+        const idx = document.getElementById('contactIndex').value;
+        const c = {
+          name: document.getElementById('name').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          company: document.getElementById('company').value.trim(),
+          notes: document.getElementById('notes').value.trim(),
+        };
+        if (idx==='') contacts.push(c);
+        else contacts[idx]=c;
+        save();
+      });
+
+      list.addEventListener('click', e=>{
+        if (!e.target.matches('.crm-delete')) return;
+        const i = e.target.dataset.i;
+        if (confirm('Delete this contact?')) {
+          contacts.splice(i,1);
+          save();
+        }
+      });
+
+      // show app
+      document.getElementById('crmApp').style.display = 'block';
+      render();
+    })();
+  </script>
+
+</body>
+</html>
