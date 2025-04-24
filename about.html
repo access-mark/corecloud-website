@@ -1,4 +1,3 @@
-<!-- about.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,43 +8,43 @@
 </head>
 <body>
 
-  <!-- Small-Banner + Header overlay -->
+  <!-- Banner + Header overlay -->
   <div class="small-banner">
     <header class="banner-header">
       <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
       <nav>
         <ul>
-          <li><a href="index.html" class="nav-btn">Home</a></li>
+          <li><a href="index.html"    class="nav-btn">Home</a></li>
           <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
-          <li><a href="about.html" class="nav-btn active">About</a></li>
-          <li><a href="contact.html" class="nav-btn">Contact</a></li>
-          <li><a href="downloads.html" class="nav-btn btn-download">Downloads</a></li>
+          <li><a href="about.html"     class="nav-btn active">About</a></li>
+          <li><a href="contact.html"    class="nav-btn">Contact</a></li>
+          <li><a href="downloads.html"  class="nav-btn btn-download">Downloads</a></li>
         </ul>
       </nav>
     </header>
     <h1 class="page-title">About CoreCloud</h1>
   </div>
 
-  <!-- Two-Column Executive Blocks -->
+  <!-- Side-by-Side Core Narrative -->
   <section class="body-block" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
     <div class="column">
       <h2>Executive Overview</h2>
       <p>
-        Founded by cloud strategist <strong>Mark Louw</strong>, CoreCloud is South Africa’s premier broker of enterprise-scale IT outcomes. Drawing on decades of leadership at NTT, Dell EMC, and TrueMark, we deliver trusted solutions that drive measurable growth.
+        CoreCloud was founded by cloud strategist <strong>Mark Louw</strong> to address Africa’s unique enterprise challenges. With leadership roles at NTT, Dell EMC & TrueMark, Mark’s vision is to deliver trusted, outcome-driven IT solutions that fuel growth.
       </p>
       <p>
-        From secure infrastructure to AI-driven insights, our mission is simple: empower African enterprises to compete globally.
+        From secure infrastructure to AI-powered decision support, we exist to help organizations modernize with confidence and measurable ROI.
       </p>
     </div>
     <div class="column">
-      <h2>Our Mission &amp; Values</h2>
+      <h2>Mission & Values</h2>
       <p>
-        We are more than a service provider—we are your strategic partner. We lead with integrity, execute with excellence, and deliver with accountability.
+        We’re more than a technology provider—we’re your strategic partner. We lead with integrity, execute with excellence, and deliver real-world impact.
       </p>
       <ul style="list-style:disc; padding-left:1.5rem;">
         <li><strong>Excellence.</strong> World-class execution, every time.</li>
         <li><strong>Integrity.</strong> Transparent, trust-based partnerships.</li>
-        <li><strong>Execution.</strong> Real-world impact over theory.</li>
+        <li><strong>Accountability.</strong> We own outcomes, not just outputs.</li>
       </ul>
     </div>
   </section>
@@ -56,24 +55,23 @@
       <h2>Group Structure</h2>
       <ul style="list-style:disc; padding-left:1.5rem;">
         <li><strong>Access Zero:</strong> Cybersecurity & digital infrastructure.</li>
-        <li><strong>CoreTech:</strong> Hybrid IT & managed networks.</li>
+        <li><strong>CoreTech:</strong> Hybrid IT & managed services.</li>
         <li><strong>CoreCapacity:</strong> Talent placement & delivery teams.</li>
       </ul>
     </div>
     <div class="column leadership-block">
       <h2>Meet the Founder</h2>
       <p>
-        <strong>Mark Louw</strong>, Founder & CEO, is a veteran technology executive with a passion for driving scalable transformation in Africa’s most ambitious organizations.
+        <strong>Mark Louw</strong>, Founder & CEO, is committed to building African enterprises that compete globally—backed by a proven track record and an unwavering focus on results.
       </p>
       <a href="contact.html" class="btn-primary">Schedule a Strategy Session</a>
     </div>
   </section>
 
-  <!-- Footer -->
   <div id="site-footer"></div>
   <script>
     fetch("footer.html")
-      .then(res => res.text())
+      .then(r => r.text())
       .then(html => document.getElementById("site-footer").outerHTML = html);
   </script>
 </body>
