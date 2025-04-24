@@ -72,14 +72,14 @@ header.banner-header nav ul li a.nav-btn {
   align-items: center;
   width: 100px;
   height: 2rem;
-  padding: 0.4rem 0;
   font-size: 0.9rem;
+  padding: 0.4rem 0;
   background: rgba(255,255,255,0.2);
   color: var(--color-white);
   text-decoration: none;
   border: 2px solid transparent;
   border-radius: 4px;
-  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 header.banner-header nav ul li a.nav-btn:hover {
   background: var(--color-white);
@@ -89,15 +89,6 @@ header.banner-header nav ul li a.nav-btn.active {
   background: var(--color-accent);
   color: var(--color-primary);
   border-color: var(--color-accent);
-}
-
-/* === Unified banner titles for homepage & sub-pages === */
-.banner-text h1,
-.small-banner .page-title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 0.75rem;
-  color: var(--color-primary);
-  text-shadow: 0 4px 8px rgba(0,0,0,0.6);
 }
 
 /* === Banner Container & Image === */
@@ -115,7 +106,15 @@ header.banner-header nav ul li a.nav-btn.active {
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  display: block;
+}
+
+/* === Unified banner titles for homepage & sub-pages === */
+.banner-text h1,
+.small-banner .page-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 0.75rem;
+  color: var(--color-primary);
+  text-shadow: 0 4px 8px rgba(0,0,0,0.6);
 }
 
 /* === Banner Text Overlay === */
@@ -136,9 +135,9 @@ header.banner-header nav ul li a.nav-btn.active {
 
 /* === Small-Banner for sub-pages === */
 .small-banner {
-  height: clamp(300px, 60vh, 600px);
   position: relative;
   width: 100%;
+  height: clamp(300px, 60vh, 600px);
   overflow: hidden;
   background: url('../images/sandton-dusk.png') no-repeat top center;
   background-size: cover;
@@ -169,7 +168,9 @@ header.banner-header nav ul li a.nav-btn.active {
 }
 
 /* === Service Cards === */
-.services-block { margin-top: 3rem; }
+.services-block {
+  margin-top: 3rem;
+}
 .service-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -181,10 +182,12 @@ header.banner-header nav ul li a.nav-btn.active {
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card:hover {
   transform: translateY(-6px);
@@ -236,9 +239,20 @@ footer a:hover {
 
 /* === Responsive Fixes === */
 @media (max-width: 768px) {
-  header nav ul { gap: 0.75rem; }
-  .banner-text h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
-  .body-block h2 { font-size: 1.5rem; }
-  .card { padding: 1.5rem; }
-  .btn-primary { padding: 0.6rem 1.2rem; font-size: 0.95rem; }
+  header.banner-header nav ul {
+    gap: 0.75rem;
+  }
+  .banner-text h1 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+  .body-block h2 {
+    font-size: 1.5rem;
+  }
+  .card {
+    padding: 1.5rem;
+  }
+  .btn-primary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
 }
