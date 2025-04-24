@@ -1,5 +1,13 @@
 
 // crm-pipeline.js
+(function() {
+  const PASSWORD = '50050058';
+  if (prompt('Enter CRM password:') !== PASSWORD) {
+    document.body.innerHTML = '<p style="text-align:center;margin-top:4rem;">Access Denied.</p>';
+    return;
+  }
+
+  // All existing CRM + pipeline logic goes below...
 
 (function(){
   const PASSWORD = '50050058';
