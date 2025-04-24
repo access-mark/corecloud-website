@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,22 +9,26 @@
 </head>
 <body>
 
-  <!-- Banner + Header -->
+  <!-- Banner + Header overlay -->
   <div class="banner-container">
-    <img src="assets/images/sandton-dusk.png"
-         alt="CoreCloud Sandton Skyline Banner"
-         class="banner-img" />
+    <img
+      src="assets/images/sandton-dusk.png"
+      alt="CoreCloud Sandton Skyline Banner"
+      class="banner-img"
+    />
 
     <header class="banner-header">
-      <img src="assets/images/corecloud-logo.png"
-           alt="CoreCloud Logo"
-           class="logo" />
+      <img
+        src="assets/images/corecloud-logo.png"
+        alt="CoreCloud Logo"
+        class="logo"
+      />
       <nav>
         <ul>
-          <li><a href="index.html"    class="nav-btn active">Home</a></li>
+          <li><a href="index.html" class="nav-btn active">Home</a></li>
           <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
-          <li><a href="about.html"     class="nav-btn">About</a></li>
-          <li><a href="contact.html"   class="nav-btn">Contact</a></li>
+          <li><a href="about.html" class="nav-btn">About</a></li>
+          <li><a href="contact.html" class="nav-btn">Contact</a></li>
           <li><a href="downloads.html" class="nav-btn btn-download">Downloads</a></li>
         </ul>
       </nav>
@@ -31,30 +36,56 @@
 
     <div class="banner-text">
       <h1>Modern IT. Orchestrated.</h1>
-      <p>We broker outcomes across infrastructure, cloud, AI, and talent — delivered by the best partners in the business.</p>
-      <a href="contact.html" class="btn-primary">Request a Consultation</a>
+      <p>
+        We broker outcomes across infrastructure, cloud, AI, and talent—delivered by world-class partners and powered by African ingenuity.
+      </p>
+      <a href="contact.html" class="btn-primary">Request a C-Suite Briefing</a>
     </div>
   </div>
 
-  <!-- Main Teasers -->
+  <!-- Executive Summary -->
   <section class="body-block">
-    <h2>About CoreCloud</h2>
-    <p>CoreCloud (Pty) Ltd is a South African technology group engineered to deliver scalable, secure, and intelligent IT solutions. We connect enterprise needs to world-class execution — across infrastructure, talent, cloud, and automation.</p>
-  </section>
-
-  <section class="body-block">
-    <h2>Vision &amp; Culture</h2>
-    <p>We envision a modern African enterprise landscape — built on trust, talent, and intelligent technology. Our culture rewards execution, empowers bold thinking, and prioritizes real-world impact over buzzwords.</p>
-  </section>
-
-  <section class="body-block services-block">
-    <h2>Our Divisions</h2>
+    <h2>Your Strategic Advantage</h2>
     <div class="service-grid">
-      <a href="corecloud.html" class="card"><h3>CoreCloud</h3><p>AWS strategy &amp; execution broker — migrate, modernize, manage.</p></a>
-      <a href="coretech.html"  class="card"><h3>CoreTech</h3><p>Hybrid infrastructure, managed services, and network architecture.</p></a>
-      <a href="corecapacity.html" class="card"><h3>CoreCapacity</h3><p>Elite IT talent placement and on-demand delivery teams.</p></a>
-      <a href="coreai.html"    class="card"><h3>CoreAI</h3><p>Automation, data science, and applied AI platforms.</p></a>
-      <a href="corefin.html"   class="card"><h3>CoreFin</h3><p>Tech enablement, OPEX finance, and partner onboarding support.</p></a>
+      <div class="card">
+        <h3>Maximize ROI</h3>
+        <p>Align IT spend to business outcomes—optimize costs by up to 30% through consumption-based models.</p>
+      </div>
+      <div class="card">
+        <h3>Accelerate Time-to-Market</h3>
+        <p>Launch new digital services in weeks, not months—powered by our AWS and hybrid cloud expertise.</p>
+      </div>
+      <div class="card">
+        <h3>Strengthen Governance</h3>
+        <p>Embed enterprise-grade security and compliance across your entire technology stack.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Divisions -->
+  <section class="body-block services-block">
+    <h2>How We Deliver</h2>
+    <div class="service-grid">
+      <a href="corecloud.html" class="card">
+        <h3>CoreCloud</h3>
+        <p>Cloud strategy, migration & managed services—enabling scalable, resilient platforms.</p>
+      </a>
+      <a href="coretech.html" class="card">
+        <h3>CoreTech</h3>
+        <p>Hybrid infrastructure design, network architecture, and 24×7 managed support.</p>
+      </a>
+      <a href="corecapacity.html" class="card">
+        <h3>CoreCapacity</h3>
+        <p>Elite IT talent and delivery teams on demand—accelerate your roadmap with expert personnel.</p>
+      </a>
+      <a href="coreai.html" class="card">
+        <h3>CoreAI</h3>
+        <p>Data science, automation, and AI platforms—turn insights into competitive advantage.</p>
+      </a>
+      <a href="corefin.html" class="card">
+        <h3>CoreFin</h3>
+        <p>OPEX financing and partner onboarding support—unlock growth without upfront capital.</p>
+      </a>
     </div>
   </section>
 
@@ -65,6 +96,5 @@
       .then(res => res.text())
       .then(html => document.getElementById("site-footer").outerHTML = html);
   </script>
-
 </body>
 </html>
