@@ -6,32 +6,37 @@
   <title>About CoreCloud – Leadership &amp; Vision</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <style>
-    /* container to center content and limit width */
+    /* container to center each two-column group */
     .centered-container {
       max-width: 1200px;
-      margin: 0 auto 3rem auto;
+      margin: 0 auto 3rem;
       padding: 0 1rem;
     }
-    /* two-column layout */
+    /* two-column layout with equal-height columns */
     .two-columns {
       display: flex;
-      flex-wrap: wrap;
       gap: 2rem;
       justify-content: space-between;
+      align-items: stretch;
     }
     .two-columns .column {
       flex: 1;
-      min-width: 300px;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* visible body-blocks */
+    /* body-block as a flex child to fill column */
     .body-block {
       background: #fff;
       border: 1px solid rgba(0,0,0,0.1);
       padding: 2rem;
-      margin: 0; /* column gap handles spacing */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0; /* spacing handled by .two-columns gap */
     }
-    /* titles centered, content left */
+
+    /* title centered, content left-aligned */
     .body-block h2 {
       text-align: center;
       margin-bottom: 1rem;
@@ -40,6 +45,12 @@
     .body-block ul {
       text-align: left;
       line-height: 1.5;
+    }
+
+    /* center the CTA button in the leadership block */
+    .leadership-block .btn-primary {
+      align-self: center;
+      margin-top: 2rem;
     }
   </style>
 </head>
@@ -67,23 +78,27 @@
       <div class="column">
         <section class="body-block">
           <h2>Executive Overview</h2>
-          <p>
-            Founded by seasoned tech executive <strong>Mark Louw</strong>, CoreCloud (Pty) Ltd is a South African technology group built to simplify enterprise IT while driving scalable digital transformation. With decades of experience leading sales, partnerships, and infrastructure at global firms like NTT, Dell EMC, and TrueMark, Mark’s vision for CoreCloud is simple — deliver trusted, results-driven solutions with elite service and African pride.
-          </p>
-          <p>
-            From infrastructure and cybersecurity to workforce enablement and AI, CoreCloud exists to help businesses modernize with confidence, speed, and measurable ROI.
-          </p>
+          <div>
+            <p>
+              Founded by seasoned tech executive <strong>Mark Louw</strong>, CoreCloud (Pty) Ltd is a South African technology group built to simplify enterprise IT while driving scalable digital transformation. With decades of experience leading sales, partnerships, and infrastructure at global firms like NTT, Dell EMC, and TrueMark, Mark’s vision for CoreCloud is simple — deliver trusted, results-driven solutions with elite service and African pride.
+            </p>
+            <p>
+              From infrastructure and cybersecurity to workforce enablement and AI, CoreCloud exists to help businesses modernize with confidence, speed, and measurable ROI.
+            </p>
+          </div>
         </section>
       </div>
       <div class="column">
         <section class="body-block">
           <h2>Our Mission &amp; Values</h2>
-          <p>
-            CoreCloud is more than a service provider — we are a strategic partner. Our mission is to be the engine room behind Africa’s most ambitious organizations. We lead with deep expertise, execute with precision, and operate with the highest standards of accountability.
-          </p>
-          <p>
-            Our values are simple: <strong>Excellence. Integrity. Execution.</strong> We don’t just consult — we deliver outcomes.
-          </p>
+          <div>
+            <p>
+              CoreCloud is more than a service provider — we are a strategic partner. Our mission is to be the engine room behind Africa’s most ambitious organizations. We lead with deep expertise, execute with precision, and operate with the highest standards of accountability.
+            </p>
+            <p>
+              Our values are simple: <strong>Excellence. Integrity. Execution.</strong> We don’t just consult — we deliver outcomes.
+            </p>
+          </div>
         </section>
       </div>
     </div>
@@ -105,11 +120,13 @@
         </section>
       </div>
       <div class="column">
-        <section class="body-block">
+        <section class="body-block leadership-block">
           <h2>Meet With Our Leadership</h2>
-          <p>
-            If you're a decision-maker exploring cloud strategy, cybersecurity, or workforce transformation — CoreCloud is ready to lead that journey with you. We speak your language, understand your pressures, and bring the right partnerships to the table.
-          </p>
+          <div>
+            <p>
+              If you're a decision-maker exploring cloud strategy, cybersecurity, or workforce transformation — CoreCloud is ready to lead that journey with you. We speak your language, understand your pressures, and bring the right partnerships to the table.
+            </p>
+          </div>
           <a href="contact.html" class="btn-primary">Schedule a Strategy Session</a>
         </section>
       </div>
