@@ -6,6 +6,36 @@
   <title>CRM & Pipeline – CoreCloud</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .crm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+    .portal-container {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .portal-container h2 {
+      color: var(--color-primary);
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    @media (max-width: 1024px) {
+      .crm-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -27,8 +57,8 @@
     <h1 class="page-title">CRM &amp; Pipeline Management</h1>
   </div>
 
-  <!-- CRM, Pipeline, Dashboard Side-by-Side -->
-  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem;">
+  <!-- CRM, Pipeline, Dashboard Grid Layout -->
+  <div class="crm-grid">
     <div class="portal-container">
       <h2>CRM Contacts</h2>
       <div id="crmApp"></div>
@@ -96,7 +126,6 @@
       });
     }
 
-    // Wait for pipeline data to render dashboard
     window.addEventListener('load', () => {
       setTimeout(() => {
         if (window.getPipelineData) {
