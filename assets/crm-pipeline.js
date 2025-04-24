@@ -168,3 +168,4 @@
   // For dashboard
   window.getPipelineData = () => pipeline;
 })();
+
