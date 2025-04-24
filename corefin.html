@@ -8,6 +8,7 @@
 </head>
 <body>
 
+  <!-- Banner + Header overlay -->
   <div class="small-banner">
     <header class="banner-header">
       <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
@@ -27,18 +28,39 @@
     <h1 class="page-title">CoreFin</h1>
   </div>
 
+  <!-- Executive Overview -->
   <section class="body-block">
-    <h2>About CoreFin</h2>
-    <p>CoreFin provides tech enablement, OPEX finance solutions, and streamlined partner onboarding support to help you invest in innovation without capex constraints.</p>
-    <a href="contact.html" class="btn-primary">Learn More</a>
+    <h2>OPEX Finance Partnerships that Drive Growth</h2>
+    <p>
+      Through our <strong>OPEX finance</strong> models, CoreFin enables you to:
+    </p>
+    <ul style="max-width:800px; margin:1rem auto 0; padding-left:1.5rem; text-align:left;">
+      <li><strong>0 CapEx Investment:</strong> Turn capital projects into predictable operating expenses.</li>
+      <li><strong>35% Faster Approvals:</strong> Streamlined underwriting tailored for technology deals.</li>
+      <li><strong>Integrated Vendor Onboarding:</strong> Certified processes for rapid go-live.</li>
+      <li><strong>Risk-Managed Structures:</strong> Transparent contracts aligned to performance milestones.</li>
+      <li><strong>CFO Dashboard:</strong> Real-time financial metrics and ROI tracking.</li>
+    </ul>
   </section>
 
+  <!-- Call to Action -->
+  <section class="body-block">
+    <h2>Finance Your Innovation</h2>
+    <p>
+      Don’t let CapEx constraints slow your digital agenda.  
+      Speak with CoreFin to unlock flexible, growth-focused financing today.
+    </p>
+    <a href="contact.html" class="btn-primary">Request a Finance Consultation</a>
+  </section>
+
+  <!-- Footer -->
   <div id="site-footer"></div>
   <script>
-    fetch("footer.html").then(res => res.text()).then(html => {
-      document.getElementById("site-footer").outerHTML = html;
-    });
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("site-footer").outerHTML = html;
+      });
   </script>
-
 </body>
 </html>
