@@ -7,39 +7,39 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    .crm-grid {
+    .grid-3col {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 4rem auto;
-      padding: 0 1.5rem;
+      gap: 1rem;
     }
-    .portal-container {
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
-    .portal-container h2 {
-      color: var(--color-primary);
-      font-size: 1.6rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
+    .portal-form input,
+    .portal-form select,
+    .portal-form button {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
     }
-    @media (max-width: 1024px) {
-      .crm-grid {
-        grid-template-columns: 1fr;
-      }
+    .portal-form button {
+      background: var(--color-primary);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      grid-column: span 3;
+    }
+    .portal-form button:hover {
+      background: var(--color-hover);
     }
   </style>
 </head>
 <body>
 
-  <!-- Subpage banner + header -->
   <div class="small-banner">
     <header class="banner-header">
       <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
@@ -57,16 +57,41 @@
     <h1 class="page-title">CRM &amp; Pipeline Management</h1>
   </div>
 
-  <!-- CRM, Pipeline, Dashboard Grid Layout -->
-  <div class="crm-grid">
+  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem;">
     <div class="portal-container">
       <h2>CRM Contacts</h2>
-      <div id="crmApp"></div>
+      <form id="crmForm" class="portal-form grid-3col">
+        <input type="text" placeholder="First Name" required>
+        <input type="text" placeholder="Last Name" required>
+        <input type="text" placeholder="Company">
+        <input type="text" placeholder="Position">
+        <input type="text" placeholder="Industry Focus">
+        <input type="tel" placeholder="Mobile Number">
+        <input type="tel" placeholder="Landline Number">
+        <input type="url" placeholder="Company Website">
+        <input type="email" placeholder="Email Address" required>
+        <button type="submit">Save Contact</button>
+      </form>
     </div>
 
     <div class="portal-container">
       <h2>Sales Pipeline</h2>
-      <div id="pipelineApp"></div>
+      <form id="pipelineForm" class="portal-form grid-2col">
+        <input type="text" placeholder="Opportunity Name" required>
+        <input type="text" placeholder="Client / Company" required>
+        <input type="text" placeholder="Contact Person">
+        <input type="number" placeholder="Deal Value">
+        <select required>
+          <option value="">Select Stage…</option>
+          <option>Qualification</option>
+          <option>Proposal</option>
+          <option>Negotiation</option>
+          <option>Closed Won</option>
+          <option>Closed Lost</option>
+        </select>
+        <input type="date" placeholder="Expected Close Date">
+        <button type="submit">Save Pipeline Item</button>
+      </form>
     </div>
 
     <div class="portal-container">
@@ -76,64 +101,6 @@
     </div>
   </div>
 
-  <!-- CRM, Pipeline, and Dashboard Scripts -->
   <script src="assets/js/crm-pipeline.js"></script>
-  <script>
-    const ctx1 = document.getElementById('dealCountChart').getContext('2d');
-    const ctx2 = document.getElementById('dealValueChart').getContext('2d');
-
-    function renderDashboard(pipeline) {
-      const stages = ['Qualification', 'Proposal', 'Negotiation', 'Closed Won', 'Closed Lost'];
-      const counts = stages.map(stage => pipeline.filter(p => p.stage === stage).length);
-      const totals = stages.map(stage => pipeline
-        .filter(p => p.stage === stage)
-        .reduce((sum, p) => sum + (parseFloat(p.dealValue) || 0), 0));
-
-      new Chart(ctx1, {
-        type: 'bar',
-        data: {
-          labels: stages,
-          datasets: [{
-            label: 'Deals per Stage',
-            data: counts,
-            backgroundColor: '#004B87',
-            borderRadius: 4
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: { legend: { display: false } },
-          scales: { y: { beginAtZero: true } }
-        }
-      });
-
-      new Chart(ctx2, {
-        type: 'bar',
-        data: {
-          labels: stages,
-          datasets: [{
-            label: 'Deal Value (ZAR)',
-            data: totals,
-            backgroundColor: '#FDC02F',
-            borderRadius: 4
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: { legend: { display: false } },
-          scales: { y: { beginAtZero: true } }
-        }
-      });
-    }
-
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        if (window.getPipelineData) {
-          renderDashboard(window.getPipelineData());
-        }
-      }, 300);
-    });
-  </script>
-
 </body>
 </html>
