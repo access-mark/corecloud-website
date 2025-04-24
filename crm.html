@@ -6,6 +6,53 @@
   <title>CRM & Pipeline – CoreCloud</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .crm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    .portal-container {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .portal-container h2 {
+      margin-top: 0;
+      color: var(--color-primary);
+    }
+    .portal-form input,
+    .portal-form select,
+    .portal-form button {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .portal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    .portal-table th,
+    .portal-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .portal-delete {
+      color: #c00;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
@@ -28,7 +75,7 @@
   </div>
 
   <!-- CRM, Pipeline, Dashboard -->
-  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem;">
+  <div class="crm-grid">
     <div class="portal-container">
       <h2>CRM Contacts</h2>
       <div id="crmApp"></div>
@@ -112,4 +159,3 @@
 
 </body>
 </html>
-
