@@ -1,0 +1,65 @@
+<!-- coredev.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CoreDev – Strategic Development Partnerships</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- Small-Banner + Header -->
+  <div class="small-banner">
+    <header class="banner-header">
+      <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html" class="nav-btn">Home</a></li>
+          <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
+          <li><a href="about.html" class="nav-btn">About</a></li>
+          <li><a href="contact.html" class="nav-btn">Contact</a></li>
+          <li><a href="downloads.html" class="nav-btn btn-download">Downloads</a></li>
+          <li><a href="coredev.html" class="nav-btn active">CoreDev</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1 class="page-title">CoreDev</h1>
+  </div>
+
+  <!-- About CoreDev -->
+  <section class="body-block">
+    <h2>About CoreDev</h2>
+    <p>
+      Through exclusive partnerships with leading software houses, CoreDev delivers bespoke enterprise applications—tailored, scalable, and fully supported.
+    </p>
+  </section>
+
+  <!-- Why CoreDev -->
+  <section class="body-block">
+    <h2>Why Partner with CoreDev?</h2>
+    <ul style="list-style: disc; padding-left:1.5rem;">
+      <li><strong>Top-Tier Talent:</strong> Access senior architects and engineers curated from global leaders.</li>
+      <li><strong>Agile Delivery:</strong> Rapid sprint cycles aligned to your strategic roadmap.</li>
+      <li><strong>Quality Assurance:</strong> End-to-end testing, CI/CD pipelines, and 24×7 support.</li>
+    </ul>
+  </section>
+
+  <!-- Leadership & CTA -->
+  <section class="body-block leadership-block">
+    <h2>Our Commitment to Excellence</h2>
+    <p>
+      We manage every phase—from requirements to release—ensuring your software is robust, secure, and future-proof.
+    </p>
+    <a href="contact.html" class="btn-primary">Engage Our Dev Experts</a>
+  </section>
+
+  <!-- Footer -->
+  <div id="site-footer"></div>
+  <script>
+    fetch("footer.html").then(r => r.text()).then(html => {
+      document.getElementById("site-footer").outerHTML = html;
+    });
+  </script>
+</body>
+</html>
