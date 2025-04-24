@@ -1,3 +1,5 @@
+/* assets/css/styles.css */
+
 /* === Root Colors & Font === */
 :root {
   --color-primary: #004B87;
@@ -114,7 +116,6 @@ header.banner-header nav ul li a.nav-btn.active {
   color: var(--color-primary);
   text-shadow: 0 4px 8px rgba(0,0,0,0.6);
 }
-/* === Position sub-page titles like homepage === */
 .small-banner .page-title {
   position: absolute;
   top: 25%;
@@ -152,6 +153,14 @@ header.banner-header nav ul li a.nav-btn.active {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+/* === Small-Banner Title (matched to homepage) === */
+.small-banner .page-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--color-primary);
+  text-shadow: 0 4px 8px rgba(0,0,0,0.6);
+  margin-bottom: 0.75rem;
 }
 
 /* === Sections & Content === */
@@ -210,7 +219,8 @@ header.banner-header nav ul li a.nav-btn.active {
   margin-bottom: 0.5rem;
 }
 
-/* === Button Styling === */
+/* === Button Styling ===
+   Base .btn-primary used across site */
 .btn-primary {
   background: var(--color-primary);
   color: var(--color-white);
@@ -224,6 +234,14 @@ header.banner-header nav ul li a.nav-btn.active {
 .btn-primary:hover {
   background: var(--color-hover);
   transform: scale(1.04);
+}
+
+/* Centered CTAs on subpages & blocks */
+.body-block .btn-primary,
+.leadership-block .btn-primary,
+.column .btn-primary {
+  display: block;
+  margin: 2rem auto 0;
 }
 
 /* === Footer === */
@@ -241,33 +259,6 @@ footer a {
 }
 footer a:hover {
   text-decoration: underline;
-}
-
-/* === Center homepage banner button === */
-.banner-text .btn-primary {
-  display: inline-block;
-  margin: 0 auto;
-}
-
-/* === Center all bottom CTA buttons === */
-.body-block .btn-primary,
-.leadership-block .btn-primary {
-  display: inline-block;
-  margin: 2rem auto 0;
-}
-
-/* === Red Downloads button in nav === */
-.btn-download {
-  background-color: #D32F2F;
-  color: #fff;
-  border: 2px solid #D32F2F;
-  transition: background-color 0.3s, border-color 0.3s;
-}
-.btn-download:hover,
-.btn-download:focus {
-  background-color: #B71C1C;
-  border-color: #B71C1C;
-  color: #fff;
 }
 
 /* === Responsive Fixes === */
