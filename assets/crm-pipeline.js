@@ -155,6 +155,8 @@
   };
   renderPipeline();
 
+  renderPipeline();
+
   // For dashboard access
   window.getPipelineData = () => pipeline;
 })();
