@@ -6,20 +6,33 @@
   <title>About CoreCloud – Leadership &amp; Vision</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <style>
-    /* two-column layout for About page */
+    /* two-column layout */
     .two-columns {
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
-      margin-bottom: 3rem;
+      justify-content: space-between;
     }
     .two-columns .column {
       flex: 1;
       min-width: 300px;
     }
-    /* ensure body-block padding still applies */
-    .two-columns .column .body-block {
-      margin: 0;
+
+    /* visible body-blocks */
+    .body-block {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.1);
+      padding: 2rem;
+      margin: 0; /* handled by column gaps now */
+    }
+    /* titles centered, content left */
+    .body-block h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .body-block p,
+    .body-block ul {
+      text-align: left;
     }
   </style>
 </head>
@@ -72,7 +85,7 @@
     <div class="column">
       <section class="body-block">
         <h2>Group Structure</h2>
-        <ul style="padding-left:1.5rem; text-align:left;">
+        <ul style="padding-left:1.5rem;">
           <li><strong>Access Zero:</strong> Cybersecurity and digital infrastructure</li>
           <li><strong>CoreTech:</strong> Hybrid IT and managed infrastructure</li>
           <li><strong>CoreCapacity:</strong> Talent placement and workforce augmentation</li>
