@@ -6,18 +6,57 @@
   <title>CRM – CoreCloud</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <style>
-    /* Additional CRM-specific tweaks */
-    .crm-container { max-width:800px; margin:4rem auto; padding:1rem; background:#fff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
-    .crm-form, .crm-table { width:100%; margin-bottom:2rem; }
-    .crm-form input, .crm-form textarea, .crm-form button { width:100%; margin:0.5rem 0; padding:0.75rem; font-size:1rem; }
-    .crm-table th, .crm-table td { padding:0.5rem; border-bottom:1px solid #eee; }
-    .crm-table { border-collapse: collapse; width:100%; }
-    .crm-delete { color:#c00; cursor:pointer; }
+    .crm-container {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 1.5rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .crm-form input,
+    .crm-form textarea,
+    .crm-form button,
+    .crm-tools button,
+    .crm-tools input[type=file] {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .crm-tools {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .crm-tools button {
+      width: auto;
+    }
+    .crm-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+    .crm-table th,
+    .crm-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .crm-delete {
+      color: #c00;
+      cursor: pointer;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Banner + Header overlay -->
+  <!-- Subpage banner + header -->
   <div class="small-banner">
     <header class="banner-header">
       <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
@@ -35,82 +74,154 @@
     <h1 class="page-title">Client Relationship Management</h1>
   </div>
 
+  <!-- CRM App -->
   <div class="crm-container" id="crmApp" style="display:none;">
+    <div class="crm-tools">
+      <input type="file" id="importCsv" accept=".csv" />
+      <button id="exportCsv" class="btn-primary">Export CSV</button>
+    </div>
+
     <h2>Add / Update Contact</h2>
     <form class="crm-form" id="contactForm">
-      <input type="hidden" id="contactIndex" value="">
-      <input type="text" id="name" placeholder="Full Name" required />
-      <input type="email" id="email" placeholder="Email Address" required />
-      <input type="text" id="company" placeholder="Company" />
-      <textarea id="notes" rows="4" placeholder="Notes…"></textarea>
+      <input type="hidden" id="contactIndex" value="" />
+      <input type="text" id="firstName" placeholder="First Name" required />
+      <input type="text" id="lastName"  placeholder="Last Name"  required />
+      <input type="text" id="company"   placeholder="Company"    />
+      <input type="text" id="position"  placeholder="Position"   />
+      <input type="text" id="industry"  placeholder="Industry Focus" />
+      <input type="tel"   id="mobile"    placeholder="Mobile Number" />
+      <input type="tel"   id="landline"  placeholder="Landline Number" />
+      <input type="url"   id="website"   placeholder="Company Website" />
+      <input type="email" id="email"     placeholder="Email Address" required />
       <button type="submit" class="btn-primary">Save Contact</button>
     </form>
 
     <h2>Saved Contacts</h2>
     <table class="crm-table">
-      <thead><tr><th>Name</th><th>Email</th><th>Company</th><th>Notes</th><th> </th></tr></thead>
+      <thead>
+        <tr>
+          <th>First</th><th>Last</th><th>Company</th><th>Position</th>
+          <th>Industry</th><th>Mobile</th><th>Landline</th>
+          <th>Website</th><th>Email</th><th> </th>
+        </tr>
+      </thead>
       <tbody id="contactsList"></tbody>
     </table>
   </div>
 
   <script>
-    (function(){
-      const PASSWORD = 'Secure2025'; // set your CRM password here
-      if (prompt('Enter CRM password:') !== PASSWORD) {
-        document.body.innerHTML = '<p style="text-align:center;margin-top:4rem;">Access Denied.</p>';
-        return;
-      }
+  (function(){
+    const PASSWORD = 'Secure2025';
+    if (prompt('Enter CRM password:') !== PASSWORD) {
+      document.body.innerHTML = '<p style="text-align:center;margin-top:4rem;">Access Denied.</p>';
+      return;
+    }
 
-      const form = document.getElementById('contactForm');
-      const list = document.getElementById('contactsList');
-      let contacts = JSON.parse(localStorage.getItem('crmContacts')||'[]');
+    const form = document.getElementById('contactForm');
+    const list = document.getElementById('contactsList');
+    const importInput = document.getElementById('importCsv');
+    const exportBtn    = document.getElementById('exportCsv');
+    let contacts = JSON.parse(localStorage.getItem('crmContacts')||'[]');
 
-      function render() {
-        list.innerHTML = contacts.map((c,i)=>
-          `<tr>
-            <td>${c.name}</td>
-            <td>${c.email}</td>
-            <td>${c.company||''}</td>
-            <td>${c.notes||''}</td>
-            <td><span class="crm-delete" data-i="${i}">&times;</span></td>
-          </tr>`
-        ).join('');
-      }
+    function render() {
+      list.innerHTML = contacts.map((c,i)=>`
+        <tr>
+          <td>${c.firstName}</td><td>${c.lastName}</td><td>${c.company||''}</td>
+          <td>${c.position||''}</td><td>${c.industry||''}</td><td>${c.mobile||''}</td>
+          <td>${c.landline||''}</td>
+          <td>${c.website?'<a href="'+c.website+'" target="_blank">'+c.website+'</a>':''}</td>
+          <td>${c.email}</td>
+          <td><span class="crm-delete" data-i="${i}">&times;</span></td>
+        </tr>`).join('');
+    }
 
-      function save() {
-        localStorage.setItem('crmContacts', JSON.stringify(contacts));
-        render();
-        form.reset();
-        document.getElementById('contactIndex').value = '';
-      }
-
-      form.addEventListener('submit', e=>{
-        e.preventDefault();
-        const idx = document.getElementById('contactIndex').value;
-        const c = {
-          name: document.getElementById('name').value.trim(),
-          email: document.getElementById('email').value.trim(),
-          company: document.getElementById('company').value.trim(),
-          notes: document.getElementById('notes').value.trim(),
-        };
-        if (idx==='') contacts.push(c);
-        else contacts[idx]=c;
-        save();
-      });
-
-      list.addEventListener('click', e=>{
-        if (!e.target.matches('.crm-delete')) return;
-        const i = e.target.dataset.i;
-        if (confirm('Delete this contact?')) {
-          contacts.splice(i,1);
-          save();
-        }
-      });
-
-      // show app
-      document.getElementById('crmApp').style.display = 'block';
+    function save() {
+      localStorage.setItem('crmContacts', JSON.stringify(contacts));
       render();
-    })();
+      form.reset();
+      document.getElementById('contactIndex').value = '';
+    }
+
+    form.addEventListener('submit', e=>{
+      e.preventDefault();
+      const idx = document.getElementById('contactIndex').value;
+      const c = {
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName:  document.getElementById('lastName').value.trim(),
+        company:   document.getElementById('company').value.trim(),
+        position:  document.getElementById('position').value.trim(),
+        industry:  document.getElementById('industry').value.trim(),
+        mobile:    document.getElementById('mobile').value.trim(),
+        landline:  document.getElementById('landline').value.trim(),
+        website:   document.getElementById('website').value.trim(),
+        email:     document.getElementById('email').value.trim(),
+      };
+      if (idx==='') contacts.push(c);
+      else contacts[idx] = c;
+      save();
+    });
+
+    list.addEventListener('click', e=>{
+      if (!e.target.matches('.crm-delete')) return;
+      const i = e.target.dataset.i;
+      if (confirm('Delete this contact?')) {
+        contacts.splice(i,1);
+        save();
+      }
+    });
+
+    // **Export CSV**
+    exportBtn.addEventListener('click', ()=>{
+      const header = ['First','Last','Company','Position','Industry','Mobile','Landline','Website','Email'];
+      const rows = contacts.map(c => [
+        c.firstName, c.lastName, c.company, c.position,
+        c.industry, c.mobile, c.landline,
+        c.website, c.email
+      ]);
+      const csvContent = [header, ...rows]
+        .map(r => r.map(f => `"${(f||'').replace(/"/g,'""')}"`).join(','))
+        .join('\r\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'contacts.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // **Import CSV**
+    importInput.addEventListener('change', e=>{
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const lines = ev.target.result.trim().split(/\r?\n/);
+        const [header, ...data] = lines.map(l => l.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/));
+        // map each row to our object keys
+        data.forEach(cols => {
+          if (cols.length < 9) return;
+          contacts.push({
+            firstName: cols[0].replace(/^"|"$/g,''),
+            lastName:  cols[1].replace(/^"|"$/g,''),
+            company:   cols[2].replace(/^"|"$/g,''),
+            position:  cols[3].replace(/^"|"$/g,''),
+            industry:  cols[4].replace(/^"|"$/g,''),
+            mobile:    cols[5].replace(/^"|"$/g,''),
+            landline:  cols[6].replace(/^"|"$/g,''),
+            website:   cols[7].replace(/^"|"$/g,''),
+            email:     cols[8].replace(/^"|"$/g,'')
+          });
+        });
+        save();
+        importInput.value = '';
+      };
+      reader.readAsText(file);
+    });
+
+    document.getElementById('crmApp').style.display = 'block';
+    render();
+  })();
   </script>
 
 </body>
