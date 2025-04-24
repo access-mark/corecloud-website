@@ -16,14 +16,14 @@
       class="banner-img"
     />
 
-    <header class="banner-header">
+    <header>
       <img
         src="assets/images/corecloud-logo.png"
         alt="CoreCloud Logo"
         class="logo"
       />
       <nav>
-        <ul>
+        <ul style="display: flex; gap: 1rem;">
           <li><a href="index.html" class="nav-btn active">Home</a></li>
           <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
           <li><a href="about.html" class="nav-btn">About</a></li>
@@ -59,8 +59,7 @@
     <p>
       We envision a modern African enterprise landscape — built on trust,
       talent, and intelligent technology. Our culture rewards execution,
-      empowers bold thinking, and prioritizes real-world impact over
-      buzzwords.
+      empowers bold thinking, and prioritizes real-world impact over buzzwords.
     </p>
   </section>
 
@@ -95,8 +94,8 @@
   <div id="site-footer"></div>
   <script>
     fetch("footer.html")
-      .then(res => res.text())
-      .then(html => {
+      .then((res) => res.text())
+      .then((html) => {
         document.getElementById("site-footer").outerHTML = html;
       });
   </script>
