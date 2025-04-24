@@ -5,10 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About CoreCloud – Leadership &amp; Vision</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* two-column layout for About page */
+    .two-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .two-columns .column {
+      flex: 1;
+      min-width: 300px;
+    }
+    /* ensure body-block padding still applies */
+    .two-columns .column .body-block {
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Small-Banner + Header overlay -->
+  <!-- Banner + Header overlay -->
   <div class="small-banner">
     <header class="banner-header">
       <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
@@ -24,42 +41,65 @@
     <h1 class="page-title">About CoreCloud</h1>
   </div>
 
-  <section class="body-block">
-    <h2>Executive Overview</h2>
-    <p>Founded by seasoned tech executive <strong>Mark Louw</strong>, CoreCloud (Pty) Ltd is a South African technology group built to simplify enterprise IT while driving scalable digital transformation. With decades of experience leading sales, partnerships, and infrastructure at global firms like NTT, Dell EMC, and TrueMark, Mark’s vision for CoreCloud is simple — deliver trusted, results-driven solutions with elite service and African pride.</p>
-    <p>From infrastructure and cybersecurity to workforce enablement and AI, CoreCloud exists to help businesses modernize with confidence, speed, and measurable ROI.</p>
-  </section>
+  <!-- Exec Overview + Mission side by side -->
+  <div class="two-columns">
+    <div class="column">
+      <section class="body-block">
+        <h2>Executive Overview</h2>
+        <p>
+          Founded by seasoned tech executive <strong>Mark Louw</strong>, CoreCloud (Pty) Ltd is a South African technology group built to simplify enterprise IT while driving scalable digital transformation. With decades of experience leading sales, partnerships, and infrastructure at global firms like NTT, Dell EMC, and TrueMark, Mark’s vision for CoreCloud is simple — deliver trusted, results-driven solutions with elite service and African pride.
+        </p>
+        <p>
+          From infrastructure and cybersecurity to workforce enablement and AI, CoreCloud exists to help businesses modernize with confidence, speed, and measurable ROI.
+        </p>
+      </section>
+    </div>
+    <div class="column">
+      <section class="body-block">
+        <h2>Our Mission &amp; Values</h2>
+        <p>
+          CoreCloud is more than a service provider — we are a strategic partner. Our mission is to be the engine room behind Africa’s most ambitious organizations. We lead with deep expertise, execute with precision, and operate with the highest standards of accountability.
+        </p>
+        <p>
+          Our values are simple: <strong>Excellence. Integrity. Execution.</strong> We don’t just consult — we deliver outcomes.
+        </p>
+      </section>
+    </div>
+  </div>
 
-  <section class="body-block">
-    <h2>Our Mission &amp; Values</h2>
-    <p>CoreCloud is more than a service provider — we are a strategic partner. Our mission is to be the engine room behind Africa’s most ambitious organizations. We lead with expertise, execute with precision, and operate with the highest standards of accountability.</p>
-    <p>Our values are simple: <strong>Excellence. Integrity. Execution.</strong> We don’t just consult — we deliver.</p>
-  </section>
-
-  <section class="body-block">
-    <h2>Group Structure</h2>
-    <ul style="max-width: 800px; margin: 0 auto; padding-left: 1.5rem; text-align: left;">
-      <li><strong>Access Zero:</strong> Cybersecurity and digital infrastructure</li>
-      <li><strong>CoreTech:</strong> Hybrid IT and managed infrastructure</li>
-      <li><strong>CoreCapacity:</strong> Talent placement and workforce augmentation</li>
-      <li><strong>CoreAI:</strong> Automation, AI, and data science solutions</li>
-      <li><strong>CoreFin:</strong> Financial services and OPEX enablement (coming soon)</li>
-    </ul>
-  </section>
-
-  <section class="body-block">
-    <h2>Meet With Our Leadership</h2>
-    <p>If you're a decision-maker exploring cloud strategy, cybersecurity, or workforce transformation — CoreCloud is ready to lead that journey with you. We speak your language, understand your pressures, and bring the right partnerships to the table.</p>
-    <a href="contact.html" class="btn-primary">Schedule a Strategy Session</a>
-  </section>
+  <!-- Structure + Leadership side by side -->
+  <div class="two-columns">
+    <div class="column">
+      <section class="body-block">
+        <h2>Group Structure</h2>
+        <ul style="padding-left:1.5rem; text-align:left;">
+          <li><strong>Access Zero:</strong> Cybersecurity and digital infrastructure</li>
+          <li><strong>CoreTech:</strong> Hybrid IT and managed infrastructure</li>
+          <li><strong>CoreCapacity:</strong> Talent placement and workforce augmentation</li>
+          <li><strong>CoreAI:</strong> Automation, AI, and data science solutions</li>
+          <li><strong>CoreFin:</strong> Financial services and OPEX enablement (coming soon)</li>
+        </ul>
+      </section>
+    </div>
+    <div class="column">
+      <section class="body-block">
+        <h2>Meet With Our Leadership</h2>
+        <p>
+          If you're a decision-maker exploring cloud strategy, cybersecurity, or workforce transformation — CoreCloud is ready to lead that journey with you. We speak your language, understand your pressures, and bring the right partnerships to the table.
+        </p>
+        <a href="contact.html" class="btn-primary">Schedule a Strategy Session</a>
+      </section>
+    </div>
+  </div>
 
   <!-- Footer -->
   <div id="site-footer"></div>
   <script>
-    fetch("footer.html").then(res => res.text()).then(html => {
-      document.getElementById("site-footer").outerHTML = html;
-    });
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("site-footer").outerHTML = html;
+      });
   </script>
-
 </body>
 </html>
