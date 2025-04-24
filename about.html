@@ -1,14 +1,15 @@
+<!-- about.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About CoreCloud – Leadership &amp; Vision</title>
+  <title>About CoreCloud – Leadership & Vision</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
 
-  <!-- Header + Small‐Banner -->
+  <!-- Small-Banner + Header overlay -->
   <div class="small-banner">
     <header class="banner-header">
       <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
@@ -25,42 +26,48 @@
     <h1 class="page-title">About CoreCloud</h1>
   </div>
 
-  <!-- 2×2 Info Grid -->
-  <div class="centered-container">
-    <div class="info-grid">
-      <section class="body-block">
-        <h2>Executive Overview</h2>
-        <p>Founded by tech visionary <strong>Mark Louw</strong>, CoreCloud simplifies enterprise IT while delivering measurable outcomes.</p>
-        <p>Leveraging decades at Dell EMC, NTT &amp; TrueMark, we bridge strategy and execution.</p>
-      </section>
-
-      <section class="body-block">
-        <h2>Our Mission &amp; Values</h2>
-        <ul style="padding-left:1.5rem;">
-          <li><strong>Excellence:</strong> We uphold the highest standards.</li>
-          <li><strong>Integrity:</strong> Transparent, accountable partnerships.</li>
-          <li><strong>Execution:</strong> On time, on budget, on promise.</li>
-        </ul>
-      </section>
-
-      <section class="body-block">
-        <h2>Group Structure</h2>
-        <p>Four focused divisions solving critical enterprise challenges:</p>
-        <ul style="padding-left:1.5rem;">
-          <li><strong>CoreTech</strong> – Hybrid infrastructure</li>
-          <li><strong>CoreCapacity</strong> – Elite talent placement</li>
-          <li><strong>CoreAI</strong> – Automation & AI platforms</li>
-          <li><strong>CoreFin</strong> – OPEX financing models</li>
-        </ul>
-      </section>
-
-      <section class="body-block leadership-block">
-        <h2>Meet Our Leadership</h2>
-        <p>Ready to modernize your IT with confidence? Schedule a strategy session with Mark and our executive team.</p>
-        <a href="contact.html" class="btn-primary">Schedule a Strategy Session</a>
-      </section>
+  <!-- Two-Column Executive Blocks -->
+  <section class="body-block" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+    <div class="column">
+      <h2>Executive Overview</h2>
+      <p>
+        Founded by cloud strategist <strong>Mark Louw</strong>, CoreCloud is South Africa’s premier broker of enterprise-scale IT outcomes. Drawing on decades of leadership at NTT, Dell EMC, and TrueMark, we deliver trusted solutions that drive measurable growth.
+      </p>
+      <p>
+        From secure infrastructure to AI-driven insights, our mission is simple: empower African enterprises to compete globally.
+      </p>
     </div>
-  </div>
+    <div class="column">
+      <h2>Our Mission &amp; Values</h2>
+      <p>
+        We are more than a service provider—we are your strategic partner. We lead with integrity, execute with excellence, and deliver with accountability.
+      </p>
+      <ul style="list-style:disc; padding-left:1.5rem;">
+        <li><strong>Excellence.</strong> World-class execution, every time.</li>
+        <li><strong>Integrity.</strong> Transparent, trust-based partnerships.</li>
+        <li><strong>Execution.</strong> Real-world impact over theory.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Structure & Leadership -->
+  <section class="body-block" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
+    <div class="column">
+      <h2>Group Structure</h2>
+      <ul style="list-style:disc; padding-left:1.5rem;">
+        <li><strong>Access Zero:</strong> Cybersecurity & digital infrastructure.</li>
+        <li><strong>CoreTech:</strong> Hybrid IT & managed networks.</li>
+        <li><strong>CoreCapacity:</strong> Talent placement & delivery teams.</li>
+      </ul>
+    </div>
+    <div class="column leadership-block">
+      <h2>Meet the Founder</h2>
+      <p>
+        <strong>Mark Louw</strong>, Founder & CEO, is a veteran technology executive with a passion for driving scalable transformation in Africa’s most ambitious organizations.
+      </p>
+      <a href="contact.html" class="btn-primary">Schedule a Strategy Session</a>
+    </div>
+  </section>
 
   <!-- Footer -->
   <div id="site-footer"></div>
@@ -69,6 +76,5 @@
       .then(res => res.text())
       .then(html => document.getElementById("site-footer").outerHTML = html);
   </script>
-
 </body>
 </html>
