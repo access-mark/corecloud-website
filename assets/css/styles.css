@@ -116,6 +116,14 @@ header.banner-header nav ul li a.nav-btn.active {
   color: var(--color-primary);
   text-shadow: 0 4px 8px rgba(0,0,0,0.6);
 }
+/* === Position sub-page titles like homepage === */
+.small-banner .page-title {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 500; /* above background */
+}
 
 /* === Banner Text Overlay === */
 .banner-text {
