@@ -1,100 +1,65 @@
-<!-- index.html -->
+<!-- coredev.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CoreCloud – Modern IT. Orchestrated.</title>
+  <title>CoreDev – Strategic Development Partnerships</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
 
-  <!-- Banner + Header overlay -->
-  <div class="banner-container">
-    <img
-      src="assets/images/sandton-dusk.png"
-      alt="CoreCloud Sandton Skyline Banner"
-      class="banner-img"
-    />
-
+  <!-- Small-Banner + Header -->
+  <div class="small-banner">
     <header class="banner-header">
-      <img
-        src="assets/images/corecloud-logo.png"
-        alt="CoreCloud Logo"
-        class="logo"
-      />
+      <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
       <nav>
         <ul>
-          <li><a href="index.html" class="nav-btn active">Home</a></li>
+          <li><a href="index.html" class="nav-btn">Home</a></li>
           <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
           <li><a href="about.html" class="nav-btn">About</a></li>
           <li><a href="contact.html" class="nav-btn">Contact</a></li>
           <li><a href="downloads.html" class="nav-btn btn-download">Downloads</a></li>
+          <li><a href="coredev.html" class="nav-btn active">CoreDev</a></li>
         </ul>
       </nav>
     </header>
-
-    <div class="banner-text">
-      <h1>Modern IT. Orchestrated.</h1>
-      <p>
-        We broker outcomes across infrastructure, cloud, AI, and talent—delivered by world-class partners and powered by African ingenuity.
-      </p>
-      <a href="contact.html" class="btn-primary">Request a C-Suite Briefing</a>
-    </div>
+    <h1 class="page-title">CoreDev</h1>
   </div>
 
-  <!-- Executive Summary -->
+  <!-- About CoreDev -->
   <section class="body-block">
-    <h2>Your Strategic Advantage</h2>
-    <div class="service-grid">
-      <div class="card">
-        <h3>Maximize ROI</h3>
-        <p>Align IT spend to business outcomes—optimize costs by up to 30% through consumption-based models.</p>
-      </div>
-      <div class="card">
-        <h3>Accelerate Time-to-Market</h3>
-        <p>Launch new digital services in weeks, not months—powered by our AWS and hybrid cloud expertise.</p>
-      </div>
-      <div class="card">
-        <h3>Strengthen Governance</h3>
-        <p>Embed enterprise-grade security and compliance across your entire technology stack.</p>
-      </div>
-    </div>
+    <h2>About CoreDev</h2>
+    <p>
+      Through exclusive partnerships with leading software houses, CoreDev delivers bespoke enterprise applications—tailored, scalable, and fully supported.
+    </p>
   </section>
 
-  <!-- Our Divisions -->
-  <section class="body-block services-block">
-    <h2>How We Deliver</h2>
-    <div class="service-grid">
-      <a href="corecloud.html" class="card">
-        <h3>CoreCloud</h3>
-        <p>Cloud strategy, migration & managed services—enabling scalable, resilient platforms.</p>
-      </a>
-      <a href="coretech.html" class="card">
-        <h3>CoreTech</h3>
-        <p>Hybrid infrastructure design, network architecture, and 24×7 managed support.</p>
-      </a>
-      <a href="corecapacity.html" class="card">
-        <h3>CoreCapacity</h3>
-        <p>Elite IT talent and delivery teams on demand—accelerate your roadmap with expert personnel.</p>
-      </a>
-      <a href="coreai.html" class="card">
-        <h3>CoreAI</h3>
-        <p>Data science, automation, and AI platforms—turn insights into competitive advantage.</p>
-      </a>
-      <a href="corefin.html" class="card">
-        <h3>CoreFin</h3>
-        <p>OPEX financing and partner onboarding support—unlock growth without upfront capital.</p>
-      </a>
-    </div>
+  <!-- Why CoreDev -->
+  <section class="body-block">
+    <h2>Why Partner with CoreDev?</h2>
+    <ul style="list-style: disc; padding-left:1.5rem;">
+      <li><strong>Top-Tier Talent:</strong> Access senior architects and engineers curated from global leaders.</li>
+      <li><strong>Agile Delivery:</strong> Rapid sprint cycles aligned to your strategic roadmap.</li>
+      <li><strong>Quality Assurance:</strong> End-to-end testing, CI/CD pipelines, and 24×7 support.</li>
+    </ul>
+  </section>
+
+  <!-- Leadership & CTA -->
+  <section class="body-block leadership-block">
+    <h2>Our Commitment to Excellence</h2>
+    <p>
+      We manage every phase—from requirements to release—ensuring your software is robust, secure, and future-proof.
+    </p>
+    <a href="contact.html" class="btn-primary">Engage Our Dev Experts</a>
   </section>
 
   <!-- Footer -->
   <div id="site-footer"></div>
   <script>
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(html => document.getElementById("site-footer").outerHTML = html);
+    fetch("footer.html").then(r => r.text()).then(html => {
+      document.getElementById("site-footer").outerHTML = html;
+    });
   </script>
 </body>
 </html>
