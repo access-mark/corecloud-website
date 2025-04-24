@@ -1,36 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Downloads – CoreCloud</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* Simple inline form centering */
+    .pw-form {
+      max-width: 400px;
+      margin: 3rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .pw-form input[type="password"] {
+      padding: 0.75rem;
+      font-size: 1rem;
+    }
+    .pw-form button {
+      width: 150px;
+      margin: 0 auto;
+    }
+    #download-list {
+      display: none;
+      margin-top: 2rem;
+      text-align: left;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #download-list li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
 </head>
 <body>
-  <header class="banner-header">
-    <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo">
-    <nav>
-      <ul>
-        <li><a href="index.html" class="nav-btn">Home</a></li>
-        <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
-        <li><a href="about.html" class="nav-btn">About</a></li>
-        <li><a href="contact.html" class="nav-btn">Contact</a></li>
-        <li><a href="downloads.html" class="nav-btn btn-download active">Downloads</a></li>
-      </ul>
-    </nav>
-  </header>
 
+  <!-- Small‐Banner + Header -->
+  <div class="small-banner">
+    <header class="banner-header">
+      <img src="assets/images/corecloud-logo.png" alt="CoreCloud Logo" class="logo" />
+      <nav>
+        <ul>
+          <li><a href="index.html" class="nav-btn">Home</a></li>
+          <li><a href="divisions.html" class="nav-btn">Divisions</a></li>
+          <li><a href="about.html" class="nav-btn">About</a></li>
+          <li><a href="contact.html" class="nav-btn">Contact</a></li>
+          <li><a href="downloads.html" class="nav-btn btn-download active">Downloads</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1 class="page-title">Secure Downloads</h1>
+  </div>
+
+  <!-- Password Form -->
   <section class="body-block">
-    <h2>Secure Downloads</h2>
-    <p>If you’ve been prompted for a password and entered it correctly, you should see links below. Otherwise you’ll be redirected.</p>
-    <ul style="padding-left:1.5rem;">
-      <li><a href="assets/docs/Whitepaper_CoreCloud.pdf" download>CoreCloud Whitepaper</a></li>
-      <li><a href="assets/docs/CaseStudy_Enterprise.pdf" download>Enterprise Case Study</a></li>
+    <div class="pw-form">
+      <label for="pwd">Enter password to unlock downloads:</label>
+      <input type="password" id="pwd" placeholder="Password" />
+      <button type="button" id="unlock-btn" class="btn-primary">Unlock</button>
+      <p id="error-msg" style="color:#c00; display:none; text-align:center;">Incorrect password.</p>
+    </div>
+
+    <!-- Hidden until correct password -->
+    <ul id="download-list">
+      <li><a href="assets/docs/Whitepaper_CoreCloud.pdf" download>CoreCloud Whitepaper (PDF)</a></li>
+      <li><a href="assets/docs/CaseStudy_Enterprise.pdf" download>Enterprise Case Study (PDF)</a></li>
+      <li><a href="assets/docs/SolutionOverview.pdf" download>Solution Overview (PDF)</a></li>
+      <!-- Add more protected links here -->
     </ul>
   </section>
 
+  <!-- Footer -->
   <div id="site-footer"></div>
   <script>
+    const CORRECT_PASSWORD = 'Secure2025';
+    document.getElementById('unlock-btn').addEventListener('click', () => {
+      const entered = document.getElementById('pwd').value;
+      if (entered === CORRECT_PASSWORD) {
+        document.getElementById('error-msg').style.display = 'none';
+        document.getElementById('download-list').style.display = 'block';
+      } else {
+        document.getElementById('error-msg').style.display = 'block';
+        document.getElementById('download-list').style.display = 'none';
+      }
+    });
+
+    // load footer
     fetch("footer.html")
       .then(r => r.text())
       .then(html => document.getElementById("site-footer").outerHTML = html);
